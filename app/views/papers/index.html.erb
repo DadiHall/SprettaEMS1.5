@@ -1,6 +1,6 @@
 
 <div class="row">
-	<div class="col-md-10 col-md-offset-1 ">
+	<div class="col-md-10  ">
 		
 		<h1>Pappírsnotkun</h1>
 		<table class=" well table table-hover">
@@ -30,20 +30,40 @@
 		              		<td><%= paper.paper_cost %> -kr.</td>
 		              		<td><%= paper.env_paper_weight %> -kg.</td>
 		              		<td><%= (paper.paper_weight.to_i / current_user.staff) %> kg/stöðugildi </td>
-              				<td><%= (( paper.env_paper_weight.to_f / paper.paper_weight.to_f)* 100) %>%</td>	
+              				<td><%= (( paper.env_paper_weight / paper.paper_weight)* 100) %>%</td>	
               				<td><%= (( paper.paper_weight.to_f/1000)*15) %></td>
 
 		              		<td><%= link_to 'Sýna', paper, class: 'btn btn-xs btn-info' %></td>
 		              		<td><%= link_to 'Uppfæra', edit_paper_path(paper), class: 'btn btn-xs btn-warning' %></td>
 		              		<td><%= link_to 'Eyða', paper, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
 		              		 <% paper_total_cost = paper_total_cost + (paper.paper_cost.to_i) %>
-             				 <% paper_total_trees = paper_total_trees + (( paper.paper_weight.to_i/1000)*15) %>
+             				 <% paper_total_trees = paper_total_trees + (( paper.paper_weight.to_f/1000)*15) %>
               				 <% paper_total_staff_ratio = paper_total_staff_ratio + (paper.paper_weight.to_i / current_user.staff) %> 
 		              	</tr>	
 					<% end %>
 				</tbody>
 			
-		</table>		
-		
-	</div>
+		</table>
+	</div>			
+
+					<div class="row">
+						<div class=" col-md-2 panel panel-default pull-right" >
+				    		<div class="panel panel-heading ">
+				      			<h5 class="user-name">User: <% if current_user && current_user %> 
+				                <%= current_user.name %>, 
+				                Staff: <%= current_user.staff %>
+				                 <% end %>  
+				              </h5>   
+				    		</div>     
+				    		<div class="panel-body">         
+				      			<h6 class="pull-right">Pappír Kostnaður Samtals:<%= number_with_precision(paper_total_cost.to_f, precision: 2) %> kr </h6><br>
+				      			<h6 class="pull-right">Fjöldi Trjáa vegna Pappírs notkunar:<%= number_with_precision(paper_total_trees.to_f, precision: 2) %> Tré </h6><br>
+				     			 <h6 class="pull-right">Magn Pappírs f. hvert stöðugildi:<%= number_with_precision(paper_total_staff_ratio.to_f, precision: 2) %> Kg </h6>
+				    		</div>
+				    	</div>	
+				    </div>	
+
+				    <%= link_to 'New Paper', new_paper_path %>
+<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+	
 </div>

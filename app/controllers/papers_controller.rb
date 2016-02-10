@@ -32,12 +32,19 @@ class PapersController < ApplicationController
 	end
 
 	def update
+			if @paper.update(paper_params)
+			flash[:success] = "Line was successfully updated"
+			redirect_to papers_path(@paper)
+		else
+			render 'edit'
+		end		
+
 	end
 
 	def destroy
-		@paper.destroy(paper_params)
+		@paper.destroy
 		flash[:danger] = "Line was successfully destroyed"
-		redirect_to paper_path
+		redirect_to papers_path
 	end
 
 
