@@ -1,0 +1,9 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  paper_type: MyString
+  paper_weight: 9.99
+
+two:
+  paper_type: MyString
+  paper_weight: 9.99

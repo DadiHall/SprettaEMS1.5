@@ -1,0 +1,47 @@
+<h1>Paper new </h1>
+
+<%= form_for @paper, html: {class: 'form-horizontal'} do |f| %>
+
+<div class="control-group">	
+	<%= f.label :date, class: 'control-label' %><br>
+		<div class="controls">
+			<%= f.date_select :date %>
+		</div>
+</div>	
+
+<div class="control-group">	
+	<%= f.label :paper_type, class: 'control-label' %><br>
+		<div class="controls">
+			<%= f.text_field :paper_type %>
+		</div>
+</div>	
+
+<div class="control-group">	
+	<%= f.label :paper_weight, class: 'control-label' %><br>
+		<div class="controls">
+			<%= f.number_field :paper_weight %>
+		</div>
+</div>	
+
+<div class="control-group">	
+	<%= f.label :paper_cost, class: 'control-label' %><br>
+		<div class="controls">
+			<%= f.text_field :paper_cost %>
+		</div>
+</div>	
+
+<div class="control-group">	
+	<%= f.label :paper_weight_staff_ratio, class: 'control-label' %><br>
+		<div class="controls">
+			<%= f.text_field :paper_weight_staff_ratio %>
+		</div>
+</div>	
+
+<div class="control-group">	
+	<%= f.label :env_paper_weight, class: 'control-label' %><br>
+		<div class="controls">
+			<%= f.text_field :env_paper_weight %>
+		</div>
+</div>	
+
+<% end %>	

@@ -8,6 +8,7 @@ class PapersController < ApplicationController
 	end
 
 	def new
+		@paper = Paper.new
 	end
 
 	def edit
@@ -21,6 +22,6 @@ class PapersController < ApplicationController
 
 	def destroy
 	end
-	
+
 
 end
