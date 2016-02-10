@@ -30,7 +30,8 @@
               <li class="pull-right user-name">User: <% if current_user && current_user %>
 
                 <%= current_user.name %>
-                <%#= current_user.staff %>
+                Staff:
+                <%= current_user.staff %>
                  <% end %>  
               </li>    
           </ul>
