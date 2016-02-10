@@ -17,6 +17,8 @@ class PapersController < ApplicationController
 			flash[:danger] = "Error occured, message has not been sent."
 			redirect_to new_paper_path
 		end		
+
+		
 	end
 
 	def new
@@ -33,6 +35,9 @@ class PapersController < ApplicationController
 	end
 
 	def destroy
+		@paper.destroy(paper_params)
+		flash[:danger] = "Line was successfully destroyed"
+		redirect_to paper_path
 	end
 
 

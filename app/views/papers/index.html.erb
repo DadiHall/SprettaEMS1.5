@@ -1,37 +1,49 @@
 
 <div class="row">
-<div class="col-md-8 col-md-offset-2 ">
-<div class="well">
-<h1>Pappírsnotkun</h1>
-<table class="table table-hover">
-	<thead>
-		<tr>
-			<th>Dags</th>
-			<th>Tegund</th>
-			<th>Þyngd</th>
-			<th>Kostnaður</th>
-			<th>Þar af umhvm. pappír</th>
-			<th>Pappírs magn m.v. Stöðugildi</th>
-		</tr>
-	</thead>
-
-		<tbody>			
-			<% @papers.each do |paper| %>
+	<div class="col-md-10 col-md-offset-1 ">
+		
+		<h1>Pappírsnotkun</h1>
+		<table class=" well table table-hover">
+			
+			<thead>
 				<tr>
-					<td><%= paper.date.strftime("%Y/%m/%d") %></td>
-              		<td><%= paper.paper_type %></td>
-              		<td><%= paper.paper_weight %> -kg.</td>
-              		<td><%= paper.paper_cost %> -kr.</td>
-              		<td><%= paper.env_paper_weight %> -kg.</td>
+					<th>Dags</th>
+					<th>Tegund</th>
+					<th>Þyngd</th>
+					<th>Kostnaður</th>
+					<th>Þar af umhvm. pappír</th>
+					<th>Pappírs magn m.v. Stöðugildi</th>
+					<th>Hl.f. Umhvm. Pappírs</th>
+					<th>Fjöldi trjáa m.v. magn pappírs</th>
+				</tr>
+			</thead>
 
+				<tbody>		
+						<% paper_total_cost = 0 %>
+         			 	<% paper_total_trees = 0 %>
+          				<% paper_total_staff_ratio = 0 %>	
+					<% @papers.each do |paper| %>
+						<tr>
+							<td><%= paper.date.strftime("%Y/%m/%d") %></td>
+		              		<td><%= paper.paper_type %></td>
+		              		<td><%= paper.paper_weight %> -kg.</td>
+		              		<td><%= paper.paper_cost %> -kr.</td>
+		              		<td><%= paper.env_paper_weight %> -kg.</td>
+		              		<td><%= (paper.paper_weight.to_i / current_user.staff) %> kg/stöðugildi </td>
+              				<td><%= (( paper.env_paper_weight.to_f / paper.paper_weight.to_f)* 100) %>%</td>	
+              				<td><%= (( paper.paper_weight.to_f/1000)*15) %></td>
 
-              		<td><%= link_to 'Sýna', paper, class: 'btn btn-xs btn-info' %></td>
-              		<td><%= link_to 'Uppfæra', edit_paper_path(paper), class: 'btn btn-xs btn-warning' %></td>
-              		<td><%= link_to 'Eyða', paper, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
-              	</tr>	
-			<% end %>
-		</tbody>	
-</table>		
-</div>
-</div>
+		              		<td><%= link_to 'Sýna', paper, class: 'btn btn-xs btn-info' %></td>
+		              		<td><%= link_to 'Uppfæra', edit_paper_path(paper), class: 'btn btn-xs btn-warning' %></td>
+		              		<td><%= link_to 'Eyða', paper, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+		              		 <% paper_total_cost = paper_total_cost + (paper.paper_cost.to_i) %>
+             				 <% paper_total_trees = paper_total_trees + (( paper.paper_weight.to_i/1000)*15) %>
+              				 <% paper_total_staff_ratio = paper_total_staff_ratio + (paper.paper_weight.to_i / current_user.staff) %> 
+		              	</tr>	
+					<% end %>
+				</tbody>
+			
+		</table>		
+		
+	</div>
 </div>
