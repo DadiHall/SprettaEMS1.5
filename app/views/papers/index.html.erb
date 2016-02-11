@@ -29,9 +29,9 @@
 		              		<td><%= paper.paper_weight %> -kg.</td>
 		              		<td><%= paper.paper_cost %> -kr.</td>
 		              		<td><%= paper.env_paper_weight %> -kg.</td>
-		              		<td><%= (paper.paper_weight.to_i / current_user.staff) %> kg/stöðugildi </td>
-              				<td><%= (( paper.env_paper_weight / paper.paper_weight)* 100) %>%</td>	
-              				<td><%= (( paper.paper_weight.to_f/1000)*15) %></td>
+		              		<td><%= paper.paper_weight_per_capita(current_user) %> kg/stöðugildi </td>
+              				<td><%= paper.paper_weight_env_ratio.to_i %>%</td>	
+              				<td><%= paper.paper_weight_trees_ratio%></td>
 
 		              		<td><%= link_to 'Sýna', paper, class: 'btn btn-xs btn-info' %></td>
 		              		<td><%= link_to 'Uppfæra', edit_paper_path(paper), class: 'btn btn-xs btn-warning' %></td>
@@ -40,10 +40,12 @@
              				 <% paper_total_trees = paper_total_trees + (( paper.paper_weight.to_f/1000)*15) %>
               				 <% paper_total_staff_ratio = paper_total_staff_ratio + (paper.paper_weight.to_i / current_user.staff) %> 
 		              	</tr>	
+		
 					<% end %>
 				</tbody>
 			
 		</table>
+	
 	</div>			
 
 					<div class="row">

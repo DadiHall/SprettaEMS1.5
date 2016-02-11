@@ -2,6 +2,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :papers
+  resources :cleanings
   root 'pages#index'
 
   get 'about' => 'pages#about'
