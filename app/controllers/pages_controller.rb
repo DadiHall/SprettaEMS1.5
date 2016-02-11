@@ -8,4 +8,7 @@ class PagesController < ApplicationController
 	def about
 
 	end
+
+	def gb_index
+	end
 end
