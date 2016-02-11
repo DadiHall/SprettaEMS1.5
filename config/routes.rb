@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :papers
   resources :cleanings
+  resources :electros
   root 'pages#index'
 
   get 'about' => 'pages#about'

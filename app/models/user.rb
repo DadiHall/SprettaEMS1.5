@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 has_many :papers 
 has_many :cleanings
+has_many :electros
 end

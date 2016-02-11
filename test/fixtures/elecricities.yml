@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2016-02-11 17:11:47
+  building_name: MyString
+  electricity_kwst: 9.99
+  electricity_cost: 9.99
+  kwst_staff_ratio: 9.99
+  kwst_square_meter_ratio: 9.99
+  user_id: 1
+
+two:
+  date: 2016-02-11 17:11:47
+  building_name: MyString
+  electricity_kwst: 9.99
+  electricity_cost: 9.99
+  kwst_staff_ratio: 9.99
+  kwst_square_meter_ratio: 9.99
+  user_id: 1

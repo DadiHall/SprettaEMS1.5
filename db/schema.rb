@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160211151204) do
+ActiveRecord::Schema.define(version: 20160211175150) do
 
   create_table "cleanings", force: :cascade do |t|
     t.datetime "date"
@@ -21,6 +21,18 @@ ActiveRecord::Schema.define(version: 20160211151204) do
     t.decimal  "cleaning_liter_staff_ratio"
     t.integer  "user_id"
     t.decimal  "env_clean_ratio"
+  end
+
+  create_table "electros", force: :cascade do |t|
+    t.datetime "date"
+    t.string   "building_name"
+    t.decimal  "electricity_kwst"
+    t.decimal  "electricity_cost"
+    t.decimal  "kwst_staff_ratio"
+    t.decimal  "kwst_square_meter_ratio"
+    t.integer  "user_id"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   create_table "papers", force: :cascade do |t|

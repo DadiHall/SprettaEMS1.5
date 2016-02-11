@@ -13,7 +13,7 @@ class CleaningsController < ApplicationController
 
 		if @cleaning.save
 			flash[:success] = "Messages sent."
-			redirect_to cleanings_path(@paper)
+			redirect_to cleanings_path(@cleaning)
 		else
 			flash[:danger] = "Error occured, message has not been sent."
 			redirect_to new_cleanings_path

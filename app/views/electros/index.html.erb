@@ -1,0 +1,70 @@
+
+<div class="row">
+	<div class="col-md-10  ">
+		
+		<h1>Rafmagn</h1>
+		<table class=" well table table-hover">
+			
+			<thead>
+				<tr>
+					<th>Dags</th>
+					<th>Nafn Byggingar</th>
+					<th>KWst</th>
+					<th>Kostnaður</th>
+					<th>KWst á stöðugildi</th>
+					<th>KWst á m2</th>
+					
+				</tr>
+			</thead>
+
+				<tbody>		
+						<% electricity_total_cost = 0 %>
+         			 	<% paper_total_trees = 0 %>
+          				<% kwst_total_staff_ratio = 0 %>	
+					<% @electros.each do |electro| %>
+						<tr>
+							<td><%= electro.date.strftime("%Y/%m/%d") %></td>
+		              		<td><%= electro.building_name %></td>
+		              		<td><%= electro.electricity_kwst %> -L.</td>
+		              		<td><%= electro.electricity_cost %> -kr.</td>
+		              	
+		              		<td><%= electro.electro_per_capita(current_user) %></td>
+		              		
+              			
+
+		              		<td><%= link_to 'Sýna', electro, class: 'btn btn-xs btn-info' %></td>
+		              		<td><%= link_to 'Uppfæra', edit_electro_path(electro), class: 'btn btn-xs btn-warning' %></td>
+		              		<td><%= link_to 'Eyða', electro, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+		              		 <% electricity_total_cost = electricity_total_cost + (electro.electricity_cost.to_i) %>
+             				 <%# paper_total_trees = paper_total_trees + (( paper.paper_weight.to_f/1000)*15) %>
+              				 <% kwst_total_staff_ratio = kwst_total_staff_ratio + (electro.electro_per_capita(current_user)) %> 
+		              	</tr>	
+		
+					<% end %>
+				</tbody>
+			
+		</table>
+	
+	</div>			
+
+					<div class="row">
+						<div class=" col-md-2 panel panel-default pull-right" >
+				    		<div class="panel panel-heading ">
+				      			<h5 class="user-name">User: <% if current_user && current_user %> 
+				                <%= current_user.name %>, 
+				                Staff: <%= current_user.staff %>
+				                 <% end %>  
+				              </h5>   
+				    		</div>     
+				    		<div class="panel-body">         
+				      			<h6 class="pull-right">Rafmagn Kostnaður Samtals:<%= number_with_precision(electricity_total_cost.to_i, precision: 2) %> kr </h6><br>
+				      			<!--<h6 class="pull-right">Fjöldi Trjáa vegna Pappírs notkunar:<%= number_with_precision(paper_total_trees.to_f, precision: 2) %> Tré </h6><br> -->
+				     			 <h6 class="pull-right">Rafmagnsotkun f. hvert stöðugildi:<%= number_with_precision(kwst_total_staff_ratio.to_i, precision: 2) %> KWst</h6>
+				    		</div>
+				    	</div>	
+				    </div>	
+
+				    <%= link_to 'Ný lína', new_electro_path %>
+<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+	
+</div>
