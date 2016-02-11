@@ -1,1 +1,73 @@
-<h1>Cleaning Index</h1
+
+<div class="row">
+	<div class="col-md-10  ">
+		
+		<h1>Ræstiefni</h1>
+		<table class=" well table table-hover">
+			
+			<thead>
+				<tr>
+					<th>Dags</th>
+					<th>Tegund</th>
+					<th>Magn /L</th>
+					<th>Kostnaður</th>
+					<th>Þar af umhvm. Hreinsiefni /L</th>
+					<th>Kostnaður m.v. stöðug.</th>
+					<th>Magn Hreinsiefnis m.v. Stöðugildi</th>
+					<th>Hl.f. Umhvm. Pappírs</th>
+					<th>Fjöldi trjáa m.v. magn pappírs</th>
+				</tr>
+			</thead>
+
+				<tbody>		
+						<% cleaning_total_cost = 0 %>
+         			 	<% paper_total_trees = 0 %>
+          				<% cleaning_total_staff_ratio = 0 %>	
+					<% @cleanings.each do |cleaning| %>
+						<tr>
+							<td><%= cleaning.date.strftime("%Y/%m/%d") %></td>
+		              		<td><%= cleaning.cleaning_type %></td>
+		              		<td><%= cleaning.cleaning_liter %> -L.</td>
+		              		<td><%= cleaning.cleaning_cost %> -kr.</td>
+		              		<td><%= cleaning.env_clean_ratio %> -L.</td>
+		              		<td><%= cleaning.cleaning_cost_per_capita(current_user) %></td>
+		              		<td><%= cleaning.cleaning_liter_per_capita(current_user) %> L/stöðugildi </td>
+              				<td><%= cleaning.cleaning_liter_env_ratio.to_f %>%</td>	
+              			
+
+		              		<td><%= link_to 'Sýna', cleaning, class: 'btn btn-xs btn-info' %></td>
+		              		<td><%= link_to 'Uppfæra', edit_cleaning_path(cleaning), class: 'btn btn-xs btn-warning' %></td>
+		              		<td><%= link_to 'Eyða', cleaning, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+		              		 <% cleaning_total_cost = cleaning_total_cost + (cleaning.cleaning_cost.to_i) %>
+             				 <%# paper_total_trees = paper_total_trees + (( paper.paper_weight.to_f/1000)*15) %>
+              				 <% cleaning_total_staff_ratio = cleaning_total_staff_ratio + (cleaning.cleaning_liter_per_capita(current_user)) %> 
+		              	</tr>	
+		
+					<% end %>
+				</tbody>
+			
+		</table>
+	
+	</div>			
+
+					<div class="row">
+						<div class=" col-md-2 panel panel-default pull-right" >
+				    		<div class="panel panel-heading ">
+				      			<h5 class="user-name">User: <% if current_user && current_user %> 
+				                <%= current_user.name %>, 
+				                Staff: <%= current_user.staff %>
+				                 <% end %>  
+				              </h5>   
+				    		</div>     
+				    		<div class="panel-body">         
+				      			<h6 class="pull-right">Hreinsiefni Kostnaður Samtals:<%= number_with_precision(cleaning_total_cost.to_i, precision: 2) %> kr </h6><br>
+				      			<!--<h6 class="pull-right">Fjöldi Trjáa vegna Pappírs notkunar:<%= number_with_precision(paper_total_trees.to_f, precision: 2) %> Tré </h6><br> -->
+				     			 <h6 class="pull-right">Magn hreinsiefna f. hvert stöðugildi:<%= number_with_precision(cleaning_total_staff_ratio.to_i, precision: 2) %> L</h6>
+				    		</div>
+				    	</div>	
+				    </div>	
+
+				    <%= link_to 'Ný lína', new_cleaning_path %>
+<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+	
+</div>

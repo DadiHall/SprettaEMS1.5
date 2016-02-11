@@ -2,11 +2,14 @@ class CleaningsController < ApplicationController
 	before_action :set_cleaning, only: [:edit, :update, :show, :destroy]
 	
 	def index
-
+		@cleanings = Cleaning.all
 	end
 
 	def create
-		@cleaning = Cleaning.new(cleaning_params)
+
+		@cleaning = current_user.cleanings.build(cleaning_params)
+
+
 
 		if @cleaning.save
 			flash[:success] = "Messages sent."
@@ -19,7 +22,7 @@ class CleaningsController < ApplicationController
 	end
 
 	def new
-		@cleaning = Cleaning.new
+		@cleaning = current_user.cleanings.build
 
 	end
 
@@ -32,10 +35,19 @@ class CleaningsController < ApplicationController
 	end
 
 	def update
+		if @cleaning.update(cleaning_params)
+			flash[:success] = "Line was successfully updated"
+			redirect_to cleanings_path(@cleaning)
+		else
+			render 'edit'
+		end		
 
 	end
 
 	def destroy
+		@cleaning.destroy
+		flash[:danger] = "Line was successfully destroyed"
+		redirect_to cleanings_path
 
 	end
 
@@ -47,6 +59,6 @@ class CleaningsController < ApplicationController
 			end
 
 			def cleaning_params
-				params.require(:cleaning).permit(:cleaning_type, :date, :cleaning_liter, :cleaning_cost, :env_cleaning_ratio, :user_id)
+				params.require(:cleaning).permit(:cleaning_type, :date, :cleaning_liter, :cleaning_cost, :env_clean_ratio, :user_id)
 			end	
 end

@@ -8,7 +8,7 @@ class PapersController < ApplicationController
 	end
 
 	def create
-		@paper = Paper.new(paper_params)
+		@paper = current_user.papers.build(paper_params)
 
 		if @paper.save
 			flash[:success] = "Messages sent."
@@ -22,7 +22,7 @@ class PapersController < ApplicationController
 	end
 
 	def new
-		@paper = Paper.new
+		@paper = current_user.papers.build
 	end
 
 	def edit
