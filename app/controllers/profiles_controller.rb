@@ -10,17 +10,16 @@ class ProfilesController < ApplicationController
 	def create
 		@user = User.find(params[:user_id])
 		@profile = @user.build_profile(profile_params)
-<<<<<<< HEAD
 
+		#Lecture 159 User show action next :))))
 		if @profile.save
 			flash[:success] = "Profile updated"
-			redirect_to user_path(params[:user_id])
+			redirect_to user_path(params[:user_id]) #fer á user/show.html.erb
 		else
 			render action: :new
 
 		end
-=======
->>>>>>> AddUserProfile
+
 	end
 
 
