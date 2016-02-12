@@ -13,13 +13,13 @@ class ApplicationController < ActionController::Base
     # @paper_weight_per_capita = Papers.all.map(&:paper_weight_per_capita, current_user).reduce(&:+)
 
     # method 2. does the summation in the database without having to load all the records into ruby. (weight needs to be a number in the db.)
-    @paper_weight_per_capita = Paper.sum(:paper_weight) / current_user.staff
+   if signed_in? then @paper_weight_per_capita = Paper.sum(:paper_weight) / current_user.staff end
 
     @paper_tree_ratio = Paper.sum(:paper_weight) / 1000 
     # Rafmagnsreikningar
-    @electro_total_per_capita = Electro.sum(:electricity_kwst) / current_user.staff
+    if signed_in? then @electro_total_per_capita = Electro.sum(:electricity_kwst) / current_user.staff end
 
-    @electro_total_per_m2 = Electro.sum(:electricity_kwst) / current_user.profile.building_size
+    if signed_in? then @electro_total_per_m2 = Electro.sum(:electricity_kwst) / current_user.profile.building_size end
   end
 
   def all_users_avarge
