@@ -1,4 +1,4 @@
-<%= @user %></br>
+
 
 <%= @user.profile.name %></br>
 <%= @user.profile.address %></br>
@@ -9,6 +9,7 @@
 <%= @user.profile.phone_number %></br>
 <%= @user.profile.buisness_type %></br>
 <%= @user.profile.description %></br> 
+<%= current_user.staff %> <!-- þarf að breyta staff úr login, í profile--> 
 
 <!-- Á þessa síðu vantar IF statements, sem ákvarða hvað aðrir sjá m.v. hvaða áskriftarleið þeir eru með -->
 
