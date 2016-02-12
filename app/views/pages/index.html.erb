@@ -1,3 +1,66 @@
-<h1> index page </h1>
+<div class="row">
+
+	<% if user_signed_in? %>
+		<div class="well">
+			
+				<div class="row">
+					<!-- Magn pappírs yfir allan rekstur-->
+					<div class=" col-md-3">
+  						<div class="panel panel-info">
+  							<div class="panel-heading">
+   							 <h3 class="panel-title">Pappírs magn fyrir hvert stöðugildi</h3>
+  							</div>
+  								<div class="panel-body text-center">
+    								<%= @paper_weight_per_capita %> -Kg.
+  								</div>
+						</div>
+					</div>	
+					<!-- Fjöldi trjáa sem er fórnað f. pappírinn -->
+  					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">Fjöldi tjráa mv. Pappírsnotkun.</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= @paper_tree_ratio.to_f * 15 %> - Tré.
+	  							</div>
+						</div>
+					</div>	
+					<!-- KWst rafmagn/ mv.  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">KWst á hvert stöðugildi</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= @electro_total_per_capita %>
+	  							</div>
+						</div>
+					</div>	
+         		</div>	
+    		   		 
+		</div>
+
+		<div class="row">
+			<div class="container">
+				<%= link_to "Pappír", papers_path, class: 'btn btn-primary' %>
+				<%= link_to "Ræstiefni", cleanings_path, class: 'btn btn-primary' %>
+				<%= link_to "Rafmagn", electros_path, class: 'btn btn-primary' %>
+			</div>
+		</div>
+
+	<% else %>
+		<div class="jumbotron">
+			<div class="container">
+  				<h1>Welcome to Spretta</h1>
+         			 <p>Vettvagnur fyrir umhverfisstjórn fyrirtækja</p>
+
+         		<%= link_to "Nýskrá", new_user_registration_path, class: 'btn btn-primary' %>
+    		</div>     		 
+		</div>
+	<% end %>
 
 <%= link_to "Create your profile", new_user_profile_path(current_user) if current_user %>
+
+
+</div>

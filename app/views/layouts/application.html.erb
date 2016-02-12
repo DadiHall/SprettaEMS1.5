@@ -30,8 +30,8 @@
               <li><%= link_to "Sign Up", new_user_registration_path %></li>
               <li><%= link_to "Sign In", new_user_session_path %></li>
             <% end %> 
-              <li class="pull-right user-name">User: <% if current_user && current_user %>
-
+              <li class="pull-right user-name"> <% if current_user && current_user %>
+                User:
                 <%= current_user.name %>
                 Staff:
                 <%= current_user.staff %>
