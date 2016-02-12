@@ -6,6 +6,7 @@ class ApplicationController < ActionController::Base
   #before_action :authenticate_user!
 
   before_action :load_running_totals
+  before_action :all_users_avarge
 
   def load_running_totals
     # method 1. Similar to how the calculation is done in the view.
@@ -17,6 +18,16 @@ class ApplicationController < ActionController::Base
     @paper_tree_ratio = Paper.sum(:paper_weight) / 1000 
     # Rafmagnsreikningar
     @electro_total_per_capita = Electro.sum(:electricity_kwst) / current_user.staff
+
+    @electro_total_per_m2 = Electro.sum(:electricity_kwst) / current_user.profile.building_size
+  end
+
+  def all_users_avarge
+  		# hér eru meðaltöl ýmisa breyta sótt í gagnagrunninn og birt á forsíðu
+
+  		@all_users_paper_average = Paper.average(:paper_weight)
+
+  		@all_users_tree_average = Paper.average(:paper_weight) / 1000
   end
 
 end

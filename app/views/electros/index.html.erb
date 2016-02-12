@@ -25,11 +25,11 @@
 						<tr>
 							<td><%= electro.date.strftime("%Y/%m/%d") %></td>
 		              		<td><%= electro.building_name %></td>
-		              		<td><%= electro.electricity_kwst %> -L.</td>
+		              		<td><%= electro.electricity_kwst %> -Kwst.</td>
 		              		<td><%= electro.electricity_cost %> -kr.</td>
 		              	
 		              		<td><%= electro.electro_per_capita(current_user) %></td>
-		              		
+		              		<td><%= number_with_precision(electro.electro_kwst_square_meters(current_user).to_f, precision: 2) %></td>
               			
 
 		              		<td><%= link_to 'Sýna', electro, class: 'btn btn-xs btn-info' %></td>

@@ -1,7 +1,11 @@
 <div class="row">
 
 	<% if user_signed_in? %>
-		<div class="well">
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title">Þínar tölur <%= current_user.profile.name %></h3>
+  			</div>
+ 			 <div class="panel-body">
 			
 				<div class="row">
 					<!-- Magn pappírs yfir allan rekstur-->
@@ -26,7 +30,7 @@
 	  							</div>
 						</div>
 					</div>	
-					<!-- KWst rafmagn/ mv.  -->
+					<!-- KWst rafmagn/ mv.stöðug.  -->
 					<div class=" col-md-3">
 	  					<div class="panel panel-info">
 	  						<div class="panel-heading">
@@ -37,9 +41,23 @@
 	  							</div>
 						</div>
 					</div>	
+
+					<!-- KWst rafmagn/ mv.stöðug.  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">KWst mv. hvern m&sup2;</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= number_with_precision(@electro_total_per_m2.to_f, precision: 2)%> ,-kwst/m&sup2;
+	  							</div>
+						</div>
+					</div>	
          		</div>	
     		   		 
 		</div>
+	</div> <!-- Panel body end -->
+</div>	<!-- Panel end -->
 
 		<div class="row">
 			<div class="container">
@@ -60,6 +78,34 @@
 		</div>
 	<% end %>
 
+<div class="row well">
+	
+		<div class="col-md-3">
+		
+			<div class="panel panel-warning">
+	  			<div class="panel-heading">
+	   				<h6 class="panel-title">Meðaltals Pappírsnotkun Viðskiptavina Sprettu</h6>
+	  			</div>
+	  				<div class="panel-body text-center">
+						<h3><%= @all_users_paper_average.to_i %> </h3>-kg.
+					</div>
+			</div>			
+		</div>
+
+		<div class="col-md-3">
+		
+			<div class="panel panel-warning">
+	  			<div class="panel-heading">
+	   				<h6 class="panel-title">Meðaltal trjáa sem eru notuð við framleiðslu á pappír sem notaður er af vðskiptavinum</h6>
+	  			</div>
+	  				<div class="panel-body text-center">
+						<h3><%= number_with_precision(@all_users_tree_average * 15, precision: 2)  %></h3> -Tré
+					</div>
+			</div>			
+		</div>
+	
+	
+</div>	
 <%= link_to "Create your profile", new_user_profile_path(current_user) if current_user %>
 
 
