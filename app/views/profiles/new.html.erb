@@ -1,0 +1,51 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<h1 class="text-center">Create Your Profile</h1>
+		<p class="text-center">nauðsynlegt til u´treikninga</p>
+			<div class="well">
+			<!--nota url af því að ég nestaðir profile undir users með plural resourceS í routes.rb, ef ekki þannig þá þarf ekki url og formið fer beint í create Method í profiles_Controller-->
+				<%= form_for @profile, url: user_profile_path do |f| %> 
+					<div class="form-group">
+						<%= f.label :name %>
+						<%= f.text_field :name, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :address %>
+						<%= f.text_field :address, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :postalcode %>
+						<%= f.text_field :postalcode, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :website%>
+						<%= f.text_field :website, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :contact_person %>
+						<%= f.text_field :contact_person, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :contact_email %>
+						<%= f.email_field :contact_email, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :phone_number %>
+						<%= f.text_field :phone_number, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :buisness_type %>
+						<%= f.select :buisness_type,['Þjónusta', 'Ráðgjöf', 'Verlsun', 'Stofnun', 'Annað'], class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :description %>
+						<%= f.text_area :description, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.submit "Update Profile", class: 'btn btn-primary' %>
+					</div>
+
+				<% end %>
+			</div>	
+	</div>
+</div>		

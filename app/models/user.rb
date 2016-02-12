@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
 has_many :papers 
 has_many :cleanings
 has_many :electros
+
+has_one :profile
 end
