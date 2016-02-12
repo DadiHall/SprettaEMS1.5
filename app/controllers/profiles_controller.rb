@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
 		#form where a user can fill put their pwn profile.
 
 		@user = User.find(params[:user_id]) # Finnur hver er userinn sem er loggaður inn, reaching in to the url and grabbs user.
-		@profile = @user.build_profile
+		@profile = Profile.new
 	end
 
 	def create
