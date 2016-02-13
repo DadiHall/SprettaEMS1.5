@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :papers
   resources :cleanings
   resources :electros
+  resources :hwaters
   root 'pages#index'
 
   get 'about' => 'pages#about'

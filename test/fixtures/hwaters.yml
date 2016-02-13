@@ -1,0 +1,19 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2016-02-13 00:20:33
+  building_name: MyString
+  hot_water_cost: 9.99
+  hot_water_cubic_meter: 9.99
+  hot_water_m2_m3_ratio: 9.99
+  hot_water_m3_staff_ratio: 9.99
+  user_id: 1
+
+two:
+  date: 2016-02-13 00:20:33
+  building_name: MyString
+  hot_water_cost: 9.99
+  hot_water_cubic_meter: 9.99
+  hot_water_m2_m3_ratio: 9.99
+  hot_water_m3_staff_ratio: 9.99
+  user_id: 1

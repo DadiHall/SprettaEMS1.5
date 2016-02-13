@@ -1,0 +1,51 @@
+
+<div class="row">
+	<div class="col-md-10  ">
+		
+		<h1>Heitt vatn</h1>
+		<table class=" well table table-hover">
+			
+			<thead>
+				<tr>
+					<th>Dags</th>
+					<th>Nafn Byggingar</th>
+					<th>Rúmmetrar</th>
+					<th>Kostnaður</th>
+					<th>M3 f hvern M2 </th>
+					<th>M3 f hvert stöðugildi</th>
+					
+				</tr>
+			</thead>
+
+				<tbody>		
+						
+					<% @hwaters.each do |hwater| %>
+						<tr>
+							<td><%= hwater.date.strftime("%Y/%m/%d") %></td>
+		              		<td><%= hwater.building_name %></td>
+		              		<td><%= hwater.hot_water_cubic_meter %> -Kwst.</td>
+		              		<td><%= hwater.hot_water_cost %> -kr.</td>
+		              	
+		              		<td><%= hwater.hot_water_m2_m3_ratio(current_user) %></td>
+		              		<td><%= number_with_precision(hwater.hot_water_m3_staff_ratio(current_user).to_f, precision: 2) %></td>
+              			
+
+		              		<td><%= link_to 'Sýna', hwater, class: 'btn btn-xs btn-info' %></td>
+		              		<td><%= link_to 'Uppfæra', edit_hwater_path(hwater), class: 'btn btn-xs btn-warning' %></td>
+		              		<td><%= link_to 'Eyða', hwater, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+		              		 
+		              	</tr>	
+		
+					<% end %>
+				</tbody>
+			
+		</table>
+	
+	</div>			
+
+					
+
+				    <%= link_to 'Ný lína', new_hwater_path %>
+<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+	
+</div>
