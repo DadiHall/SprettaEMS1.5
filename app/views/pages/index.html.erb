@@ -1,12 +1,17 @@
 <div class="row">
-
+		
 	<% if user_signed_in? %>
 		<div class="panel panel-default">
   			<div class="panel-heading">
-    			<h3 class="panel-title">Þínar tölur <%= current_user.profile.name %></h3>
+    			<h3 class="panel-title"> <%= current_user.profile.name %> Helstu tölur yfir auðlindanotkun</h3>
   			</div>
  			 <div class="panel-body">
 			
+			<div class="panel panel-default">
+  				<div class="panel-heading">
+    				<h3 class="panel-title"><%= current_user.profile.name %> Pappírs notkun</h3>
+  				</div>
+ 			 <div class="panel-body">
 				<div class="row">
 					<!-- Magn pappírs yfir allan rekstur-->
 					<div class=" col-md-3">
@@ -29,7 +34,17 @@
 	    							<%= @paper_tree_ratio.to_f * 15 %> - Tré.
 	  							</div>
 						</div>
-					</div>	
+					</div>
+				</div>
+			</div>		
+		</div>		
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title"><%= current_user.profile.name %> Rafmagns notkun</h3>
+  			</div>
+ 			 <div class="panel-body">
+			
+				<div class="row">		
 					<!-- KWst rafmagn/ mv.stöðug.  -->
 					<div class=" col-md-3">
 	  					<div class="panel panel-info">
@@ -54,7 +69,41 @@
 						</div>
 					</div>	
          		</div>	
-    		   		 
+    		</div>  		 
+		</div>
+
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title"><%= current_user.profile.name %> Heit Vatn Notkun</h3>
+  			</div>
+ 			 <div class="panel-body">
+			
+				<div class="row">		
+					<!-- Heitt vatn mv. stöðugildi  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">m&#179; á hvert stöðugildi</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= @hwater_total_m3_per_capita %> m&#179; 
+	  							</div>
+						</div>
+					</div>	
+
+					<!-- m3 heitt vatn / m2 byggingu.  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">m&#179; heitt vatn fyrir hvern m&sup2; húsnæðis.</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= number_with_precision(@hwater_m3_m2_ratio.to_f, precision: 2)%> m&#179;/m&sup2;
+	  							</div>
+						</div>
+					</div>	
+         		</div>	
+    		</div>  		 
 		</div>
 	</div> <!-- Panel body end -->
 </div>	<!-- Panel end -->
@@ -78,34 +127,7 @@
 		</div>
 	<% end %>
 
-<div class="row well">
-	
-		<div class="col-md-3">
-		
-			<div class="panel panel-warning">
-	  			<div class="panel-heading">
-	   				<h6 class="panel-title">Meðaltals Pappírsnotkun Viðskiptavina Sprettu</h6>
-	  			</div>
-	  				<div class="panel-body text-center">
-						<h3><%= @all_users_paper_average.to_i %> </h3>-kg.
-					</div>
-			</div>			
-		</div>
-
-		<div class="col-md-3">
-		
-			<div class="panel panel-warning">
-	  			<div class="panel-heading">
-	   				<h6 class="panel-title">Meðaltal trjáa sem eru notuð við framleiðslu á pappír sem notaður er af vðskiptavinum</h6>
-	  			</div>
-	  				<div class="panel-body text-center">
-						<h3><%= number_with_precision(@all_users_tree_average * 15, precision: 2)  %></h3> -Tré
-					</div>
-			</div>			
-		</div>
-	
-	
-</div>	
+<%= render 'average_user_total' %>
 <%= link_to "Create your profile", new_user_profile_path(current_user) if current_user %>
 
 

@@ -1,0 +1,52 @@
+<div class="row well">
+	
+		<div class="col-md-3">
+		
+			<div class="panel panel-warning">
+	  			<div class="panel-heading">
+	   				<h6 class="panel-title">Meðaltals Pappírsnotkun notenda Sprettu</h6>
+	  			</div>
+	  				<div class="panel-body text-center">
+						<h3><%= @all_users_paper_average.to_i %> </h3>-kg.
+					</div>
+			</div>			
+		</div>
+
+		<div class="col-md-3">
+		
+			<div class="panel panel-warning">
+	  			<div class="panel-heading">
+	   				<h6 class="panel-title">Meðaltal trjáa sem eru notuð við framleiðslu á pappír sem notaður er af vðskiptavinum</h6>
+	  			</div>
+	  				<div class="panel-body text-center">
+						<h3><%= number_with_precision(@all_users_tree_average * 15, precision: 2)  %></h3> -Tré
+					</div>
+			</div>			
+		</div>
+
+
+		<div class="col-md-3">
+		
+			<div class="panel panel-warning">
+	  			<div class="panel-heading">
+	   				<h6 class="panel-title">Meðaltals orkunotkun notenda Sprettu </h6>
+	  			</div>
+	  				<div class="panel-body text-center">
+						<h3><%= number_with_precision(@all_users_power_average, precision: 2)  %></h3> -Kwst
+					</div>
+			</div>			
+		</div>
+	
+		<div class="col-md-3">
+		
+			<div class="panel panel-warning">
+	  			<div class="panel-heading">
+	   				<h6 class="panel-title">Meðaltals Heita vatns notkun notenda Sprettu </h6>
+	  			</div>
+	  				<div class="panel-body text-center">
+						<h3><%= number_with_precision(@all_users_hwater_average, precision: 2)  %></h3> m&#179; 
+					</div>
+			</div>			
+		</div>
+	
+</div>	
