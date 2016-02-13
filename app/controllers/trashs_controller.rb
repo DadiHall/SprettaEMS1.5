@@ -1,0 +1,3 @@
+class TrashsController < ApplicationController
+
+end

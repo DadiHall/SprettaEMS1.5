@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2016-02-13 19:31:42
+  trash_type: MyString
+  trash_weight: 9.99
+  trash_cost: 9.99
+  user_id: 1
+
+two:
+  date: 2016-02-13 19:31:42
+  trash_type: MyString
+  trash_weight: 9.99
+  trash_cost: 9.99
+  user_id: 1
