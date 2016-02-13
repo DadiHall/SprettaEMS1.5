@@ -7,6 +7,7 @@ has_many :papers
 has_many :cleanings
 has_many :electros
 has_many :hwaters
+has_many :transports
 
 has_one :profile
 end

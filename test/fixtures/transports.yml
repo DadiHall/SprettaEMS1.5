@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2016-02-13 15:51:55
+  transport_type: MyString
+  transport_km: 9.99
+  transport_num_of_trips: 9.99
+  transpor_km_recycled_fuel: 9.99
+  transport_co2: 9.99
+  transport_km_staff_ratio: 9.99
+  transport_co2_staff_ratio: 9.99
+  transport_flight_type: MyString
+  transport_flight_km: 9.99
+  transport_flight_co2: 9.99
+  transport_flight_km_staff_ratio: 9.99
+  transport_flight_co2_staff_ratio: 9.99
+  user_id: 1
+
+two:
+  date: 2016-02-13 15:51:55
+  transport_type: MyString
+  transport_km: 9.99
+  transport_num_of_trips: 9.99
+  transpor_km_recycled_fuel: 9.99
+  transport_co2: 9.99
+  transport_km_staff_ratio: 9.99
+  transport_co2_staff_ratio: 9.99
+  transport_flight_type: MyString
+  transport_flight_km: 9.99
+  transport_flight_co2: 9.99
+  transport_flight_km_staff_ratio: 9.99
+  transport_flight_co2_staff_ratio: 9.99
+  user_id: 1

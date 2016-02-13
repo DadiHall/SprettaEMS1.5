@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :cleanings
   resources :electros
   resources :hwaters
+  resources :transports
   root 'pages#index'
 
   get 'about' => 'pages#about'

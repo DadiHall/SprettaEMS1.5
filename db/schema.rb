@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213002033) do
+ActiveRecord::Schema.define(version: 20160213160519) do
 
   create_table "cleanings", force: :cascade do |t|
     t.datetime "date"
@@ -73,6 +73,25 @@ ActiveRecord::Schema.define(version: 20160213002033) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.decimal  "building_size"
+  end
+
+  create_table "transports", force: :cascade do |t|
+    t.datetime "date"
+    t.string   "transport_type"
+    t.decimal  "transport_km"
+    t.decimal  "transport_num_of_trips"
+    t.decimal  "transport_km_recycled_fuel"
+    t.decimal  "transport_co2"
+    t.decimal  "transport_km_staff_ratio"
+    t.decimal  "transport_co2_staff_ratio"
+    t.string   "transport_flight_type"
+    t.decimal  "transport_flight_km"
+    t.decimal  "transport_flight_co2"
+    t.decimal  "transport_flight_km_staff_ratio"
+    t.decimal  "transport_flight_co2_staff_ratio"
+    t.integer  "user_id"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
   end
 
   create_table "users", force: :cascade do |t|

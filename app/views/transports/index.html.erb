@@ -1,0 +1,107 @@
+
+<div class="row">
+	<div class="col-md-10  ">
+		
+		<h1>Bílferðir</h1>
+		<table class=" well table table-hover">
+			
+			<thead>
+				<tr>
+					<th>Dags</th>
+					<th>Farartæki</th>
+					<th>Vegalengd</th>
+					<th>Fjöldi ferða</th>
+					<th>Þar af endurvinnanleg orka </th>
+					<th>Co2 losun vegna ferða</th>
+					<th>Fjöldi Km á hvert stöðugildi</th>
+					<th>Magn Co2 f. hvert stöðugildi</th>
+					
+				</tr>
+			</thead>
+
+				<tbody>		
+						
+					<% @transports.each do |transport| %>
+						<tr>
+							<td><%= transport.date.strftime("%Y/%m/%d") %></td>
+		              		<td><%= transport.transport_type %></td>
+		              		<td><%= transport.transport_km %> -Km.</td>
+		              		<td><%= transport.transport_num_of_trips %> -kr.</td>
+		              		<td><%= transport.transport_km_recycled_fuel %> L.</td>
+
+		              		<td><%= transport.transport_co2_per_km %>co2 </td>
+		              		<td><%= number_with_precision(transport.transport_km_staff_ratio(current_user).to_f, precision: 2) %> km/stöðug.</td>
+
+		              		<td><%= number_with_precision(transport.transport_co2_staff_ratio(current_user).to_f, precision: 2) %> co2/stöðug.</td>
+
+		              	
+		              		
+              			
+
+		              		<td><%= link_to 'Sýna', transport, class: 'btn btn-xs btn-info' %></td>
+		              		<td><%= link_to 'Uppfæra', edit_transport_path(transport), class: 'btn btn-xs btn-warning' %></td>
+		              		<td><%= link_to 'Eyða', transport, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+		              		 
+		              	</tr>	
+		
+					<% end %>
+				</tbody>
+			
+		</table>
+	
+	</div>			
+
+	<div class="col-md-10  ">
+	<h1>Flugferðir</h1>
+		<table class=" well table table-hover">
+			
+			<thead>
+				<tr>
+					<th>Dags</th>
+					<th>Tegund Flugs</th>
+					<th>Vegalengd</th>
+					<th>Co2 losun vegna flugs</th>
+					<th>Magn Co2 f. hvert stöðugildi</th>
+					<th>Flugvegalengd f. hvert stöðugildi </th>
+					
+				</tr>
+			</thead>
+				<!-- Flug ferðir -->
+				<tbody>		
+						
+					<% @transports.each do |transport| %>
+						<tr>
+							<td><%= transport.date.strftime("%Y/%m/%d") %></td>
+		              		<td><%= transport.transport_flight_type %></td>
+		              		<td><%= transport.transport_flight_km %> -Km.</td>
+		              		
+		              		<td><%= transport.transport_flight_co2_per_km %>co2 </td>
+		              		<td><%= number_with_precision(transport.transport_flight_co2_staff_ratio(current_user).to_f, precision: 2) %> Co2/stöðug.</td>
+
+		              		<td><%= number_with_precision(transport.transport_flight_km_staff_ratio(current_user).to_f, precision: 2) %> KM/stöðug.</td>
+
+		              	
+		              		
+              			
+
+		              		<td><%= link_to 'Sýna', transport, class: 'btn btn-xs btn-info' %></td>
+		              		<td><%= link_to 'Uppfæra', edit_transport_path(transport), class: 'btn btn-xs btn-warning' %></td>
+		              		<td><%= link_to 'Eyða', transport, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+		              		 
+		              		 
+		              	</tr>	
+		
+					<% end %>
+				</tbody>
+			
+		</table>
+	
+	</div>		
+
+
+					
+
+				    <%= link_to 'Ný lína', new_hwater_path %>
+<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+	
+</div>

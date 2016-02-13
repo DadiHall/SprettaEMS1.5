@@ -3,7 +3,7 @@ class HwatersController < ApplicationController
 		before_action :set_hwater, only: [:edit, :update, :show, :destroy]
 
 		def index
-			@hwaters = Hwater.all #(params[:user_id])
+			@hwaters = Hwater.all #(params[:user_id]) # líklegast til að sýna bara þann user sem er að skoða
 
 		end
 

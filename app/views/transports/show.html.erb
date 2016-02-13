@@ -1,0 +1,44 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="well">
+			<p>
+				<strong> Date:</strong>
+				<%= @transport.date %>
+			</p>
+			<p>
+				<strong> Tegund ferðar:</strong>
+				<%= @transport.transport_type %>
+			</p>
+
+			<p>
+				<strong> Vegalengd</strong>
+				<%= @transport.transport_km %>
+			</p>
+
+			<p>
+				<strong> Fjöldi Ferða</strong>
+				<%= @transport.transport_num_of_trips %>
+			</p>
+
+			<p>
+				<strong> Endurunnið Eldsneyti</strong>
+				<%= @transport.transport_km_recycled_fuel %>
+			</p>
+
+
+			<p>
+				<strong> Tegund flugs</strong>
+				<%= @transport.transport_flight_type %>
+			</p>
+
+			<p>
+				<strong> Fluglengd</strong>
+				<%= @transport.transport_flight_km %>
+			</p>
+
+
+
+				<%= link_to 'Back', transports_path %>
+		</div>
+	</div>
+</div>
