@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160213193142) do
+ActiveRecord::Schema.define(version: 20160214144126) do
 
   create_table "cleanings", force: :cascade do |t|
     t.datetime "date"
@@ -33,6 +33,16 @@ ActiveRecord::Schema.define(version: 20160213193142) do
     t.integer  "user_id"
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
+  end
+
+  create_table "garbages", force: :cascade do |t|
+    t.datetime "date"
+    t.string   "trash_type"
+    t.decimal  "trash_weight"
+    t.decimal  "trash_cost"
+    t.integer  "user_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "hwaters", force: :cascade do |t|
@@ -92,16 +102,6 @@ ActiveRecord::Schema.define(version: 20160213193142) do
     t.integer  "user_id"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
-  end
-
-  create_table "trashes", force: :cascade do |t|
-    t.datetime "date"
-    t.string   "trash_type"
-    t.decimal  "trash_weight"
-    t.decimal  "trash_cost"
-    t.integer  "user_id"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|

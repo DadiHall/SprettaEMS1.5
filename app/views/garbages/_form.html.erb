@@ -1,0 +1,48 @@
+<h1>Trash new </h1>
+<div class="row">
+
+<div class="col-md-6 col-md-offset-3">
+<div class="well">
+	<%= form_for @garbage, html: {class: 'form-horizontal'} do |f| %>
+
+	<div class="control-group">	
+		<%= f.label :date, class: 'control-label' %><br>
+			<div class="controls">
+				<%= f.date_select :date %>
+			</div>
+	</div>	
+
+	<div class="control-group">	
+		<%= f.label :trash_type, class: 'control-label' %><br>
+			<div class="controls">
+				<%= f.select(:trash_type, options_for_select([['Flokkaður úrgangur', 'Flokkaður úrgangur'], ['Óflokkaður úrgangur', 'Óflokkaður']])) %>
+          </div>
+	</div>	
+
+	<div class="control-group">	
+		<%= f.label :trash_weight, class: 'control-label' %><br>
+			<div class="controls">
+				<%= f.number_field :trash_weight %>
+			</div>
+	</div>	
+
+	<div class="control-group">	
+		<%= f.label :trash_cost, class: 'control-label' %><br>
+			<div class="controls">
+				<%= f.text_field :trash_cost %>
+			</div>
+	</div>	
+
+	
+
+	<div class="control-group">
+	    <div class="controls">
+	      <%= f.submit class: 'btn btn-xs btn-warning' %>
+	    </div>  
+	  </div>
+
+	<% end %>	
+	</div>
+	<%= link_to 'Back', garbages_path %>
+</div>
+</div>

@@ -1,0 +1,53 @@
+
+<div class="row">
+	<div class="col-md-10  ">
+		
+		<h1>Úrgangur</h1>
+		<table class=" well table table-hover">
+			
+			<thead>
+				<tr>
+					<th>Dags</th>
+					<th>Tegund Úrgangs</th>
+					<th>Þyngd Úrgangs</th>
+					<th>Kostnaður við úrgang</th>
+					<th>Hlutfall af heildar úrgangi </th>
+					<th>Kg úrgangs f. hvert stöðugildi</th>
+					
+				</tr>
+			</thead>
+
+				<tbody>		
+						
+					<% @garbages.each do |garbage| %>
+						<tr>
+							<td><%= garbage.date.strftime("%Y/%m/%d") %></td>
+		              		<td><%= garbage.trash_type %></td>
+		              		<td><%= garbage.trash_weight %> -Kg.</td>
+		              		<td><%= garbage.trash_cost %> -kr.</td>
+		              	
+		              		<td><%= number_with_precision(garbage.trash_weight_ratio, precision: 2) %>%</td>
+		              		<td><%= number_with_precision(garbage.trash_user_ratio(current_user).to_f, precision: 2) %></td>
+              			
+
+		              		<td><%= link_to 'Sýna', garbage, class: 'btn btn-xs btn-info' %></td>
+		              		<td><%= link_to 'Uppfæra', edit_garbage_path(garbage), class: 'btn btn-xs btn-warning' %></td>
+		              		<td><%= link_to 'Eyða', garbage, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+		              		 
+		              	</tr>	
+								<% @total_trash = garbage.total_trash %>
+								<%@total_trash %>
+					<% end %>
+				</tbody>
+			
+		</table>
+		
+	
+	</div>			
+
+					
+
+				    <%= link_to 'Ný lína', new_garbage_path %>
+<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+	
+</div>

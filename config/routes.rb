@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :electros
   resources :hwaters
   resources :transports
-  resources :trashs
+  resources :garbages
   root 'pages#index'
 
   get 'about' => 'pages#about'

@@ -1,0 +1,28 @@
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="well">
+			<p>
+				<strong> Date:</strong>
+				<%= @garbage.date %>
+			</p>
+			<p>
+				<strong>Tegund úrgangs:</strong>
+				<%= @garbage.trash_type %>
+			</p>
+
+			<p>
+				<strong> Þyngd úrgangs</strong>
+				<%= @garbage.trash_weight %>
+			</p>
+
+			<p>
+				<strong> Kostnaður við úrgang:</strong>
+				<%= @garbage.trash_cost %>
+			</p>
+
+
+
+			<%= link_to 'Back', garbages_path %>
+		</div>
+	</div>
+</div>

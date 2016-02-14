@@ -1,3 +1,0 @@
-class TrashsController < ApplicationController
-
-end
