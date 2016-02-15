@@ -8,6 +8,10 @@ gem 'sqlite3'
 
 gem 'devise', '~> 3.5', '>= 3.5.6'
 
+#PaperClip for image upload
+
+gem 'paperclip', '~> 4.3', '>= 4.3.5'
+
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'

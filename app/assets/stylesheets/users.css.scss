@@ -1,3 +1,27 @@
 .well.white-bg {
 	background-color: #fff;
 }
+
+.webpage-title-icon{
+	display: inline-block;
+	text-align: center;
+	color: #fff;
+	font-size:1.5em;
+	font-weight: strong;
+	width: 30px;
+	height: 30px;
+	border: 2px solid 2e6da4;
+	border-radius: 2px;
+	background-color: #337ab7;
+
+}
+
+.well.profile-description{
+	color: #fff;
+	background-color: #5cb85c;
+	border-color: #4cae4c;
+	h3 {
+		margin-top: 0;
+	}
+	
+}

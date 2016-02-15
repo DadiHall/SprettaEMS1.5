@@ -1,0 +1,52 @@
+<%= form_for @profile, url: user_profile_path, :html => { :multipart => true } do |f| %> 
+					<div class="form-group">
+						<%= f.label :name %>
+						<%= f.text_field :name, class: 'form-control' %>
+					</div>
+
+					<div class="form-group">
+						<%= f.label :avatar %>
+						<%= f.file_field :avatar, class: 'form-control' %>
+					</div>
+
+					<div class="form-group">
+						<%= f.label :building_size %>
+						<%= f.number_field :building_size, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :address %>
+						<%= f.text_field :address, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :postalcode %>
+						<%= f.text_field :postalcode, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :website%>
+						<%= f.text_field :website, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :contact_person %>
+						<%= f.text_field :contact_person, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :contact_email %>
+						<%= f.email_field :contact_email, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :phone_number %>
+						<%= f.text_field :phone_number, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :buisness_type %>
+						<%= f.select :buisness_type,['Þjónusta', 'Ráðgjöf', 'Verlsun', 'Stofnun', 'Annað'], class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.label :description %>
+						<%= f.text_area :description, class: 'form-control' %>
+					</div>
+					<div class="form-group">
+						<%= f.submit "Update Profile", class: 'btn btn-primary' %>
+					</div>
+
+				<% end %>
