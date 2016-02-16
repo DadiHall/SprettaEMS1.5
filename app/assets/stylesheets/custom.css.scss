@@ -148,6 +148,190 @@ height: 50%;
   font-size: 68px;
 }
 
+#sec2 .panel {
+  background-color:transparent;
+}
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  font-family:Arial,sans-serif;
+}
+
+/* fix bs3 horizontal scrollbar bug */
+.row { margin: 0; padding: 0 }
+
+
+/* use special fonts in certain elements */
+h1,h2,h3,h4,.lead,.btn,.navbar a {
+  text-transform:uppercase;
+  font-family:'Voltaire',Arial,sans-serif;
+  letter-spacing:2px;
+}
+
+h1 {
+  font-size:50px;
+}
+
+/* Header CSS */
+
+.vert {
+  vertical-align: middle;
+  width:100%;
+  padding-top:5%;
+  text-align:center;
+}
+
+.header h1 {
+  font-size:80px;
+  -webkit-text-stroke: 1px rgba(10,10,10,0.1);
+  color:#431a6d;
+  color:#fff;
+ margin: auto;
+
+ margin-top: 20%;
+  text-transform:uppercase;
+}
+
+.header .lead {
+  color:#d46054;
+  font-size:25px;
+}
+
+.header {
+  height: 90%;
+  background: #f68076 url('recycle.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  
+}
+
+.alt {
+  background-color: #6E28C9; /* Þarf að breyta lit */
+}
+/*
+.alt .lead {
+  color: #3B0496;
+}*/
+
+.header .btn-lg {
+   font-size:18px;
+   border-color:#eeeeee;
+   padding:15px;
+   background-color:transparent;
+   color:#ffffff;
+   margin-bottom: 20%;
+}
+
+.header .btn-lg:hover {
+   background-color: rgba(10,10,10,0.3);
+   color:#eaeaea; /* Þarf að breyta lit */
+}
+
+
+/* Header Css Ends*/
+
+
+/* Section 1 Css */
+
+.blurb {
+  padding: 100px 0;
+  background-color:#fefefe;
+}
+
+/* Section 1 end */
+
+/* viðskiptavina section */
+
+.box{
+  align:center;
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+  border-radius: 100%;
+  background-color: #eaeaea;
+
+}
+
+/* Annar hluti */
+
+#sec2 {
+
+height: 50%;
+  background: #f68076 url('recycle2.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  
+}
+
+.featurette {
+  background: #222334;
+  padding: 50px 0;
+  color: #ffffff;
+}
+
+.featurette-item {
+  margin-bottom: 15px;
+}
+
+.featurette-item > h3 {
+  border: 3px solid #ffffff;
+  border-radius: 50%;
+  display: inline-block;
+  font-size: 56px;
+  width: 140px;
+  height: 140px;
+  line-height: 136px;
+  vertical-align: middle; 
+  text-align: center;
+}
+
+.featurette-item > i:hover {
+  font-size: 68px;
+}
+
+#sec2 .panel-heading {
+  background-color:transparent;
+}
+
+#sec2 .panel-heading h2 {
+  font-size: 1em;
+}
+
+
+
+/* Device Session */
+
+.img-back{
+  height: 80%;
+  background: #f68076 url('recycling3.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+}
+
+.well.sign-up-form{
+  background-color: rgba(10,10,10,0.3);
+  border: none;
+  margin-top: 20%;
+  color: #fff;
+}
+
+
 
 
 

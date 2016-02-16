@@ -1,17 +1,17 @@
-<div class="row">
+<div class="row img-back">
   <div class="col-md-6 col-md-offset-3 text-center">
-    <div class="well">
-      <h2>Log in</h2>
+    <div class="well sign-up-form">
+      <h2>Innskrá</h2>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
          <div class="field form-group">
           <%= f.label :name %><br />
           <%= f.text_field :name, autofocus: true, class: 'form-control' %>
         </div>
-         <div class="field form-group">
-          <%= f.label :staff %><br />
-          <%= f.number_field :staff, class: 'form-control' %>
-        </div>
+         <!--<div class="field form-group">
+          <%#= f.label :staff %><br />
+          <%#= f.number_field :staff, class: 'form-control' %>
+        </div> -->
         <div class="field form-group">
           <%= f.label :email %><br />
           <%= f.email_field :email, class: 'form-control' %>
@@ -38,3 +38,4 @@
       </div>
    </div>
 </div>
+

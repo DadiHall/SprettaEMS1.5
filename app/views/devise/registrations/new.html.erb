@@ -1,40 +1,40 @@
-<div class="row">
+<div class="row img-back">
   <div class="col-md-6 col-md-offset-3 text-center">
-      <div class="well">
-    <h2>Sign up</h2>
+      <div class="well sign-up-form">
+    <h2>Ný skráning</h2>
 
     <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= devise_error_messages! %>
 
       <div class="field form-group">
-        <%= f.label :name %><br />
+        <%= f.label :Nafn_fyrirtækis_stofnunar %><br />
         <%= f.text_field :name, autofocus: true, class: 'form-control' %>
       </div>
 
-       <div class="field form-group">
-        <%= f.label :staff %><br />
-        <%= f.number_field :staff, class: 'form-control'  %>
-      </div>
+       <!--<div class="field form-group">
+        <%#= f.label :staff %><br />
+        <%#= f.number_field :staff, class: 'form-control'  %>
+      </div> -->
       <div class="field form-group">
-        <%= f.label :email %><br />
+        <%= f.label :tölvu_póstfang %><br />
         <%= f.email_field :email, class: 'form-control'  %>
       </div>
 
       <div class="field form-group">
-        <%= f.label :password %>
+        <%= f.label :Lykilorð %>
         <% if @minimum_password_length %>
-        <em>(<%= @minimum_password_length %> characters minimum)</em>
+        <em>(Minnst <%= @minimum_password_length %> stafir )</em>
         <% end %><br />
         <%= f.password_field :password, autocomplete: "off", class: 'form-control'  %>
       </div>
 
       <div class="field form-group">
-        <%= f.label :password_confirmation %><br />
+        <%= f.label :Staðfesting_lykilorðs %><br />
         <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control'  %>
       </div>
 
       <div class="actions">
-        <%= f.submit "Sign up", class: 'btn btn-success' %>
+        <%= f.submit "Ný skrá", class: 'btn btn-success' %>
       </div>
     <% end %>
 
@@ -43,3 +43,5 @@
     </div>
   </div>
 </div>
+
+    

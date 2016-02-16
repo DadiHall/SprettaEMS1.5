@@ -147,25 +147,7 @@
 	<% end %>
 <hr>
 <!-- Annar Hluti -->
-<div id="sec1" class="blurb">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-7">
-        <h1>Nýjar lausnir í umhverfisstjórn fyrirtækja</h1>
-        <p class="lead">Spretta býður fyrirtækjum og stofnunum upp á gagnvirkan vettvang til að efla umhverfisstjórn í rekstri sínum. Með því að innleiða umhverfisstjórnunarkerfi í rekstur sinns geta fyrirtæki og stofnanir sparað umtalsverðar fjárhæðir og stuðlað að grænni ímynd rekstursins í leiðinni.</p>
-      </div>
-      <div class="col-md-5">
-
-      <%= image_tag("logoFsvg.svg", :alt => "logo", height: '400') %>
-
-        <!--<h1 class="pull-right">
-			<%#= link_to "Notendur", users_path, class: 'btn btn-primary' %>
-		</h1> -->
-      </div>
-     
-    </div>
-  </div>
-</div>
+<%= render 'section2' %>
 	
 <!-- Þriðji Hluti -->
 
@@ -187,13 +169,10 @@
   <div class="row">
     <div class="col-sm-4 col-sm-offset-2">
          <div class="panel panel-default">
-         <div class="panel-heading text-center"><h2><i class="icon-chevron-left"></i> Left</h2></div>
-         <div class="panel-body text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-          Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-          dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-          Aliquam in felis si.
+         <div class="panel-heading text-center"><h2><i class="icon-chevron-left"></i> Innskráning</h2></div>
+         <div class="panel-body text-center">Með því að skrá fyrirtækið þitt í Sprettu verður það hluti af ört stækkandi samfélagi samfélagslega ábyrgra fyrirtækja og stofnana. 
             <div class="row">&nbsp;</div>
-          <button class="btn btn-lg btn-primary btn-block">Login</button> 
+          <%= link_to "Notendur", users_path, class: 'btn btn-primary' %>
           </div>
          </div>
  	</div>
