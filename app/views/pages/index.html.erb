@@ -133,23 +133,88 @@
 		</div>
 
 	<% else %>
-		<div class="jumbotron">
-			<div class="container">
-  				<h1>Welcome to Spretta</h1>
-         			 <p>Vettvagnur fyrir umhverfisstjórn fyrirtækja</p>
 
-         		<%= link_to "Nýskrá", new_user_registration_path, class: 'btn btn-primary' %>
-    		</div>     		 
+		<div class="header alt vert">
+  			<div class="container">
+    
+    		<h1>Spretta</h1>
+     			 <p class="lead">Vettvangur fyrir umhverfisstjórn fyrirtækja</p>
+      		<div>&nbsp;</div>
+      			<%= link_to "Nýskrá", new_user_registration_path, class: 'btn btn-default btn-lg' %>
+  			</div>
 		</div>
+	
 	<% end %>
-
-	<div class="row">
-		<div class="col-md-6">
+<hr>
+<!-- Fyrsti Hluti -->
+<div id="sec1" class="blurb">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-7">
+        <h1>Einföld eftirfylgni</h1>
+        <p class="lead">Fylgstu með umhverfisþáttum í þínum rekstri</p>
+      </div>
+      <div class="col-md-5">
+        <h1 class="pull-right">
 			<%= link_to "Notendur", users_path, class: 'btn btn-primary' %>
-		</div>
-	</div>		
+		</h1>
+      </div>
+      <div class="col-md-10 col-md-offset-1" >
+      	<%= render 'average_user_total' %>
+      </div>
+    </div>
+  </div>
+</div>
+	
+<!-- Annar Hluti -->
 
-<%= render 'average_user_total' %>
+<%= render 'section3' %>
+		
+	
+<!-- Þriðji Hluti -->
+
+
+<div class="blurb bright">
+  
+  <div class="row">
+      <div class="col-md-6 col-md-offset-3 text-center">
+        <h3>Smashing Heading</h3>
+        <br>
+      </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-2">
+         <div class="panel panel-default">
+         <div class="panel-heading text-center"><h2><i class="icon-chevron-left"></i> Left</h2></div>
+         <div class="panel-body text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+          Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+          dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+          Aliquam in felis si.
+            <div class="row">&nbsp;</div>
+          <button class="btn btn-lg btn-primary btn-block">Login</button> 
+          </div>
+         </div>
+ 	</div>
+    <div class="col-sm-4">
+         <div class="panel panel-default">
+         <div class="panel-heading text-center"><h2>Right <i class="icon-chevron-right"></i></h2></div>
+         <div class="panel-body text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
+          Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
+          dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
+          Aliquam in felis sit.
+           <div class="row">&nbsp;</div>
+          <button class="btn btn-lg btn-primary btn-block">Sign Up</button> 
+           
+          </div>
+         </div>
+ 	</div>
+  </div>
+</div>
+
+<div class="blurb">
+  <div class="container">
+
 <%= link_to "Create your profile", new_user_profile_path(current_user) if current_user %>
 
 
