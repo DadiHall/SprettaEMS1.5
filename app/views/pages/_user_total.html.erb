@@ -1,0 +1,127 @@
+	<div class="panel-group" id="accordion">
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title"> 
+    				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseAll"><span class="glyphicon glyphicon-minus"></span><%= current_user.profile.name %> Helstu tölur yfir auðlindanotkun</a></h3>
+  			</div>
+ 			 <div class="panel-body">
+			
+			<div class="panel panel-default">
+  				<div class="panel-heading">
+    				<h3 class="panel-title"> 
+    				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-minus"></span><%= current_user.profile.name %> Pappírs notkun</a></h3>
+  				</div>
+  				    <div id="collapseOne" class="panel-collapse collapse in">
+
+ 			 <div class="panel-body">
+				<div class="row">
+					<!-- Magn pappírs yfir allan rekstur-->
+					<div class=" col-md-3">
+  						<div class="panel panel-info">
+  							<div class="panel-heading">
+   							 <h3 class="panel-title">Pappírs magn fyrir hvert stöðugildi</h3>
+  							</div>
+  								<div class="panel-body text-center">
+    								<%= @paper_weight_per_capita %> -Kg.
+  								</div>
+						</div>
+					</div>	
+					<!-- Fjöldi trjáa sem er fórnað f. pappírinn -->
+  					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">Fjöldi tjráa mv. Pappírsnotkun.</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= @paper_tree_ratio.to_f * 15 %> - Tré.
+	  							</div>
+						</div>
+					</div>
+				</div>
+			</div>	
+			</div>	
+		</div>		
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title"> 
+    				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-plus"></span><%= current_user.profile.name %> Rafmagns notkun</a></h3>
+  			</div>
+  			    <div id="collapseTwo" class="panel-collapse collapse">
+
+ 			 <div class="panel-body">
+			
+				<div class="row">		
+					<!-- KWst rafmagn/ mv.stöðug.  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">KWst á hvert stöðugildi</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= @electro_total_per_capita %>
+	  							</div>
+						</div>
+					</div>	
+
+					<!-- KWst rafmagn/ mv.stöðug.  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">KWst mv. hvern m&sup2;</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= number_with_precision(@electro_total_per_m2.to_f, precision: 2)%> ,-kwst/m&sup2;
+	  							</div>
+						</div>
+					</div>	
+         		</div>	
+         		</div>
+    		</div>  		 
+		</div>
+
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          <span class="glyphicon glyphicon-plus"></span><%= current_user.profile.name %> Heit Vatn Notkun</a></h3>
+  			</div>
+  			 <div id="collapseThree" class="panel-collapse collapse">
+ 			 	<div class="panel-body">
+			
+				<div class="row">		
+					<!-- Heitt vatn mv. stöðugildi  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">m&#179; á hvert stöðugildi</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= @hwater_total_m3_per_capita %> m&#179; 
+	  							</div>
+						</div>
+					</div>	
+
+					<!-- m3 heitt vatn / m2 byggingu.  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">m&#179; heitt vatn fyrir hvern m&sup2; húsnæðis.</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= number_with_precision(@hwater_m3_m2_ratio.to_f, precision: 2)%> m&#179;/m&sup2;
+	  							</div>
+						</div>
+					</div>	
+         		</div>
+         	</div>		
+    		</div>  		 
+		</div>
+	</div>	
+	</div> <!-- Panel body end -->
+</div>	<!-- Panel end -->
+<script type="text/javascript">
+	$('.collapse').on('shown.bs.collapse', function(){
+$(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
+}).on('hidden.bs.collapse', function(){
+$(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
+});
+</script>
