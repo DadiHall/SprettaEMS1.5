@@ -15,23 +15,23 @@
       </div>
       <div class="col-md-2 text-center">
         <div class="featurette-item">
-          <i class="icon-magnet"></i>
-          <h4>Magnet</h4>
-          <p>For you are a magnet and I am steel.</p>
+          <h3 class="icon-magnet"><%= number_with_precision(@all_users_tree_average * 15, precision: 2)  %></h3>
+          <h4>Tré</h4>
+          <p>eru notuð að meðaltali í þann pappír sem skráðir notendur Sprettu nota.</p>
         </div>
       </div>
       <div class="col-md-2 text-center">
         <div class="featurette-item">
-          <i class="icon-shield"></i>
-          <h4>Shield</h4>
-          <p>Protect yourself. Don't design like it's 1999.</p>
+          <h3 class="icon-shield"><%= number_with_precision(@all_users_power_average, precision: 2)  %></h3>
+          <h4>Rafmagn</h4>
+          <p>Rafmagnsnotkun að meðaltali hjá notendum Sprettu </p>
         </div>
       </div>
       <div class="col-md-2 text-center">
         <div class="featurette-item">
-          <i class="icon-pencil"></i>
-          <h4>Scholar</h4>
-          <p>Because lead pencils are pretty smart looking.</p>
+          <h3 class="icon-pencil"><%= number_with_precision(@all_users_hwater_average, precision: 2)  %>m&#179;</h3>
+          <h4>Heitt vatn</h4>
+          <p>Meðaltals Heita vatns notkun notenda Sprettu</p>
         </div>
       </div>
     </div>
