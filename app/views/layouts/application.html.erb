@@ -34,10 +34,14 @@
             <% end %> 
               <li class="pull-right user-name"> <% if current_user && current_user %>
                 User:
-                <%= current_user.name %>
+                <%unless current_user.profile.blank? %>
+                <%= current_user.profile.name %>
+                <% end %>
                 Staff:
-                <%= current_user.staff %>
-                 <% end %>  
+                <%unless current_user.profile.blank? %>
+                <%= current_user.profile.staff %>
+                <% end %>
+             <% end %>  
               </li>    
               <li> Fjöldi notenda: <%= User.count %></li>
           </ul>

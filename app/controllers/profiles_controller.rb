@@ -8,6 +8,7 @@ class ProfilesController < ApplicationController
 
 		@user = User.find(params[:user_id]) # Finnur hver er userinn sem er loggaður inn, reaching in to the url and grabbs user.
 		@profile = Profile.new
+	
 	end
 
 	def create

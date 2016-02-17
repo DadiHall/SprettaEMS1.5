@@ -5,7 +5,8 @@ class ApplicationController < ActionController::Base
 
   #before_action :authenticate_user!
 
-  before_action :load_running_totals
+  before_action :load_running_totals, :if => :signed_in? 
+ 
   before_action :all_users_avarge
 
   def load_running_totals
@@ -14,18 +15,34 @@ class ApplicationController < ActionController::Base
 
     # method 2. does the summation in the database without having to load all the records into ruby. (weight needs to be a number in the db.)
     #PAppir og Tre
-   if signed_in?  then @paper_weight_per_capita = Paper.sum(:paper_weight) / current_user.profile.staff end
+   unless current_user.profile.blank? 
+     @paper_weight_per_capita = Paper.sum(:paper_weight) / (current_user.profile.staff) 
+      @electro_total_per_capita = Electro.sum(:electricity_kwst) / current_user.profile.staff 
+           @electro_total_per_m2 = Electro.sum(:electricity_kwst) / current_user.profile.building_size
+           @hwater_total_m3_per_capita = Hwater.sum(:hot_water_cubic_meter) /current_user.profile.staff
+           @hwater_m3_m2_ratio = Hwater.sum(:hot_water_cubic_meter) / current_user.profile.building_size
+      
+    else 
+      flash[:notice] = "No profile exists for current user"
+      redirect_to new_user_profile_path(current_user) if current_user and return
+   end
+ 
 
     @paper_tree_ratio = Paper.sum(:paper_weight) / 1000 
     # Rafmagnsreikningar
-    if signed_in? then @electro_total_per_capita = Electro.sum(:electricity_kwst) / current_user.profile.staff end
+    #unless current_user.profile.blank?  
+      #@electro_total_per_capita = Electro.sum(:electricity_kwst) / current_user.profile.staff 
+    #else
+       #flash[:notice] = "No profile exists for current user"
+        
+    #end
 
-    if signed_in? then @electro_total_per_m2 = Electro.sum(:electricity_kwst) / current_user.profile.building_size end
+    #if signed_in? then @electro_total_per_m2 = Electro.sum(:electricity_kwst) / current_user.profile.building_size end
 
       #Heitt vatn
-     if signed_in? then @hwater_total_m3_per_capita = Hwater.sum(:hot_water_cubic_meter) /current_user.profile.staff end 
+     #if signed_in? then @hwater_total_m3_per_capita = Hwater.sum(:hot_water_cubic_meter) /current_user.profile.staff end 
 
-      if signed_in? then @hwater_m3_m2_ratio = Hwater.sum(:hot_water_cubic_meter) / current_user.profile.building_size end
+     # if signed_in? then @hwater_m3_m2_ratio = Hwater.sum(:hot_water_cubic_meter) / current_user.profile.building_size end
 
   end
 
