@@ -10,5 +10,8 @@ has_many :hwaters
 has_many :transports
 has_many :garbages
 
+has_many :friendships
+has_many :friends, through: :friendships
+
 has_one :profile
 end
