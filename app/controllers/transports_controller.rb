@@ -1,8 +1,9 @@
 class TransportsController < ApplicationController
-before_action :set_transport, only: [:edit, :update, :show, :destroy]
+	before_action :set_transport, only: [:edit, :update, :show, :destroy]
+	before_action :transport_owner, only: [ :edit, :update, :destroy]
 
 		def index
-			@transports = Transport.all #(params[:user_id]) # líklegast til að sýna bara þann user sem er að skoða
+			@transports = current_user.transports #(params[:user_id]) # líklegast til að sýna bara þann user sem er að skoða
 
 		end
 
@@ -56,4 +57,11 @@ before_action :set_transport, only: [:edit, :update, :show, :destroy]
 			def transport_params
 				params.require(:transport).permit(:date, :transport_type, :transport_km, :transport_num_of_trips, :transport_km_recycled_fuel, :transport_co2, :transport_flight_type, :transport_flight_km, :user_id)
 			end
+
+			def transport_owner
+     			unless @transport.user_id == current_user.id
+      				flash[:notice] = 'Access denied as you are not owner of this Job'
+      				redirect_to transports_path
+     			end
+    		end
 end

@@ -1,15 +1,16 @@
+<div class="row">	
 	<div class="panel-group" id="accordion">
 		<div class="panel panel-default">
   			<div class="panel-heading">
     			<h3 class="panel-title"> 
-    				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseAll"><span class="glyphicon glyphicon-minus"></span><%= current_user.name %> Helstu tölur yfir auðlindanotkun</a></h3>
+    				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseAll"><span class="glyphicon glyphicon-minus"></span><%= current_user.name %>: Helstu tölur yfir auðlindanotkun</a></h3>
   			</div>
  			 <div class="panel-body">
 			
 			<div class="panel panel-default">
   				<div class="panel-heading">
     				<h3 class="panel-title"> 
-    				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-minus"></span><%= current_user.name %> Pappírs notkun</a></h3>
+    				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-minus"></span><%= current_user.name %>: Pappírs notkun</a> <%= link_to "Skrá Pappír", papers_path, class: 'pull-right ' %></h3>
   				</div>
   				    <div id="collapseOne" class="panel-collapse collapse in">
 
@@ -44,7 +45,7 @@
 		<div class="panel panel-default">
   			<div class="panel-heading">
     			<h3 class="panel-title"> 
-    				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-plus"></span><%= current_user.name %> Rafmagns notkun</a></h3>
+    				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-plus"></span><%= current_user.name %>: Rafmagns notkun</a><%= link_to "Skrá Rafmagn", electros_path, class: 'pull-right ' %></h3>
   			</div>
   			    <div id="collapseTwo" class="panel-collapse collapse">
 
@@ -78,11 +79,11 @@
          		</div>
     		</div>  		 
 		</div>
-
+<!-- Heitt vatn Panel byrjar -->
 		<div class="panel panel-default">
   			<div class="panel-heading">
     			<h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
-          <span class="glyphicon glyphicon-plus"></span><%= current_user.name %> Heit Vatn Notkun</a></h3>
+          <span class="glyphicon glyphicon-plus"></span><%= current_user.name %>: Heit Vatn Notkun</a><%= link_to "Skrá Heitt vatn", hwaters_path, class: 'pull-right ' %></h3>
   			</div>
   			 <div id="collapseThree" class="panel-collapse collapse">
  			 	<div class="panel-body">
@@ -115,9 +116,89 @@
          	</div>		
     		</div>  		 
 		</div>
+		<!-- Heitt vatn Panel Endar -->
+
+		<!-- HreingerningarEfni Panel byrjar -->
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+          <span class="glyphicon glyphicon-plus"></span><%= current_user.name %>: Notkun Ræstiefna</a><%= link_to "Skrá Ræstiefni", cleanings_path, class: 'pull-right ' %></h3>
+  			</div>
+  			 <div id="collapseFour" class="panel-collapse collapse">
+ 			 	<div class="panel-body">
+			
+				<div class="row">		
+					<!-- Lítrar mv. stöðugildi  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">Lítrar/stöðugildi</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= @cleaning_staff_ratio %> Lítrar
+	  							</div>
+						</div>
+					</div>	
+
+					<!-- lítrar / m2 byggingu.  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">Lítrar af ræstiefni fyrir hvern m&sup2; húsnæðis.</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= number_with_precision(@cleaning_building_ratio, precision: 2)%> l/m&sup2;
+	  							</div>
+						</div>
+					</div>	
+         		</div>
+         	</div>		
+    		</div>  		 
+		</div>
+		<!-- Hreingerningarefni Panel Endar -->
+
+		<!-- Ferðalög Panel byrjar -->
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+          <span class="glyphicon glyphicon-plus"></span><%= current_user.name %>: Flug og Ferðir</a><%= link_to "Skrá Ferðir", transports_path, class: 'pull-right ' %></h3>
+  			</div>
+  			 <div id="collapseFive" class="panel-collapse collapse">
+ 			 	<div class="panel-body">
+			
+				<div class="row">		
+					<!-- Lítrar mv. stöðugildi  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">Lítrar/stöðugildi</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= @cleaning_staff_ratio %> Lítrar
+	  							</div>
+						</div>
+					</div>	
+
+					<!-- lítrar / m2 byggingu.  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">Lítrar af ræstiefni fyrir hvern m&sup2; húsnæðis.</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= number_with_precision(@cleaning_building_ratio, precision: 2)%> l/m&sup2;
+	  							</div>
+						</div>
+					</div>	
+         		</div>
+         	</div>		
+    		</div>  		 
+		</div>
+		<!-- Hreingerningarefni Panel Endar -->
 	</div>	
 	</div> <!-- Panel body end -->
 </div>	<!-- Panel end -->
+</div> <!-- row ends -->
 <script type="text/javascript">
 	$('.collapse').on('shown.bs.collapse', function(){
 $(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");

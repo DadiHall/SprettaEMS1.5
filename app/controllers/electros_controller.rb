@@ -1,9 +1,10 @@
 class ElectrosController < ApplicationController
 
 	before_action :set_electro, only: [:edit, :update, :show, :destroy]
+	before_action :electro_owner, only: [ :edit, :update, :destroy]
 	
 	def index
-		@electros = Electro.all
+		@electros = current_user.electros
 	end
 
 	def create
@@ -62,4 +63,11 @@ class ElectrosController < ApplicationController
 			def electro_params
 				params.require(:electro).permit(:date, :building_name, :electricity_kwst, :electricity_cost, :kwst_staff_ratio, :kwst_square_meter_ratio, :user_id)
 			end	
+
+			def electro_owner
+     			unless @electro.user_id == current_user.id
+      				flash[:notice] = 'Access denied as you are not owner of this Job'
+      				redirect_to cleanings_path
+     			end
+    		end
 end

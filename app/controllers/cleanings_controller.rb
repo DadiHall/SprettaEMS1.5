@@ -1,8 +1,9 @@
 class CleaningsController < ApplicationController
 	before_action :set_cleaning, only: [:edit, :update, :show, :destroy]
+	before_action :cleaning_owner, only: [ :edit, :update, :destroy]
 	
 	def index
-		@cleanings = Cleaning.all
+		@cleanings = current_user.cleanings
 	end
 
 	def create
@@ -61,4 +62,11 @@ class CleaningsController < ApplicationController
 			def cleaning_params
 				params.require(:cleaning).permit(:cleaning_type, :date, :cleaning_liter, :cleaning_cost, :env_clean_ratio, :user_id)
 			end	
+                      
+    		def cleaning_owner
+     			unless @cleaning.user_id == current_user.id
+      				flash[:notice] = 'Access denied as you are not owner of this Job'
+      				redirect_to cleanings_path
+     			end
+    		end
 end

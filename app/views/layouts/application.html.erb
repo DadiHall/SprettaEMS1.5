@@ -26,11 +26,11 @@
             <li><%= link_to "Link3", "/path3"  %></li>
 
             <% if current_user %>  
-              <li><%= link_to "Sign Out", destroy_user_session_path, method: :delete  %></li>
+              <li><%= link_to "Útskrá", destroy_user_session_path, method: :delete  %></li>
               <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
             <% else %>
-              <li><%= link_to "Sign Up", new_user_registration_path %></li>
-              <li><%= link_to "Sign In", new_user_session_path %></li>
+              <li><%= link_to "Nýskrá", new_user_registration_path %></li>
+              <li><%= link_to "Innskrá", new_user_session_path %></li>
             <% end %> 
               <li class="pull-right user-name"> <% if current_user && current_user %>
                 User:

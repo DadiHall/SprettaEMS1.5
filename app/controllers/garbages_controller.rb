@@ -1,8 +1,9 @@
 class GarbagesController < ApplicationController
 	before_action :set_garbage, only: [:edit, :update, :show, :destroy]
+	before_action :garbage_owner, only: [ :edit, :update, :destroy]
 
 		def index
-			@garbages = Garbage.all #(params[:user_id]) # líklegast til að sýna bara þann user sem er að skoða
+			@garbages = current_user.garbages #(params[:user_id]) # líklegast til að sýna bara þann user sem er að skoða
 
 		end
 
@@ -56,4 +57,11 @@ class GarbagesController < ApplicationController
 			def garbage_params
 				params.require(:garbage).permit(:date, :trash_type, :trash_weight, :trash_cost, :user_id)
 			end
+
+			def garbage_owner
+     			unless @garbage.user_id == current_user.id
+      				flash[:notice] = 'Access denied as you are not owner of this Job'
+      				redirect_to garbages_path
+     			end
+    		end
 end

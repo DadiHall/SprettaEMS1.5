@@ -1,10 +1,10 @@
 class HwatersController < ApplicationController
 
 		before_action :set_hwater, only: [:edit, :update, :show, :destroy]
+		before_action :hwater_owner, only: [ :edit, :update, :destroy]
 
 		def index
-			@hwaters = Hwater.all #(params[:user_id]) # líklegast til að sýna bara þann user sem er að skoða
-
+			@hwaters = current_user.hwaters
 		end
 
 		def new
@@ -57,4 +57,11 @@ class HwatersController < ApplicationController
 			def hwater_params
 				params.require(:hwater).permit(:date, :building_name, :hot_water_cost, :hot_water_cubic_meter, :hot_water_m2_m3_ratio, :hot_water_m3_staff_ratio, :user_id)
 			end
+
+			def hwater_owner
+     			unless @hwater.user_id == current_user.id
+      				flash[:notice] = 'Access denied as you are not owner of this Job'
+      				redirect_to hwaters_path
+     			end
+    		end
 end

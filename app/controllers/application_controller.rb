@@ -16,19 +16,26 @@ class ApplicationController < ActionController::Base
     # method 2. does the summation in the database without having to load all the records into ruby. (weight needs to be a number in the db.)
     #PAppir og Tre
    unless current_user.profile.blank? 
-     @paper_weight_per_capita = Paper.sum(:paper_weight) / (current_user.profile.staff) 
-      @electro_total_per_capita = Electro.sum(:electricity_kwst) / current_user.profile.staff 
-           @electro_total_per_m2 = Electro.sum(:electricity_kwst) / current_user.profile.building_size
-           @hwater_total_m3_per_capita = Hwater.sum(:hot_water_cubic_meter) /current_user.profile.staff
-           @hwater_m3_m2_ratio = Hwater.sum(:hot_water_cubic_meter) / current_user.profile.building_size
-      
+        #Pappírinn
+           @paper_weight_per_capita = current_user.papers.sum(:paper_weight) / (current_user.profile.staff) 
+        #Rafmagn   
+           @electro_total_per_capita = current_user.electros.sum(:electricity_kwst) / current_user.profile.staff 
+           @electro_total_per_m2 = current_user.electros.sum(:electricity_kwst) / current_user.profile.building_size
+        #HotWater    
+           @hwater_total_m3_per_capita = current_user.hwaters.sum(:hot_water_cubic_meter) /current_user.profile.staff
+           @hwater_m3_m2_ratio = current_user.hwaters.sum(:hot_water_cubic_meter) / current_user.profile.building_size
+        #Ræsting   
+           @cleaning_staff_ratio = current_user.cleanings.sum(:cleaning_liter).to_i / current_user.profile.staff
+           @cleaning_building_ratio = current_user.cleanings.sum(:cleaning_liter) / current_user.profile.building_size
+        #Ferðalog
+           #hér koma formúlur f. ferðalög  
     else 
       flash[:notice] = "No profile exists for current user"
       redirect_to new_user_profile_path(current_user) if current_user and return
    end
  
 
-    @paper_tree_ratio = Paper.sum(:paper_weight) / 1000 
+    @paper_tree_ratio = current_user.papers.sum(:paper_weight) / 1000 
     # Rafmagnsreikningar
     #unless current_user.profile.blank?  
       #@electro_total_per_capita = Electro.sum(:electricity_kwst) / current_user.profile.staff 

@@ -1,9 +1,10 @@
 class PapersController < ApplicationController
 	before_action :set_paper, only: [:edit, :update, :show, :destroy]
+	before_action :paper_owner, only: [ :edit, :update, :destroy]
 
 
 	def index
-		@papers = Paper.all
+		@papers = current_user.papers
 		
 	end
 
@@ -56,6 +57,13 @@ class PapersController < ApplicationController
 	def paper_params
 		params.require(:paper).permit(:paper_type, :date, :paper_weight, :paper_cost, :env_paper_weight)
 	end
+
+	def paper_owner
+     			unless @paper.user_id == current_user.id
+      				flash[:notice] = 'Access denied as you are not owner of this Job'
+      				redirect_to papers_path
+     			end
+    		end
 
 
 end
