@@ -26,6 +26,7 @@
             <li><%= link_to "Link3", "/path3"  %></li>
 
             <% if current_user %>  
+              <li><%= link_to "My Friends", my_friends_path %></li>
               <li><%= link_to "Útskrá", destroy_user_session_path, method: :delete  %></li>
               <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
             <% else %>
