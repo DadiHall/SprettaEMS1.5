@@ -1,6 +1,8 @@
 class Paper < ActiveRecord::Base
 belongs_to :user	
 
+
+
 def paper_weight_per_capita(current_user)
     paper_weight.to_i / current_user.profile.staff
   end
