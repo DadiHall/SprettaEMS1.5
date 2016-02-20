@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 
   before_action :load_running_totals, :if => :signed_in? 
  
-  before_action :all_users_avarge
+  #before_action :all_users_avarge
 
   def load_running_totals
     # method 1. Similar to how the calculation is done in the view.

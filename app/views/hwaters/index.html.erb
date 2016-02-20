@@ -26,7 +26,7 @@
 		              		<td><%= hwater.hot_water_cubic_meter %> -Kwst.</td>
 		              		<td><%= hwater.hot_water_cost %> -kr.</td>
 		              	
-		              		<td><%= hwater.hot_water_m2_m3_ratio(current_user) %></td>
+		              		<td><%= number_with_precision(hwater.hot_water_m2_m3_ratio(current_user).to_f, precision: 2) %></td>
 		              		<td><%= number_with_precision(hwater.hot_water_m3_staff_ratio(current_user).to_f, precision: 2) %></td>
               			
 

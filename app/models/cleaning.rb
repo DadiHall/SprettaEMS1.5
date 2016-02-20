@@ -3,7 +3,7 @@ class Cleaning < ActiveRecord::Base
 	belongs_to :user
 
 	def cleaning_liter_per_capita(current_user)
-    	cleaning_liter.to_i / current_user.staff
+    	cleaning_liter.to_i / current_user.profile.staff
   	end
 
   	def cleaning_liter_env_ratio
@@ -11,7 +11,7 @@ class Cleaning < ActiveRecord::Base
   	end
 
   	def cleaning_cost_per_capita(current_user)
-  		cleaning_cost.to_i / current_user.staff
+  		cleaning_cost.to_i / current_user.profile.staff
   	end	
   	
 end

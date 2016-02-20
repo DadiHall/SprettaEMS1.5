@@ -6,11 +6,11 @@ class Transport < ActiveRecord::Base
 	end
 
 	def transport_km_staff_ratio(current_user)
-		transport_km / current_user.staff
+		transport_km / current_user.profile.staff
 	end
 
 	def transport_co2_staff_ratio(current_user)
-		(transport_km * (0.1404)) / current_user.staff
+		(transport_km * (0.1404)) / current_user.profile.staff
 	end
 
 	def transport_flight_co2_per_km
@@ -18,10 +18,10 @@ class Transport < ActiveRecord::Base
 	end
 
 	def transport_flight_co2_staff_ratio(current_user)
-		(transport_flight_km.to_f * (0.1722)) / current_user.staff
+		(transport_flight_km.to_f * (0.1722)) / current_user.profile.staff
 	end
 
 	def transport_flight_km_staff_ratio(current_user)
-		transport_flight_km / current_user.staff
+		transport_flight_km / current_user.profile.staff
 	end
 end

@@ -8,7 +8,7 @@ class Hwater < ActiveRecord::Base
 	end
 
 	def hot_water_m3_staff_ratio(current_user)
-		hot_water_cubic_meter / current_user.staff
+		hot_water_cubic_meter / current_user.profile.staff
 	end
 
 end
