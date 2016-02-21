@@ -6,7 +6,10 @@ Rails.application.routes.draw do
     
   end  
 
-  resources :posts
+  resources :posts do
+    resources :comments 
+  end
+    
   resources :papers
   resources :cleanings
   resources :electros

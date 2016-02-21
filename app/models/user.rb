@@ -13,6 +13,7 @@ has_many :garbages
 has_many :friendships
 has_many :friends, through: :friendships
 has_many :posts
+has_many :comments
 
 has_one :profile
 
