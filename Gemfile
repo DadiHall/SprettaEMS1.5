@@ -7,8 +7,11 @@ gem 'rails', '4.2.5'
 gem 'pg'
 
 gem 'devise', '~> 3.5', '>= 3.5.6'
-
-
+#For ChartKick
+gem 'chartkick'
+gem 'groupdate'
+gem 'active_median'
+######
 #PaperClip for image upload
 
 gem 'paperclip', '~> 4.3', '>= 4.3.5'

@@ -8,7 +8,7 @@ def paper_weight_per_capita(current_user)
   end
 
   def paper_weight_env_ratio
-    (( env_paper_weight / paper_weight)* 100)
+    (( env_paper_weight.to_f / paper_weight.to_f)* 100)
   end
 
   def paper_weight_trees_ratio

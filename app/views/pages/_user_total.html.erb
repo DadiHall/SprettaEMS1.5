@@ -39,7 +39,15 @@
 	  							</div>
 						</div>
 					</div>
+					<div class="col-md-6">
+		 				<%= line_chart [
+  							{name: "Paper", data: current_user.papers.map{|t| [t.date, t.paper_weight] }, 'interpolateNulls':true},
+  							{name: "EnvPaper", data: current_user.papers.map{|t| [t.date, t.env_paper_weight] }, 'interpolateNulls':true}
+ 
+						] %>
+					</div>
 				</div>
+				
 			</div>	
 			</div>	
 		</div>		
@@ -65,7 +73,7 @@
 						</div>
 					</div>	
 
-					<!-- KWst rafmagn/ mv.stöðug.  -->
+					<!-- KWst rafmagn/ mv.fm2.  -->
 					<div class=" col-md-3">
 	  					<div class="panel panel-info">
 	  						<div class="panel-heading">
@@ -76,6 +84,13 @@
 	  							</div>
 						</div>
 					</div>	
+							<div class="col-md-6">
+		 				<%= line_chart [
+  							{name: "rafmagn á stöðugildi", data: number_with_precision(@electro_total_per_capita.to_f, precision: 2)}
+ 
+						] %>
+							</div>
+						
          		</div>	
          		</div>
     		</div>  		 
@@ -200,6 +215,7 @@
 	</div> <!-- Panel body end -->
 </div>	<!-- Panel end -->
 </div> <!--Col Ends -->
+
 </div> <!-- row ends -->
 <script type="text/javascript">
 	$('.collapse').on('shown.bs.collapse', function(){

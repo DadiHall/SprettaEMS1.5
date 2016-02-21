@@ -30,7 +30,7 @@
 		              		<td><%= paper.paper_cost %> -kr.</td>
 		              		<td><%= paper.env_paper_weight %> -kg.</td>
 		              		<td><%= paper.paper_weight_per_capita(current_user) %> kg/stöðugildi </td>
-              				<td><%= paper.paper_weight_env_ratio.to_i %>%</td>	
+              				<td><%= paper.paper_weight_env_ratio %>%</td>	
               				<td><%= paper.paper_weight_trees_ratio%></td>
 
 		              		<td><%= link_to 'Sýna', paper, class: 'btn btn-xs btn-info' %></td>
