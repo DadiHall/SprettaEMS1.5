@@ -1,1 +1,6 @@
-<h1> this is the index post </h1>
+<% @posts.each do |post| %>
+<h2><%= post.title %></h2>
+<p>Published at <%= time_ago_in_words(post.created_at ) %></p>
+<% end %>
+
+<%= link_to 'New post', new_post_path %>
