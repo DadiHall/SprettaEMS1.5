@@ -5,6 +5,8 @@ Rails.application.routes.draw do
     resource :profile
     
   end  
+
+  resources :posts
   resources :papers
   resources :cleanings
   resources :electros
