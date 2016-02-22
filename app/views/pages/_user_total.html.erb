@@ -1,3 +1,19 @@
+<div class="row well">
+	
+		<div class="col-md-3">
+		 <%= line_chart [
+  				{name: "Paper", data: current_user.papers.map{|t| [t.date, t.paper_weight] }, 'interpolateNulls':true},
+  				{name: "EnvPaper", data: current_user.papers.map{|t| [t.date, t.env_paper_weight] }, 'interpolateNulls':true} ] %>
+  				
+	</div>
+
+	<div class="col-md-3">
+		 <%= line_chart [
+  				{name: "KWST", data: current_user.electros.map{|t| [t.date, t.electricity_kwst] }, 'interpolateNulls':true},
+  				{name: "Cost", data: current_user.electros.map{|t| [t.date, t.electricity_cost] }, 'interpolateNulls':true} ] %>
+  				
+	</div>
+</div>
 <div class="row">	
 <div class="col-md-8 col-md-offset-2">
 	<div class="panel-group" id="accordion">
@@ -39,13 +55,7 @@
 	  							</div>
 						</div>
 					</div>
-					<div class="col-md-6">
-		 				<%= line_chart [
-  							{name: "Paper", data: current_user.papers.map{|t| [t.date, t.paper_weight] }, 'interpolateNulls':true},
-  							{name: "EnvPaper", data: current_user.papers.map{|t| [t.date, t.env_paper_weight] }, 'interpolateNulls':true}
- 
-						] %>
-					</div>
+					
 				</div>
 				
 			</div>	
@@ -84,12 +94,7 @@
 	  							</div>
 						</div>
 					</div>	
-							<div class="col-md-6">
-		 				<%= line_chart [
-  							{name: "rafmagn á stöðugildi", data: number_with_precision(@electro_total_per_capita.to_f, precision: 2)}
- 
-						] %>
-							</div>
+							
 						
          		</div>	
          		</div>

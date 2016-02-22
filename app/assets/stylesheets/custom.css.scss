@@ -108,6 +108,10 @@ h1 {
 
 }
 
+.lead-sections{
+  font-size: 1.2em;
+}
+
 /* Annar hluti */
 
 #sec2 {
@@ -262,6 +266,13 @@ h1 {
 
 }
 
+.logo-sections{
+  
+  
+  margin: 0, auto;
+  width: 300 px;
+  height: 300px;
+}
 /* Annar hluti */
 
 #sec2 {
@@ -286,14 +297,15 @@ height: 50%;
   margin-bottom: 15px;
 }
 
-.featurette-item > h3 {
+.featurette-item > h3  {
+  margin: 0 20px;
   border: 3px solid #ffffff;
   border-radius: 50%;
   display: inline-block;
   font-size: 56px;
-  width: 140px;
-  height: 140px;
-  line-height: 136px;
+  width: 200px;
+  height: 200px;
+  line-height: 180px;
   vertical-align: middle; 
   text-align: center;
 }
