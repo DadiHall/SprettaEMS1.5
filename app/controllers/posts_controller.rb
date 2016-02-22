@@ -5,9 +5,13 @@ class PostsController < ApplicationController
 	
 	def index
 		@posts = Post.all.order('created_at DESC')
+		@posts = Post.includes(:user)
+		
+
 	end
 
 	def show
+		
 		
 	end
 
@@ -17,7 +21,8 @@ class PostsController < ApplicationController
 
 	def create
 		@post = current_user.posts.build(post_params)
-
+		@post.user_id = current_user.id
+		
 		if @post.save
 			redirect_to @post
 		else

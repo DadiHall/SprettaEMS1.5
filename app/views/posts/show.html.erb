@@ -1,14 +1,19 @@
-<h1><%= @post.title %></h1>
-<p><%= @post.content %></p>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="well">
+			<h3><%= @post.title %></h3>
+			<p><%= @post.content %></p>
+		</div>	
+		<!-- comments -->
 
-<!-- comments -->
+		<h5>Fjöldi svara: <%= @post.comments.count %></h5>
+			<%= render @post.comments %>
+		<h4> Reply to thread </h4>
+			<%= render 'comments/form' %>
 
-<h5><%= @post.comments.count %></h5>
-	<%= render @post.comments %>
-<h3> Reply to thread </h3>
-	<%= render 'comments/form' %>
-
-<%= link_to "Edit", edit_post_path(@post) %>
-<%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure you want to do this?
-	"} %>
-	<%= link_to "Back", posts_path %>
+		<%= link_to "Edit", edit_post_path(@post) %>
+		<%= link_to "Delete", post_path(@post), method: :delete, data: {confirm: "Are you sure you want to do this?
+			"} %>
+			<%= link_to "Back", posts_path %>
+	</div>
+</div>	

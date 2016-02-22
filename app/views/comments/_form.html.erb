@@ -1,6 +1,11 @@
-<%= form_for([@post, @post.comments.build]) do |f| %>
-	<%= f.label :comment %>
-	<%= f.text_area :comment %>
+<div class="row">
+	
+		<%= form_for([@post, @post.comments.build]) do |f| %>
+		<div class="col-md-6 form-horizontal">
+			<%= f.label :comment, class: 'form-group' %>
+			<%= f.text_area :comment, class: 'form-control', rows: '3' %>
 
-	<%= f.submit %>
-<% end %>
+			<%= f.submit class: 'btn btn-primary btn btn-xs' %>
+		<% end %>
+	</div>	
+</div>

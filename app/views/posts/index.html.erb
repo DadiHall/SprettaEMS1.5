@@ -1,7 +1,15 @@
-<% @posts.each do |post| %>
-<h2><%= link_to post.title, post %></h2>
-<p>Published at <%= time_ago_in_words(post.created_at ) %></p>
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+	<% @posts.each do |post| %>
+		<div class="well">
+		<h2><%= link_to post.title, post %></h2>
+		<small>Fjöldi svara: <%= post.comments.count %></small>
 
-<% end %>
+		<p><%= truncate post.content, length: 160  %> <%= link_to 'lesa meira', post %>  </p>
+			<small><p>Published at <%= time_ago_in_words(post.created_at ) %> By <%= post.user.name %></p></small>
+					</div>	
+	<% end %>
 
-<%= link_to 'New post', new_post_path %>
+	<%= link_to 'Senda Spurningu', new_post_path %>
+	</div>
+</div>

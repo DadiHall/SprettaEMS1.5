@@ -1,4 +1,11 @@
-<p><%= comment.comment %></p>
-<p><%= comment.user.name %></p>
-<%= link_to "Delete REply", [comment.post, comment], method: :delete, data: {confirm: "Are you sure"} %>
-<%= link_to "Edit", edit_post_comment_path(comment.post, comment) %>
+<div class="row">
+	<div class="col-md-6">
+		<div class="well">
+			<p class="comment"><%= comment.comment %></p>
+			<p class="comment-user">Svarað af: <%= link_to comment.user.name %></p>
+		
+				<small><%= link_to "Eyða Svari", [comment.post, comment], method: :delete, data: {confirm: "Are you sure"} %></small> |
+				<small><%= link_to "Uppfæra svar", edit_post_comment_path(comment.post, comment) %></small>
+		</div>
+	</div>
+</div>
