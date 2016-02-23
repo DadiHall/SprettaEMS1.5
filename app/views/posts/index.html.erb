@@ -1,15 +1,12 @@
 <div class="row">
 	<div class="col-md-6 col-md-offset-3">
-	<% @posts.each do |post| %>
-		<div class="well">
-		<h2><%= link_to post.title, post %></h2>
-		<small>Fjöldi svara: <%= post.comments.count %></small>
+	<%= render ('post_part') %>
 
-		<p><%= truncate post.content, length: 160  %> <%= link_to 'lesa meira', post %>  </p>
-			<small><p>Published at <%= time_ago_in_words(post.created_at ) %> By <%= link_to post.user.name, post.user %></p></small>
-					</div>	
-	<% end %>
-
-	<%= link_to 'Senda Spurningu', new_post_path %>
+	<div class="col-md-3 well" id="tag_cloud">
+		<h3>Helstu merki</h3>
+			<%  tag_cloud Post.tag_counts, %w[css1 css2 css3 css4] do |tag, css_class| %>
+  			<%= link_to tag.name, tag_path(tag.name), class: css_class %>
+			
+			<%end%>
 	</div>
 </div>

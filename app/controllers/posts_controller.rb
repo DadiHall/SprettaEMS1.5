@@ -1,12 +1,18 @@
 class PostsController < ApplicationController
 	before_action :find_post, only: [:show, :edit, :update, :destroy]
-	before_action :authenticate_user!, except: [:index, :show]
+	before_action :authenticate_user!, except: [:index, :show, :update]
 	before_filter :require_authorization, only: [:delete]
 
 	
 	def index
-		@posts = Post.all.order('created_at DESC')
-		@posts = Post.includes(:user)
+		 
+		if params[:tag]
+			@posts = Post.tagged_with(params[:tags])
+
+		else
+			@posts = Post.all.order('created_at DESC')
+			@posts = Post.includes(:user)
+		end
 		
 
 	end
@@ -57,11 +63,13 @@ class PostsController < ApplicationController
 		@post = Post.find(params[:id])
 	end
 	def post_params
-		params.require(:post).permit(:title, :content)
+		params.require(:post).permit(:title, :content, :tag_list, :tags)
 	end
 
 	def require_authorization
   		redirect_to :root unless current_user.posts.find_by_post_id(params[:id])
   		#Use the find_by to avoid the ActiveRecord::RecordNotFound and get a nil instead in case the question id doesn't belong to a question of the user
 	end
+
+	
 end

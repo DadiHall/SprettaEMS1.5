@@ -12,6 +12,9 @@ gem 'chartkick'
 gem 'groupdate'
 gem 'active_median'
 ######
+
+gem 'acts-as-taggable-on'
+
 #PaperClip for image upload
 
 gem 'paperclip', '~> 4.3', '>= 4.3.5'
