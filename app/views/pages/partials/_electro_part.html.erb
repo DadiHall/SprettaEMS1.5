@@ -1,0 +1,24 @@
+	<!-- KWst rafmagn/ mv.stöðug.  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">KWst á hvert stöðugildi</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= @electro_total_per_capita %>
+	  							</div>
+						</div>
+					</div>	
+
+					<!-- KWst rafmagn/ mv.fm2.  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">KWst mv. hvern m&sup2;</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= number_with_precision(@electro_total_per_m2.to_f, precision: 2)%> ,-kwst/m&sup2;
+	  							</div>
+						</div>
+					</div>	
+							

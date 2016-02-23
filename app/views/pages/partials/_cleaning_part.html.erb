@@ -1,0 +1,23 @@
+<!-- Lítrar mv. stöðugildi  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">Lítrar/stöðugildi</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= @cleaning_staff_ratio %> Lítrar
+	  							</div>
+						</div>
+					</div>	
+
+					<!-- lítrar / m2 byggingu.  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">Lítrar af ræstiefni fyrir hvern m&sup2; húsnæðis.</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= number_with_precision(@cleaning_building_ratio, precision: 2)%> l/m&sup2;
+	  							</div>
+						</div>
+					</div>	

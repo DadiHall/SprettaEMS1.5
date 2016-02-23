@@ -33,30 +33,7 @@
 
  			 <div class="panel-body">
 				<div class="row">
-					<!-- Magn pappírs yfir allan rekstur-->
-					<div class=" col-md-3">
-  						<div class="panel panel-info">
-  							<div class="panel-heading">
-   							 <h3 class="panel-title">Pappírs magn fyrir hvert stöðugildi</h3>
-  							</div>
-  								<div class="panel-body text-center">
-    								<%= @paper_weight_per_capita %> -Kg.
-  								</div>
-						</div>
-					</div>	
-					<!-- Fjöldi trjáa sem er fórnað f. pappírinn -->
-  					<div class=" col-md-3">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Fjöldi tjráa mv. Pappírsnotkun.</h3>
-	  						</div>
-	  							<div class="panel-body">
-	    							<%= @paper_tree_ratio.to_f * 15 %> - Tré.
-	  							</div>
-						</div>
-					</div>
-					
-				</div>
+					<%= render 'pages/partials/paper_part' %>
 				
 			</div>	
 			</div>	
@@ -71,30 +48,7 @@
  			 <div class="panel-body">
 			
 				<div class="row">		
-					<!-- KWst rafmagn/ mv.stöðug.  -->
-					<div class=" col-md-3">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">KWst á hvert stöðugildi</h3>
-	  						</div>
-	  							<div class="panel-body">
-	    							<%= @electro_total_per_capita %>
-	  							</div>
-						</div>
-					</div>	
-
-					<!-- KWst rafmagn/ mv.fm2.  -->
-					<div class=" col-md-3">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">KWst mv. hvern m&sup2;</h3>
-	  						</div>
-	  							<div class="panel-body">
-	    							<%= number_with_precision(@electro_total_per_m2.to_f, precision: 2)%> ,-kwst/m&sup2;
-	  							</div>
-						</div>
-					</div>	
-							
+				<%= render 'pages/partials/electro_part' %>
 						
          		</div>	
          		</div>
@@ -110,29 +64,7 @@
  			 	<div class="panel-body">
 			
 				<div class="row">		
-					<!-- Heitt vatn mv. stöðugildi  -->
-					<div class=" col-md-3">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">m&#179; á hvert stöðugildi</h3>
-	  						</div>
-	  							<div class="panel-body">
-	    							<%= @hwater_total_m3_per_capita %> m&#179; 
-	  							</div>
-						</div>
-					</div>	
-
-					<!-- m3 heitt vatn / m2 byggingu.  -->
-					<div class=" col-md-3">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">m&#179; heitt vatn fyrir hvern m&sup2; húsnæðis.</h3>
-	  						</div>
-	  							<div class="panel-body">
-	    							<%= number_with_precision(@hwater_m3_m2_ratio.to_f, precision: 2)%> m&#179;/m&sup2;
-	  							</div>
-						</div>
-					</div>	
+					<%= render 'pages/partials/hwater_part' %>
          		</div>
          	</div>		
     		</div>  		 
@@ -149,29 +81,7 @@
  			 	<div class="panel-body">
 			
 				<div class="row">		
-					<!-- Lítrar mv. stöðugildi  -->
-					<div class=" col-md-3">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Lítrar/stöðugildi</h3>
-	  						</div>
-	  							<div class="panel-body">
-	    							<%= @cleaning_staff_ratio %> Lítrar
-	  							</div>
-						</div>
-					</div>	
-
-					<!-- lítrar / m2 byggingu.  -->
-					<div class=" col-md-3">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Lítrar af ræstiefni fyrir hvern m&sup2; húsnæðis.</h3>
-	  						</div>
-	  							<div class="panel-body">
-	    							<%= number_with_precision(@cleaning_building_ratio, precision: 2)%> l/m&sup2;
-	  							</div>
-						</div>
-					</div>	
+					<%= render 'pages/partials/cleaning_part' %>
          		</div>
          	</div>		
     		</div>  		 
@@ -188,34 +98,12 @@
  			 	<div class="panel-body">
 			
 				<div class="row">		
-					<!-- Lítrar mv. stöðugildi  -->
-					<div class=" col-md-3">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Lítrar/stöðugildi</h3>
-	  						</div>
-	  							<div class="panel-body">
-	    							<%= @cleaning_staff_ratio %> Lítrar
-	  							</div>
-						</div>
-					</div>	
-
-					<!-- lítrar / m2 byggingu.  -->
-					<div class=" col-md-3">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Lítrar af ræstiefni fyrir hvern m&sup2; húsnæðis.</h3>
-	  						</div>
-	  							<div class="panel-body">
-	    							<%= number_with_precision(@cleaning_building_ratio, precision: 2)%> l/m&sup2;
-	  							</div>
-						</div>
-					</div>	
+					<%= render 'pages/partials/travel_part' %>
          		</div>
          	</div>		
     		</div>  		 
 		</div>
-		<!-- Hreingerningarefni Panel Endar -->
+		<!-- Ferðir Panel Endar -->
 	</div>	
 	</div> <!-- Panel body end -->
 </div>	<!-- Panel end -->

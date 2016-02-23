@@ -1,0 +1,24 @@
+<!-- Magn pappírs yfir allan rekstur-->
+					<div class=" col-md-3">
+  						<div class="panel panel-info">
+  							<div class="panel-heading">
+   							 <h3 class="panel-title">Pappírs magn fyrir hvert stöðugildi</h3>
+  							</div>
+  								<div class="panel-body text-center">
+    								<%= @paper_weight_per_capita %> -Kg.
+  								</div>
+						</div>
+					</div>	
+					<!-- Fjöldi trjáa sem er fórnað f. pappírinn -->
+  					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">Fjöldi tjráa mv. Pappírsnotkun.</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= @paper_tree_ratio.to_f * 15 %> - Tré.
+	  							</div>
+						</div>
+					</div>
+					
+				</div>

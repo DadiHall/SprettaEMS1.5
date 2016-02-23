@@ -1,0 +1,23 @@
+<!-- Heitt vatn mv. stöðugildi  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">m&#179; á hvert stöðugildi</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= @hwater_total_m3_per_capita %> m&#179; 
+	  							</div>
+						</div>
+					</div>	
+
+					<!-- m3 heitt vatn / m2 byggingu.  -->
+					<div class=" col-md-3">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h3 class="panel-title">m&#179; heitt vatn fyrir hvern m&sup2; húsnæðis.</h3>
+	  						</div>
+	  							<div class="panel-body">
+	    							<%= number_with_precision(@hwater_m3_m2_ratio.to_f, precision: 2)%> m&#179;/m&sup2;
+	  							</div>
+						</div>
+					</div>	
