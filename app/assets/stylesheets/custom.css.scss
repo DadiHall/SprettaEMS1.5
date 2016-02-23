@@ -1,3 +1,5 @@
+
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -23,6 +25,17 @@ h1,h2,h3,h4,.lead,.btn,.navbar a {
 
 h1 {
   font-size:50px;
+}
+
+/* Navbar */
+
+.navbar-nav{
+  float: none;
+  
+}
+.navbar{
+  background-color: #fff;
+  border-bottom: solid 1px #eeeeee;
 }
 
 /* Header CSS */
@@ -88,167 +101,35 @@ h1 {
 
 
 /* Section 1 Css */
-
-.blurb {
-  padding: 100px 0;
-  background-color:#fefefe;
-}
-
-/* Section 1 end */
-
-/* viðskiptavina section */
-
-.box{
-	align:center;
-	width: 100px;
-	height: 100px;
-	border: 2px solid black;
-	border-radius: 100%;
-	background-color: #eaeaea;
-
-}
 
 .lead-sections{
-  font-size: 1.2em;
+  margin-top: 50px;
+  margin-bottom: 70px;
+  line-height: 1.5em;
+
 }
 
-/* Annar hluti */
+#sec1 h2{
+margin-top: 65px;
 
-#sec2 {
-
-height: 50%;
-  background: #f68076 url('recycle2.jpg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-
-	
 }
 
-.featurette {
-  background: #222334;
-  padding: 50px 0;
-  color: #ffffff;
-}
-
-.featurette-item {
-  margin-bottom: 15px;
-}
-
-.featurette-item > h3 {
-  border: 3px solid #ffffff;
-  border-radius: 50%;
+image_tag{
+  margin: auto 0;
   display: inline-block;
-  font-size: 56px;
-  width: 140px;
-  height: 140px;
-  line-height: 136px;
-  vertical-align: middle; 
-  text-align: center;
-}
-
-.featurette-item > i:hover {
-  font-size: 68px;
-}
-
-#sec2 .panel {
-  background-color:transparent;
-}
-
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
-
-
-html,
-body {
-  height: 100%;
-  width: 100%;
-  font-family:Arial,sans-serif;
-}
-
-/* fix bs3 horizontal scrollbar bug */
-.row { margin: 0; padding: 0 }
-
-
-/* use special fonts in certain elements */
-h1,h2,h3,h4,.lead,.btn,.navbar a {
-  text-transform:uppercase;
-  font-family:'Voltaire',Arial,sans-serif;
-  letter-spacing:2px;
-}
-
-h1 {
-  font-size:50px;
-}
-
-/* Header CSS */
-
-.vert {
   vertical-align: middle;
-  width:100%;
-  padding-top:5%;
-  text-align:center;
 }
 
-.header h1 {
-  font-size:80px;
-  -webkit-text-stroke: 1px rgba(10,10,10,0.1);
-  color:#431a6d;
-  color:#fff;
- margin: auto;
-
- margin-top: 20%;
-  text-transform:uppercase;
-}
-
-.header .lead {
-  color:#d46054;
-  font-size:25px;
-}
-
-.header {
-  height: 90%;
-  background: #f68076 url('recycle.jpg') no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-
+.logo-sections{
   
+ padding-left: 30%;
+
+ 
+  width: 120%;
+  height: 120%;
 }
-
-.alt {
-  background-color: #6E28C9; /* Þarf að breyta lit */
-}
-/*
-.alt .lead {
-  color: #3B0496;
-}*/
-
-.header .btn-lg {
-   font-size:18px;
-   border-color:#eeeeee;
-   padding:15px;
-   background-color:transparent;
-   color:#ffffff;
-   margin-bottom: 20%;
-}
-
-.header .btn-lg:hover {
-   background-color: rgba(10,10,10,0.3);
-   color:#eaeaea; /* Þarf að breyta lit */
-}
-
-
-/* Header Css Ends*/
-
-
-/* Section 1 Css */
-
 .blurb {
-  padding: 100px 0;
+  padding: 0 0 0 0;
   background-color:#fefefe;
 }
 
@@ -266,13 +147,12 @@ h1 {
 
 }
 
-.logo-sections{
-  
-  
-  margin: 0, auto;
-  width: 300 px;
-  height: 300px;
+#sec2 .panel {
+  background-color:transparent;
 }
+
+
+
 /* Annar hluti */
 
 #sec2 {
@@ -298,11 +178,12 @@ height: 50%;
 }
 
 .featurette-item > h3  {
+  background-color: rgba(10,10,10,0.3);
   margin: 0 20px;
-  border: 3px solid #ffffff;
+  border: 5px solid #d46054;;
   border-radius: 50%;
   display: inline-block;
-  font-size: 56px;
+  font-size: 70px;
   width: 200px;
   height: 200px;
   line-height: 180px;
@@ -314,14 +195,32 @@ height: 50%;
   font-size: 68px;
 }
 
-#sec2 .panel-heading {
+.running-total{
+  color: #d46054;
+  font-weight: strong;
+}
+
+#sec2 h1{
+  color: #d46054;
+  margin-bottom:40px;
+}
+
+
+/* section 3 */
+
+#sec3{
+  background-color: #fff;
+  
+
+}
+
+#sec3 .panel-heading {
   background-color:transparent;
 }
 
-#sec2 .panel-heading h2 {
+#sec3 .panel-heading h2 {
   font-size: 1em;
 }
-
 
 
 /* Device Session */

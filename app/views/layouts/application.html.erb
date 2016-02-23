@@ -11,46 +11,7 @@
 
 </head>
 <body>
-	<div class=" navbar navbar-fixed-top ">
-		<div class="container">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-          <span class="icon-bar"></span>
-        </button>
-        <%= link_to "SprettaEMS", root_path, class: 'navbar-brand' %>
-        <div class="navbar-collapse collapse navbar-responsive-collapse">
-          <ul class="nav navbar-nav">
-            <li><%= link_to "Um Sprettu", '#sec1' %></li>
-           
-            <li><%= link_to "Notendur", '#sec2'  %></li>
-            <li><%= link_to "Spurningar", posts_path  %></li>
-
-            <% if current_user %>  
-
-              <li><%= link_to "My Friends", my_friends_path %></li>
-              <li><%= link_to "Útskrá", destroy_user_session_path, method: :delete  %></li>
-              <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
-            <% else %>
-              <li><%= link_to "Nýskrá", new_user_registration_path %></li>
-              <li><%= link_to "Innskrá", new_user_session_path %></li>
-            <% end %> 
-              <li class="pull-right user-name"> <% if current_user && current_user %>
-                User:
-                <%unless current_user.profile.blank? %>
-                <%= current_user.profile.name %>
-                <% end %>
-                Staff:
-                <%unless current_user.profile.blank? %>
-                <%= current_user.profile.staff %>
-                <% end %>
-             <% end %>  
-              </li>    
-             
-          </ul>
-        </div>
-      </div>
-    </div>
+	<%= render 'layouts/navbar' %>
 
 
  <p class="notice"><%= notice %></p>
