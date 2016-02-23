@@ -6,7 +6,7 @@
 		<small>Fjöldi svara: <%= post.comments.count %></small>
 
 		<p><%= truncate post.content, length: 160  %> <%= link_to 'lesa meira', post %>  </p>
-			<small><p>Published at <%= time_ago_in_words(post.created_at ) %> By <%= post.user.name %></p></small>
+			<small><p>Published at <%= time_ago_in_words(post.created_at ) %> By <%= link_to post.user.name, post.user %></p></small>
 					</div>	
 	<% end %>
 

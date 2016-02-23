@@ -2,7 +2,7 @@
 	<div class="col-md-6">
 		<div class="well">
 			<p class="comment"><%= comment.comment %></p>
-			<p class="comment-user">Svarað af: <%= link_to comment.user.name %></p>
+			<p class="comment-user">Svarað af: <%= link_to comment.user.name, comment.user %></p>
 		
 				<small><%= link_to "Eyða Svari", [comment.post, comment], method: :delete, data: {confirm: "Are you sure"} %></small> |
 				<small><%= link_to "Uppfæra svar", edit_post_comment_path(comment.post, comment) %></small>
