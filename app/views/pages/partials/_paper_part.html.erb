@@ -21,4 +21,11 @@
 						</div>
 					</div>
 					
-				</div>
+					
+					<div class="col-md-3">
+		 				<%= line_chart [
+  							{name: "Paper", data: current_user.papers.map{|t| [t.date, t.paper_weight] }, 'interpolateNulls':true},
+  							{name: "EnvPaper", data: current_user.papers.map{|t| [t.date, t.env_paper_weight] }, 'interpolateNulls':true} ] %>
+  				
+					</div>
+			

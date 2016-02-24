@@ -1,0 +1,48 @@
+<div id="sec4">
+  <div class="container">
+      <div class="row">
+      		<div class="col-md-12 text-center">
+        <h1>Meðaltöl notenda</h1>
+      </div>
+    </div>
+    <div class="row liner">
+      <div class="col-md-3 text-center">
+        <div class="featurette-item">
+          <h3 class="running-total"><%= @all_users_paper_average.to_i %><small class="eining">kg</small></h3>
+          <h4>Pappír</h4>
+          <p>Eru notaðir af notendum Sprettu.</p>
+        </div>
+      </div>
+      <div class="col-md-3 text-center">
+        <div class="featurette-item">
+          <h3 class="running-total"><%= number_with_precision(@all_users_tree_average * 15, precision: 2)  %></h3>
+          <h4>Tré</h4>
+          <p>eru notuð að meðaltali í þann pappír sem skráðir notendur Sprettu nota.</p>
+        </div>
+      </div>
+      <div class="col-md-3 text-center">
+        <div class="featurette-item">
+          <h3 class="running-total"><%= @all_users_power_average.to_i %><small class="eining">kwst</small></h3>
+          <h4>Rafmagn</h4>
+          <p>Rafmagnsnotkun að meðaltali hjá notendum Sprettu </p>
+        </div>
+      </div>
+      <div class="col-md-3 text-center">
+        <div class="featurette-item">
+          <h3 class="running-total"><%= @all_users_hwater_average.to_i %><small class="eining">m&#179;</small></h3>
+          <h4>Heitt vatn</h4>
+          <p>Meðaltals Heita vatns notkun notenda Sprettu</p>
+        </div>
+      </div>
+       </div>
+      <div class="row liner">
+        <div class="col-md-3 text-center">
+        <div class="featurette-item">
+          <h3 class="running-total"><%= @all_users_paper_average.to_i %><small class="eining">kg</small></h3>
+          <h4>Pappír</h4>
+          <p>Eru notaðir af notendum Sprettu.</p>
+        </div>
+      </div>
+      </div>
+   
+</div>      

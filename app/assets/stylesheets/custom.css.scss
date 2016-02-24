@@ -27,6 +27,12 @@ h1 {
   font-size:50px;
 }
 
+.liner{
+  border-bottom: solid 1px #dadada;
+  padding: 40px 0 ;
+
+}
+
 /* Navbar */
 
 .navbar-nav{
@@ -168,7 +174,7 @@ height: 50%;
 }
 
 .featurette {
-  background: #222334;
+  background: #337ab7;
   padding: 50px 0;
   color: #ffffff;
 }
@@ -178,15 +184,15 @@ height: 50%;
 }
 
 .featurette-item > h3  {
-  background-color: rgba(10,10,10,0.3);
+  background-color: rgba(10,10,10,0.1);
   margin: 0 20px;
-  border: 5px solid #d46054;;
+  border: 5px solid #337ab7;
   border-radius: 50%;
   display: inline-block;
-  font-size: 70px;
-  width: 200px;
-  height: 200px;
-  line-height: 180px;
+  font-size: 40px;
+  width: 150px;
+  height: 150px;
+  line-height: 130px;
   vertical-align: middle; 
   text-align: center;
 }
@@ -196,10 +202,14 @@ height: 50%;
 }
 
 .running-total{
-  color: #d46054;
+  color: #337ab7;
   font-weight: strong;
 }
 
+.running-total .eining{
+  font-size: 0.3em;
+  color: #337ab7;
+}
 #sec2 h1{
   color: #d46054;
   margin-bottom:40px;
@@ -209,9 +219,17 @@ height: 50%;
 /* section 3 */
 
 #sec3{
-  background-color: #fff;
   
+  height: 80%;
+  background: #fff url('Recycling4.jpg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
 
+#sec3 h1{
+  color: #000;
 }
 
 #sec3 .panel-heading {
@@ -222,6 +240,13 @@ height: 50%;
   font-size: 1em;
 }
 
+
+
+/* section 4 */
+
+#sec4{
+  backround-color: #fff;
+}
 
 /* Device Session */
 
@@ -255,4 +280,9 @@ height: 50%;
 }
 
 
+/* USER SECTION */
 
+.left-side h2 img{
+  height: 7%;
+  width: 7%;
+}

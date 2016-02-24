@@ -1,28 +1,44 @@
+<div class="row ">
+  <div class="container">
+    <div class="col-md-8 well left-side">
+        <h2><%= image_tag current_user.profile.avatar.url %> <%= current_user.profile.name %></h2>
+        <p><small>Síðast Innskráð: <%=current_user.last_sign_in_at %></small></p>
+        <p>Fjöldi stöðugilda: <%=current_user.profile.staff %></p>
+        <h5>
+          <% if current_user.profile %>
+            <%= link_to "Uppfæra skráningu", edit_user_profile_path(current_user) %>
+            <%= link_to "Skoða skráningu", users_path(current_user)%>
+          <% else %>
+            <p>Create your profile so that you can share your info and follow other users. </p>
+            <%= link_to " Create your profile", new_user_profile_path(current_user), class: 'btn-primary btn-lg btn-block' %>
+          <% end %>
+        </h5>
+    </div>
+
+      <div class="col-md-4 well right-side">
+        <h3 class=" pull-right"> Notenda svæði </h3>
+
+
+
+      </div>
+
+  </div>
+</div>   
+
+
 <div class="row well">
 	
-		<div class="col-md-3">
-		 <%= line_chart [
-  				{name: "Paper", data: current_user.papers.map{|t| [t.date, t.paper_weight] }, 'interpolateNulls':true},
-  				{name: "EnvPaper", data: current_user.papers.map{|t| [t.date, t.env_paper_weight] }, 'interpolateNulls':true} ] %>
-  				
-	</div>
 
 	<div class="col-md-3">
 		 <%= line_chart [
   				{name: "KWST", data: current_user.electros.map{|t| [t.date, t.electricity_kwst] }, 'interpolateNulls':true},
   				{name: "Cost", data: current_user.electros.map{|t| [t.date, t.electricity_cost] }, 'interpolateNulls':true} ] %>
-  				
+  			 	
 	</div>
+  </div>
 </div>
 <div class="row">	
-<div class="col-md-8 col-md-offset-2">
-	<div class="panel-group" id="accordion">
-		<div class="panel panel-default">
-  			<div class="panel-heading">
-    			<h3 class="panel-title"> 
-    				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseAll"><span class="glyphicon glyphicon-minus"></span><%= current_user.name %>: Helstu tölur yfir auðlindanotkun</a></h3>
-  			</div>
- 			 <div class="panel-body">
+
 			
 			<div class="panel panel-default">
   				<div class="panel-heading">
@@ -106,8 +122,7 @@
 		<!-- Ferðir Panel Endar -->
 	</div>	
 	</div> <!-- Panel body end -->
-</div>	<!-- Panel end -->
-</div> <!--Col Ends -->
+<!--Col Ends -->
 
 </div> <!-- row ends -->
 <script type="text/javascript">

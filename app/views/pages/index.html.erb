@@ -2,22 +2,7 @@
 		
 	<% if user_signed_in? %>
 <%= render 'user_total' %>
-<div class="row">
-	<% if user_signed_in? %>
-		<div class="col-md-4" >
-			<div class="well">
-				<h2 class="text-center">Your profile </h2>
-				<% if current_user.profile %>
-					<%= link_to "Edit yout profile", edit_user_profile_path(current_user), class: 'btn btn-primary btn-lg btn-block' %>
-					<%= link_to "View your profile", users_path(current_user), class: 'btn btn-primary btn-lg btn-block' %>
-				<% else %>
-					<p>Create your profile so that you can share your info and follow other users. </p>
-					<%= link_to " Create your profile", new_user_profile_path(current_user), class: 'btn-primary btn-lg btn-block' %>
-				<% end %>
-			</div>			
-		</div>
-	<% end %>	
-</div>			
+
 		
 
 	<% else %>
@@ -26,7 +11,7 @@
   			<div class="container">
     
     		<h1>Spretta</h1>
-     			 <p class="lead">Vettvangur fyrir umhverfisstjórn fyrirtækja</p>
+     			 <p class="lead">umhverfisstjórn fyrirtækja</p>
       		<div>&nbsp;</div>
       			<%= link_to "Nýskrá", new_user_registration_path, class: 'btn btn-default btn-lg' %>
   			</div>
@@ -44,7 +29,13 @@
 
 <%= render 'section3' %>
 		
+<!-- Fimmti fluti -->
+
+<%= render 'section5' %>
+
 	
+
+
 <!-- Fjórði Hluti -->
 
 <%= render 'section4' %>

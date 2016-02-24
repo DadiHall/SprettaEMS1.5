@@ -24,17 +24,7 @@
               <li class="pull-right"><%= link_to "Innskrá", new_user_session_path %></li>
            
             <% end %> 
-              <li class="pull-right user-name"> <% if current_user && current_user %>
-                User:
-                <%unless current_user.profile.blank? %>
-                <%= current_user.profile.name %>
-                <% end %>
-                Staff:
-                <%unless current_user.profile.blank? %>
-                <%= current_user.profile.staff %>
-                <% end %>
-             <% end %>  
-              </li>    
+              
              
           </ul>
         </div>
