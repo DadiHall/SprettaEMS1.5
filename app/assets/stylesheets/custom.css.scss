@@ -306,7 +306,7 @@ height: 50%;
 .push-uppl{
   margin: 10px 0;
 }
-
+/* --- má eyða ----- */
 .user-panel-body{
   background-color: #dedede;
 }
@@ -324,4 +324,16 @@ height: 50%;
  
   text-align: center;
 }
+/* ----- eyða ---- */
+
+tbody{
+  border-collapse:collapse;
+}
+
+tbody tr td{
+
+  font-weight: bold;
+  border: none;
+}
+
 

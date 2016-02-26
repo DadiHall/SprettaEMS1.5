@@ -8,7 +8,14 @@
 					</div>
 				<div class="row col-md-6"> <!-- efsta röð -->
 
-				<table class="table">
+				<table class="table table-hover">
+				  <thead class="thead-default">
+					<tr>
+						<th>Texti</th>
+						<th>Eining</th>
+					</tr>
+				  </thead>	
+				  <tbody>
 					<!-- heildar pappírs þyngd -->
 					<tr>
 						<td>Heildar pappírs þyngd</td>
@@ -40,7 +47,7 @@
 						<td>Magn co2 sem notuð tré hefðu bundið</td>
 						<td><%= number_with_precision(@paper_tree_co2_rescue, precision: 1).to_f  %> - Kg</td>
 					</tr>
-
+				  </tbody>	
 					
 				</table>
 					
