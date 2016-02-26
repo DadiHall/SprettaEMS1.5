@@ -7,61 +7,49 @@
 						</div>
 					</div>
 				<div class="row col-md-6"> <!-- efsta röð -->
-					<div class=" col-md-4">
-  						<div class="panel panel-info">
-  							<div class="panel-heading">
-   							 <h4 class="panel-title">Pappírs magn fyrir hvert stöðugildi</h4>
-  							</div>
-  								<div class="panel-body user-panel-body">
-    								<p><%= @paper_weight_per_capita %><small class="eining"> - Kg.</small></p>
-  								</div>
-						</div>
-					</div>	
+
+				<table class="table">
+					<!-- heildar pappírs þyngd -->
+					<tr>
+						<td>Heildar pappírs þyngd</td>
+						<td><%= @paper_weight_total.to_i %> - Kg</td>
+					</tr>
+					<!-- Pappírs þyngd f. hvert stöðugildi -->
+					<tr>
+						<td>Pappírs magn fyrir hvert stöðugildi</td>
+						<td><%= @paper_weight_per_capita %> - Kg</td>
+					</tr>
+
+					<tr>
+						<td>Hlutfall umhverfisvæns pappírs</td>
+						<td><%= number_with_precision(@env_paper_ratio, precision: 2).to_f%> - %</td>
+					</tr>
 
 					<!-- Fjöldi trjáa sem er fórnað f. pappírinn -->
-  					<div class=" col-md-4">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h4 class="panel-title">Fjöldi tjráa mv. Pappírsnotkun.</h4>
-	  						</div>
-	  							<div class="panel-body user-panel-body">
-	    							<p><%= @paper_tree_ratio.to_f %><small class="eining"> Tré.</small></p>
-	  							</div>
-						</div>
-					</div>
+					<tr>
+						<td></td>
+						<!-- tómur þessi, hahaha -->
+						<td></td>
+					</tr>
+					<tr>
+						<td>Fjöldi tjráa mv. Pappírsnotkun.</td>
+						<td><%= @paper_tree_ratio.to_f %> - Tré</td>
+					</tr>
 
-					<div class=" col-md-4">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h4 class="panel-title">Heildar pappírs þyngd</h4>
-	  						</div>
-	  							<div class="panel-body user-panel-body">
-	    							<p><%= @paper_weight_total.to_i %><small class="eining"> Kg.</small></p>
-	  							</div>
-						</div>
-					</div>
+					<tr>
+						<td>Magn co2 sem notuð tré hefðu bundið</td>
+						<td><%= number_with_precision(@paper_tree_co2_rescue, precision: 1).to_f  %> - Kg</td>
+					</tr>
 
-					<div class=" col-md-4">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h4 class="panel-title">Magn co2 sem notuð tré hefðu bundið</h4>
-	  						</div>
-	  							<div class="panel-body user-panel-body">
-	    							<p><%= number_with_precision(@paper_tree_co2_rescue, precision: 1).to_f %><small class="eining"> Kg</small></p>
-	  							</div>
-						</div>
-					</div>
+					
+				</table>
+					
 
-					<div class=" col-md-4">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h4 class="panel-title">Hlutfall umhverfisvæns pappírs</h4>
-	  						</div>
-	  							<div class="panel-body user-panel-body">
-	    							<p><%=  number_with_precision(@env_paper_ratio, precision: 2).to_f %> <small class="eining"> %</small></p>
-	  							</div>
-						</div>
-					</div>
+  				
+
+					
+					
+
 					</div>	<!-- eftri r-ð endar -->
 					<div class="row col-md-6">
 						<div class="col-md-8">
