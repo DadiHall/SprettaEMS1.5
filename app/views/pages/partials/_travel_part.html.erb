@@ -1,93 +1,137 @@
-	<!-- Co2 losun v. bílferða -->
-					<div class=" col-md-3">
+			<div class="container">
+					<div class="row well push-uppl-well">
+						<div class="col-md-8 col-md-ofset-2 push-uppl">
+							Flokkur síðast uppfærður:
+							<%= current_user.transports(:updated_at).to_s  %>
+						</div>
+					</div>
+				<div class="row col-md-6"> <!-- efsta röð -->	
+					<!-- Co2 losun v. bílferða -->
+					<div class=" col-md-4">
 	  					<div class="panel panel-info">
 	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Heildar Co2 losun Vegna bílferða</h3>
+	   							 <h4 class="panel-title">Heildar Co2 losun Vegna bílferða</h4>
 	  						</div>
-	  							<div class="panel-body">
-	    							<%= number_with_precision(@transport_co2_km.to_f,  precision: 2) %> Kg
+	  							<div class="panel-body user-panel-body">
+	    							<p><%= number_with_precision(@transport_co2_km.to_f,  precision: 2) %><small class="eining"> Kg.</small></p>
 	  							</div>
 						</div>
 					</div>	
 
 					<!-- Co2 Losun v. bílferða Staff_ratio  -->
-					<div class=" col-md-3">
+					<div class=" col-md-4">
 	  					<div class="panel panel-info">
 	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Heildar Co2 losun vegna bílferða m.v. hvert stöðugildi</h3>
+	   							 <h4 class="panel-title">Heildar Co2 losun vegna bílferða m.v. hvert stöðugildi</h4>
 	  						</div>
-	  							<div class="panel-body">
-	    							<%=  number_with_precision(@transport_co2_km_staff_ratio.to_f,  precision: 3) %> Kg
+	  							<div class="panel-body user-panel-body">
+	    							<p><%=  number_with_precision(@transport_co2_km_staff_ratio.to_f,  precision: 2) %><small class="eining"> Kg.</small></p>
 	  							</div>
 						</div>
 					</div>	
 						<!-- Km fjöldi v. bílferða Staff_ratio  -->
-					<div class=" col-md-3">
+					<div class=" col-md-4">
 	  					<div class="panel panel-info">
 	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Heildar Km fjöldi vegna bílferða fyrir hvert stöðugildi</h3>
+	   							 <h4 class="panel-title">Heildar Km fjöldi vegna bílferða fyrir hvert stöðugildi</h4>
 	  						</div>
-	  							<div class="panel-body">
-	    							<%=  number_with_precision( @transport_km_staff_ratio.to_f,  precision: 2) %> Km
+	  							<div class="panel-body user-panel-body">
+	    							<p><%=  number_with_precision( @transport_km_staff_ratio.to_f,  precision: 2) %><small class="eining"> Km.</small></p>
 	  							</div>
 						</div>
 					</div>	
 					<!-- Km fjöldi v. bílferða  -->
-					<div class=" col-md-3">
+					<div class=" col-md-4">
 	  					<div class="panel panel-info">
 	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Heildar Km fjöldi vegna bílferða </h3>
+	   							 <h4 class="panel-title">Heildar Km fjöldi vegna bílferða </h4>
 	  						</div>
-	  							<div class="panel-body">
-	    							<%=  number_with_precision( @transport_km.to_f,  precision: 2) %> Km
+	  							<div class="panel-body user-panel-body">
+	    							<p><%=  number_with_precision( @transport_km.to_f,  precision: 2) %><small class="eining"> Km</small></p>
 	  							</div>
 						</div>
 					</div>	
-					</div> <!-- row -->
-					<div class="row">
+					 
+				
+					
 					<!-- Co2 losun v. Flugferða  -->
-					<div class=" col-md-3">
+					<div class=" col-md-4">
 	  					<div class="panel panel-info">
 	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Heildar Co2 losun vegna flugferða </h3>
+	   							 <h4 class="panel-title">Heildar Co2 losun vegna flugferða </h4>
 	  						</div>
-	  							<div class="panel-body">
-	    							<%=  @transport_flight_co2 %> Kg
+	  							<div class="panel-body user-panel-body">
+	    							<p><%=  @transport_flight_co2 %> <small class="eining"> Kg</small></p>
 	  							</div>
 						</div>
 					</div>	
 
 					<!-- Co2 losun v. Flugferða á staff member  -->
-					<div class=" col-md-3">
+					<div class=" col-md-4">
 	  					<div class="panel panel-info">
 	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Heildar Co2 losun vegna flugferða f. hvern starfsmann </h3>
+	   							 <h4 class="panel-title">Heildar Co2 losun vegna flugferða f. hvern starfsmann </h4>
 	  						</div>
-	  							<div class="panel-body">
-	    							<%=  @transport_flight_co2_staff_ratio %> Kg
+	  							<div class="panel-body user-panel-body">
+	    							<p><%=  @transport_flight_co2_staff_ratio %><small class="eining"> Kg</small></p>
 	  							</div>
 						</div>
 					</div>	
 					<!-- Fjöldi Km f. flugferðis -->
-					<div class=" col-md-3">
+					<div class=" col-md-4">
 	  					<div class="panel panel-info">
 	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Heildar km vegna flugferða </h3>
+	   							 <h4 class="panel-title">Heildar km vegna flugferða </h4>
 	  						</div>
-	  							<div class="panel-body">
-	    							<%=  @transport_flight_km %> Km
+	  							<div class="panel-body user-panel-body">
+	    							<p><%=  @transport_flight_km %><small class="eining"> Km</small></p>
 	  							</div>
 						</div>
 					</div>	
 
 					<!-- Fjöldi Km f. flugferðis f. hvern starfsmann -->
-					<div class=" col-md-3">
+					<div class=" col-md-4">
 	  					<div class="panel panel-info">
 	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Heildar km vegna flugferða f. hvert stöðugildi </h3>
+	   							 <h4 class="panel-title">Heildar km vegna flugferða f. hvert stöðugildi </h4>
 	  						</div>
-	  							<div class="panel-body">
-	    							<%=  @transport_flight_km_staff_ratio %> Km
+	  							<div class="panel-body user-panel-body">
+	    							<p><%=  @transport_flight_km_staff_ratio %><small class="eining"> Km</small></p>
 	  							</div>
 						</div>
+				
 					</div>	
+
+					<div class=" col-md-4">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h4 class="panel-title">Heildar losun Co2 vegna ferða </h4>
+	  						</div>
+	  							<div class="panel-body user-panel-body">
+	    							<p><%=  @co2_due_to_transport %><small class="eining"> co2</small></p>
+	  							</div>
+						</div>
+				
+					</div>	
+
+					<div class=" col-md-4">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h4 class="panel-title">Tré sem þarf til að Co2 jafna ferðir </h4>
+	  						</div>
+	  							<div class="panel-body user-panel-body">
+	    							<p><%=  @tree_count_rescue.to_i %><small class="eining"> Tré</small></p>
+	  							</div>
+						</div>
+				
+					</div>	
+				</div> <!-- row -->
+
+				<div class="row col-md-6">
+					<div class="col-md-8">
+		 					<%= line_chart [
+  								{name: "Bílferðir Co2 Losun", data: current_user.transports.map{|t| [t.created_at, (t.transport_km * (0.1404)).to_i] }, 'interpolateNulls':true}, {name: "Flugferðir Co2 Losun", data: current_user.transports.map{|t| [t.created_at, (t.transport_flight_km * (0.1722)).to_i] }, 'interpolateNulls':true} ] %>
+  				
+						</div>
+				</div>	
+			</div>		

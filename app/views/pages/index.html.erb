@@ -11,7 +11,7 @@
   			<div class="container">
     
     		<h1>Spretta</h1>
-     			 <p class="lead">umhverfisstjórn fyrirtækja</p>
+     			 <p class="lead">umhverfisstjórn</p>
       		<div>&nbsp;</div>
       			<%= link_to "Nýskrá", new_user_registration_path, class: 'btn btn-default btn-lg' %>
   			</div>
@@ -44,33 +44,34 @@
   
   <div class="row">
       <div class="col-md-6 col-md-offset-3 text-center">
-        <h3>Smashing Heading</h3>
+        <h3>Endilega hafðu samband</h3>
         <br>
       </div>
   </div>
   
   <div class="row">
-    <div class="col-sm-4 col-sm-offset-2">
-         <div class="panel panel-default">
-         <div class="panel-heading text-center"><h2><i class="icon-chevron-left"></i> Innskráning</h2></div>
-         <div class="panel-body text-center">Með því að skrá fyrirtækið þitt í Sprettu verður það hluti af ört stækkandi samfélagi samfélagslega ábyrgra fyrirtækja og stofnana. 
-            <div class="row">&nbsp;</div>
-          <%= link_to "Notendur", users_path, class: 'btn btn-primary' %>
-          </div>
-         </div>
- 	</div>
-    <div class="col-sm-4">
-         <div class="panel panel-default">
-         <div class="panel-heading text-center"><h2>Right <i class="icon-chevron-right"></i></h2></div>
-         <div class="panel-body text-center">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis pharetra varius quam sit amet vulputate. 
-          Quisque mauris augue, molestie tincidunt condimentum vitae, gravida a libero. Aenean sit amet felis 
-          dolor, in sagittis nisi. Sed ac orci quis tortor imperdiet venenatis. Duis elementum auctor accumsan. 
-          Aliquam in felis sit.
-           <div class="row">&nbsp;</div>
-          <button class="btn btn-lg btn-primary btn-block">Sign Up</button> 
-           
-          </div>
-         </div>
+    <div class="container">
+      <div class="col-md-8 col-md-offset-4">
+
+
+      <form>
+        Nafn:<br>
+        <input type="text" name="firstname"><br>
+        Eftirnafn:<br>
+        <input type="text" name="lastname"><br>
+        <br>
+        Nafn Fyrirtækis/stofnunar:<br>
+        <input type="text" name="firm_name"><br>
+        Póstfang: <br>
+        <input type="email" name="email"><br>
+        <br>
+        Skilaboð:<br>
+        <textarea rows="6" cols="50"></textarea><br>
+        <buttton class="btn btn-default btn-xs">Senda</buttton>
+
+
+      </form>
+    </div>
  	</div>
   </div>
 </div>

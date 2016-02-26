@@ -242,11 +242,18 @@ height: 50%;
 
 
 
-/* section 4 */
+/* section 5 */
 
-#sec4{
-  backround-color: #fff;
-}
+#sec5 {
+  height: 80%;
+  background:  #fff url('White.png') no-repeat center center fixed ;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+
+  }
+
 
 /* Device Session */
 
@@ -286,3 +293,35 @@ height: 50%;
   height: 7%;
   width: 7%;
 }
+
+/* Panels in user section */
+
+.panel-heading h4.panel-title  {
+  text-transform: capitalize;
+  font-size: .8em;
+}
+.push-uppl-well{
+  margin-bottom: 20px;
+}
+.push-uppl{
+  margin: 10px 0;
+}
+
+.user-panel-body{
+  background-color: #dedede;
+}
+
+.user-panel-body p{
+  font-size: 1.8em;
+  font-weight: bold;
+  text-align: center;
+  color: #222222;
+  line-height: 1.8em;
+}
+
+.user-panel-body p .eining{
+  font-size: .5em;
+ 
+  text-align: center;
+}
+

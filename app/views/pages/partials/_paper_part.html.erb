@@ -1,31 +1,83 @@
 <!-- Magn pappírs yfir allan rekstur-->
-					<div class=" col-md-3">
+		<div class="container">
+					<div class="row well push-uppl-well">
+						<div class="col-md-8 col-md-ofset-2 push-uppl">
+							Flokkur síðast uppfærður:
+							<%= current_user.papers(:updated_at).to_s  %>
+						</div>
+					</div>
+				<div class="row col-md-6"> <!-- efsta röð -->
+					<div class=" col-md-4">
   						<div class="panel panel-info">
   							<div class="panel-heading">
-   							 <h3 class="panel-title">Pappírs magn fyrir hvert stöðugildi</h3>
+   							 <h4 class="panel-title">Pappírs magn fyrir hvert stöðugildi</h4>
   							</div>
-  								<div class="panel-body text-center">
-    								<%= @paper_weight_per_capita %> -Kg.
+  								<div class="panel-body user-panel-body">
+    								<p><%= @paper_weight_per_capita %><small class="eining"> - Kg.</small></p>
   								</div>
 						</div>
 					</div>	
+
 					<!-- Fjöldi trjáa sem er fórnað f. pappírinn -->
-  					<div class=" col-md-3">
+  					<div class=" col-md-4">
 	  					<div class="panel panel-info">
 	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Fjöldi tjráa mv. Pappírsnotkun.</h3>
+	   							 <h4 class="panel-title">Fjöldi tjráa mv. Pappírsnotkun.</h4>
 	  						</div>
-	  							<div class="panel-body">
-	    							<%= @paper_tree_ratio.to_f * 15 %> - Tré.
+	  							<div class="panel-body user-panel-body">
+	    							<p><%= @paper_tree_ratio.to_f %><small class="eining"> Tré.</small></p>
 	  							</div>
 						</div>
 					</div>
-					
-					
-					<div class="col-md-3">
-		 				<%= line_chart [
-  							{name: "Paper", data: current_user.papers.map{|t| [t.date, t.paper_weight] }, 'interpolateNulls':true},
-  							{name: "EnvPaper", data: current_user.papers.map{|t| [t.date, t.env_paper_weight] }, 'interpolateNulls':true} ] %>
-  				
+
+					<div class=" col-md-4">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h4 class="panel-title">Heildar pappírs þyngd</h4>
+	  						</div>
+	  							<div class="panel-body user-panel-body">
+	    							<p><%= @paper_weight_total.to_i %><small class="eining"> Kg.</small></p>
+	  							</div>
+						</div>
 					</div>
-			
+
+					<div class=" col-md-4">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h4 class="panel-title">Magn co2 sem notuð tré hefðu bundið</h4>
+	  						</div>
+	  							<div class="panel-body user-panel-body">
+	    							<p><%= number_with_precision(@paper_tree_co2_rescue, precision: 1).to_f %><small class="eining"> Kg</small></p>
+	  							</div>
+						</div>
+					</div>
+
+					<div class=" col-md-4">
+	  					<div class="panel panel-info">
+	  						<div class="panel-heading">
+	   							 <h4 class="panel-title">Hlutfall umhverfisvæns pappírs</h4>
+	  						</div>
+	  							<div class="panel-body user-panel-body">
+	    							<p><%=  number_with_precision(@env_paper_ratio, precision: 2).to_f %> <small class="eining"> %</small></p>
+	  							</div>
+						</div>
+					</div>
+					</div>	<!-- eftri r-ð endar -->
+					<div class="row col-md-6">
+						<div class="col-md-8">
+		 					<%= line_chart [
+  								{name: "Paper", data: current_user.papers.map{|t| [t.date, t.paper_weight] }, 'interpolateNulls':true},
+  								{name: "EnvPaper", data: current_user.papers.map{|t| [t.date, t.env_paper_weight] }, 'interpolateNulls':true} ] %>
+  				
+						</div>
+						
+					</div>	
+				
+			<div class="col-md-8">
+		 					<%= column_chart [
+  								{name: "Paper", data: current_user.papers.map{|t| [t.paper_type, t.paper_weight] }, 'interpolateNulls':true},
+  								{name: "EnvPaper", data: current_user.papers.map{|t| [t.paper_type, t.env_paper_weight ] }, 'interpolateNulls':true} ] %>
+  				
+						</div>
+					
+		</div>	

@@ -17,7 +17,12 @@ class ApplicationController < ActionController::Base
     #PAppir og Tre
    unless current_user.profile.blank? 
         #Pappírinn
+           @paper_weight_total = current_user.papers.sum(:paper_weight) 
            @paper_weight_per_capita = current_user.papers.sum(:paper_weight) / (current_user.profile.staff) 
+
+           @env_paper_weight = current_user.papers.sum(:env_paper_weight)
+
+           @env_paper_ratio = (@env_paper_weight / @paper_weight_total) * 100
         #Rafmagn   
            @electro_total_per_capita = current_user.electros.sum(:electricity_kwst) / current_user.profile.staff 
            @electro_total_per_m2 = current_user.electros.sum(:electricity_kwst) / current_user.profile.building_size
@@ -38,14 +43,18 @@ class ApplicationController < ActionController::Base
           @transport_flight_km = current_user.transports.sum(:transport_flight_km).to_i 
           @transport_flight_km_staff_ratio = current_user.transports.sum(:transport_flight_km).to_i / current_user.profile.staff
 
+        #Co2 vegna ferðalaga
+          @co2_due_to_transport = (@transport_flight_co2 + @transport_co2_km) / 1000
+
+          @tree_count_rescue = @co2_due_to_transport * 492 
     else 
       flash[:notice] = "No profile exists for current user"
       redirect_to new_user_profile_path(current_user) if current_user and return
    end
  
 
-    @paper_tree_ratio = current_user.papers.sum(:paper_weight) / 1000 
-
+    @paper_tree_ratio = (current_user.papers.sum(:paper_weight) / 1000) *15 
+    @paper_tree_co2_rescue = @paper_tree_ratio * (0.492)
     # Rafmagnsreikningar
     #unless current_user.profile.blank?  
       #@electro_total_per_capita = Electro.sum(:electricity_kwst) / current_user.profile.staff 
@@ -67,13 +76,21 @@ class ApplicationController < ActionController::Base
   def all_users_avarge
   		# hér eru meðaltöl ýmisa breyta sótt í gagnagrunninn og birt á forsíðu
 
-  		@all_users_paper_average = Paper.average(:paper_weight) / User.count
+  		@all_users_paper_average = Paper.sum(:paper_weight) / User.count
 
   		@all_users_tree_average = Paper.average(:paper_weight) / 1000
 
-      @all_users_power_average = Electro.average(:electricity_kwst) / User.count
+      @all_users_power_average = Electro.sum(:electricity_kwst) / User.count
 
-      @all_users_hwater_average = Hwater.average(:hot_water_cubic_meter) / User.count
+      @all_users_hwater_average = Hwater.sum(:hot_water_cubic_meter) / User.count
+
+      @all_users_env_paper_avarge = Paper.sum(:env_paper_weight) / User.count
+
+      @all_users_transp_co2_average = Transport.sum(:transport_km) * (0.1404)
+
+      @all_users_transp_km_sum = Transport.sum(:transport_km)
+
+      @all_users_flight_co2 = Transport.sum(:transport_flight_km) * (0.1722) 
   end
 
 end

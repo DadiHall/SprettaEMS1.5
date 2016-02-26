@@ -1,8 +1,8 @@
-<div id="sec4">
+<div id="sec5">
   <div class="container">
       <div class="row">
       		<div class="col-md-12 text-center">
-        <h1>Meðaltöl notenda</h1>
+        <h1>Meðaltöl allra notenda Sprettu</h1>
       </div>
     </div>
     <div class="row liner">
@@ -22,9 +22,9 @@
       </div>
       <div class="col-md-3 text-center">
         <div class="featurette-item">
-          <h3 class="running-total"><%= @all_users_power_average.to_i %><small class="eining">kwst</small></h3>
-          <h4>Rafmagn</h4>
-          <p>Rafmagnsnotkun að meðaltali hjá notendum Sprettu </p>
+          <h3 class="running-total"><%= @all_users_env_paper_avarge.to_i %><small class="eining">kg</small></h3>
+          <h4>Umhverfisvænn Pappír</h4>
+          <p>Magn umhverfisvæns Pappírs </p>
         </div>
       </div>
       <div class="col-md-3 text-center">
@@ -35,14 +35,42 @@
         </div>
       </div>
        </div>
+
       <div class="row liner">
-        <div class="col-md-3 text-center">
+
+       <div class="col-md-3 text-center">
         <div class="featurette-item">
-          <h3 class="running-total"><%= @all_users_paper_average.to_i %><small class="eining">kg</small></h3>
-          <h4>Pappír</h4>
-          <p>Eru notaðir af notendum Sprettu.</p>
+          <h3 class="running-total"><%= @all_users_power_average.to_i %><small class="eining">kwst</small></h3>
+          <h4>Rafmagn</h4>
+          <p>Rafmagnsnotkun að meðaltali hjá notendum Sprettu </p>
         </div>
+       </div>
+
+       <div class="col-md-3 text-center">
+        <div class="featurette-item">
+          <h3 class="running-total"><%= @all_users_transp_co2_average.to_i %><small class="eining">kg</small></h3>
+          <h4>Co2</h4>
+          <p>losun á co2 frá bílferðum notenda</p>
+        </div>
+       </div>
+     
+
+      <div class="col-md-3 text-center">
+        <div class="featurette-item">
+          <h3 class="running-total"><%= @all_users_transp_km_sum.to_i %><small class="eining">km</small></h3>
+          <h4>vegalengd</h4>
+          <p>eknir km vegna rekstur notenda</p>
+        </div>
+       </div>
+
+       <div class="col-md-3 text-center">
+        <div class="featurette-item">
+          <h3 class="running-total"><%= @all_users_flight_co2.to_i %><small class="eining">kg</small></h3>
+          <h4>Co2</h4>
+          <p>Co2 vegna flugferða</p>
+        </div>
+       </div>
+
       </div>
-      </div>
-   
+   </div>
 </div>      
