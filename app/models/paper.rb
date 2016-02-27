@@ -2,8 +2,9 @@ class Paper < ActiveRecord::Base
 belongs_to :user	
 
 
+  PAPER_TYPES = [['Skrifstofupappír'], ['Dagblaðapappír'], ['Glans_&_tímaritapappír'], ['Annað']]
 
-def paper_weight_per_capita(current_user)
+ def paper_weight_per_capita(current_user)
     paper_weight.to_i / current_user.profile.staff
   end
 

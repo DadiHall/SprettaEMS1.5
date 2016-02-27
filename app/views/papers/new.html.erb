@@ -15,7 +15,7 @@
 	<div class="control-group">	
 		<%= f.label :paper_type, class: 'control-label' %><br>
 			<div class="controls">
-				<%= f.select :paper_type, options_for_select([['Skrifstofupappír', '1'], ['Dagblaðapappír', '2'], ['Glans_&_tímaritapappír', '3'], ['Annað', '4']], @paper.paper_type), class: 'list-select' %>
+				<%= f.select(:paper_type, options_for_select(Paper::PAPER_TYPES)) %>
           </div>
 	</div>	
 

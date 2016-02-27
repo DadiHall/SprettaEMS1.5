@@ -18,6 +18,10 @@ has_many :comments
 
 has_one :profile
 
+	def average_paper_types
+  		self.papers.group(:paper_type).sum(:paper_weight)
+	end
+
 	def not_friends_with?(friend_id)
 		friendships.where(friend_id: friend_id).count < 1
 

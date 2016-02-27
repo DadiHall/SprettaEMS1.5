@@ -53,6 +53,27 @@
 					
 
   				
+					<table class="table table-hover">
+  <thead>
+    <tr>
+      <% current_user.average_paper_types.each do |pair| %>
+        <th><%= pair[0] %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <% current_user.average_paper_types.each do |pair| %>
+        <td><%= pair[1] %></td>
+      <% end %>
+    </tr>
+    <tr>
+      <% current_user.average_paper_types.each do |pair| %>
+        <td><%= pair[2] %></td>
+      <% end %>
+    </tr>
+  </tbody>
+</table>
 
 					
 					
