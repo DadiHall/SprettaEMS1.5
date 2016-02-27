@@ -1,23 +1,37 @@
-<!-- Lítrar mv. stöðugildi  -->
-					<div class=" col-md-3">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Lítrar/stöðugildi</h3>
-	  						</div>
-	  							<div class="panel-body">
-	    							<%= @cleaning_staff_ratio %> Lítrar
-	  							</div>
+			<div class="container">
+					<div class="row well push-uppl-well">
+						<div class="col-md-8 col-md-ofset-2 push-uppl">
+							Flokkur síðast uppfærður:
+							<%= current_user.hwaters(:updated_at).to_s  %>
 						</div>
-					</div>	
+					</div>
+				<div class="row col-md-6"> <!-- efsta röð -->
 
+					<table class="table table-hover">
+				  	  <thead class="thead-default">
+						<tr>
+							<th>Texti</th>
+							<th>Eining</th>
+						</tr>
+				  	  </thead>	
+				  	   <tbody>
+					<!-- Lítrar mv. stöðugildi  -->
+						<tr>
+							<td>Lítrar á hvert stöðugildi</td>
+							<td><%= @cleaning_staff_ratio %> Lítrar</td>
+						</tr>
+					
 					<!-- lítrar / m2 byggingu.  -->
-					<div class=" col-md-3">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">Lítrar af ræstiefni fyrir hvern m&sup2; húsnæðis.</h3>
-	  						</div>
-	  							<div class="panel-body">
-	    							<%= number_with_precision(@cleaning_building_ratio, precision: 2)%> l/m&sup2;
-	  							</div>
-						</div>
-					</div>	
+						<tr>
+							<td>Lítrar af ræstiefni fyrir hvern m&sup2; húsnæðis.</td>
+							<td><%= number_with_precision(@cleaning_building_ratio, precision: 2)%> l/m&sup2;</td>
+						</tr>
+					   </tbody>	
+					
+				    </table>
+
+				</div>
+			</div>		
+							
+
+

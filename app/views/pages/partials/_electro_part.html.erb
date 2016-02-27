@@ -1,24 +1,36 @@
 	<!-- KWst rafmagn/ mv.stöðug.  -->
-					<div class=" col-md-3">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">KWst á hvert stöðugildi</h3>
-	  						</div>
-	  							<div class="panel-body">
-	    							<%= @electro_total_per_capita %>
-	  							</div>
-						</div>
-					</div>	
 
-					<!-- KWst rafmagn/ mv.fm2.  -->
-					<div class=" col-md-3">
-	  					<div class="panel panel-info">
-	  						<div class="panel-heading">
-	   							 <h3 class="panel-title">KWst mv. hvern m&sup2;</h3>
-	  						</div>
-	  							<div class="panel-body">
-	    							<%= number_with_precision(@electro_total_per_m2.to_f, precision: 2)%> ,-kwst/m&sup2;
-	  							</div>
+			<div class="container">
+					<div class="row well push-uppl-well">
+						<div class="col-md-8 col-md-ofset-2 push-uppl">
+							Flokkur síðast uppfærður:
+							<%= current_user.electros(:updated_at).to_s  %>
 						</div>
-					</div>	
+					</div>
+				<div class="row col-md-6"> <!-- efsta röð -->
+
+					<table class="table table-hover">
+				  	  <thead class="thead-default">
+						<tr>
+							<th>Texti</th>
+							<th>Eining</th>
+						</tr>
+				  	  </thead>	
+				  	   <tbody>
+						<!-- kwst á hvert stöðugildi -->
+						<tr>
+							<td>KWst á hvert stöðugildi</td>
+							<td><%= @electro_total_per_capita %> - Kwst</td>
+						</tr>
+						<!-- KWst rafmagn/ mv.fm2.  -->
+						<tr>
+							<td>KWst mv. hvern m&sup2;</td>
+							<td><%= number_with_precision(@electro_total_per_m2.to_f, precision: 2)%> ,-kwst/m&sup2;</td>
+						</tr>
+					   </tbody>	
+					
+				    </table>
+
+				</div>
+			</div>		
 							
