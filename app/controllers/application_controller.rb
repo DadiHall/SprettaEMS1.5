@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery with: :exception
 
-  before_action :authenticate_user!
+  #before_action :authenticate_user!
 
   before_action :load_running_totals, :if => :signed_in? 
  
@@ -53,8 +53,8 @@ class ApplicationController < ActionController::Base
    end
  
 
-    @paper_tree_ratio = (current_user.papers.sum(:paper_weight) / 1000) *15 
-    @paper_tree_co2_rescue = @paper_tree_ratio * (0.492)
+    #@paper_tree_ratio = (current_user.papers.sum(:paper_weight) / 1000) *15 
+    #@paper_tree_co2_rescue = @paper_tree_ratio * (0.492)
     # Rafmagnsreikningar
     #unless current_user.profile.blank?  
       #@electro_total_per_capita = Electro.sum(:electricity_kwst) / current_user.profile.staff 
@@ -72,8 +72,9 @@ class ApplicationController < ActionController::Base
 
   end
 
-
+  
   def all_users_avarge
+    
   		# hér eru meðaltöl ýmisa breyta sótt í gagnagrunninn og birt á forsíðu
 
   		@all_users_paper_average = Paper.sum(:paper_weight) / User.count
