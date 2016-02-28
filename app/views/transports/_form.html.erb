@@ -14,7 +14,7 @@
 		<div class="control-group">	
 			<%= f.label :transport_type, class: 'control-label' %><br>
 			<div class="controls">
-				<%= f.select(:transport_type, options_for_select([['Leigubílar', 'Leigubílar'], ['Eigin bíll/bílar stofnunar', 'Eigin bíll/bílar stofnunar'], ['Rekstrarleigubílar', 'Rekstrarleigubílar'], ['Bílaleigubílar', 'Bílaleigubílar'], ['Flutningabílar', 'Flutningabílar'], ['Akstur starfsmanna (til og frá vinnu)', 'Akstur starfsmanna (til og frá vinnu)'], ['Annað', 'Annað']])) %>
+				<%= f.select(:transport_type, options_for_select(Transport::TRANSPORT_TYPES)) %>
           	</div>
 		</div>	
 

@@ -1,6 +1,8 @@
 class Transport < ActiveRecord::Base
 	belongs_to :user
 
+	TRANSPORT_TYPES = [['Leigubílar'], ['Eigin bíll/bílar stofnunar'], ['Rekstrarleigubílar'], ['Bílaleigubílar'], ['Flutningabílar'], ['Akstur starfsmanna (til og frá vinnu)'], ['Annað']]
+
 	def transport_co2_per_km
 		transport_km * (0.1404)
 	end

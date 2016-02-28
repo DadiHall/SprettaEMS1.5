@@ -22,6 +22,10 @@ has_one :profile
   		self.papers.group(:paper_type).sum(:paper_weight)
 	end
 
+	def average_transport_types
+  		self.transports.group(:transport_type).sum(:transport_km) 
+	end
+
 	def not_friends_with?(friend_id)
 		friendships.where(friend_id: friend_id).count < 1
 

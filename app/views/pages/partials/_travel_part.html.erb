@@ -35,7 +35,9 @@
 					<tr>
 						<td>Heildar Km fjöldi vegna bílferða </td>
 						<td><%= number_with_precision( @transport_km.to_f,  precision: 2) %>km</td>
-					</tr>	
+					</tr>
+
+					
 				  </tbody>	
 					
 				</table>
@@ -76,8 +78,38 @@
 					
 				</table>
 			</div>	
-			</div>		
+			</div>
+
+			<div class="row col-md-6">		
+			  <div class="table-box">			
 				<table class="table table-hover">
+				  <thead>
+				    <tr>
+				      <% current_user.average_transport_types.each do |pair| %>
+				        <th><%= (pair[0]) %></th>
+				      <% end %>
+				    </tr>
+				  </thead>
+				  <tbody>
+				    <tr>
+				      <% current_user.average_transport_types.each do |pair| %>
+				        <td><%= pair[1] %></td>
+				      <% end %>
+				    </tr>
+				    <tr>
+				      <% current_user.average_transport_types.each do |pair| %>
+				        <td><%= pair[1] * (0.1404) %></td>
+				      <% end %>
+				    </tr>
+				  </tbody>
+				</table>
+				</div>
+			</div>	
+
+			<div class="row col-md-6 ">
+			<div class="table-box">	
+				<table class="table table-hover">
+				
 				  <thead class="thead-default">
 					<tr>
 						<th>Texti</th>
@@ -100,8 +132,22 @@
 				  </tbody>	
 					
 				</table>
+				</div>
+				</div>
+
+				<div class="col-md-6">
+		 					<%= column_chart [
+  								{name: "Fjöldi KM", data: current_user.transports.map{|t| [t.transport_type, t.transport_km] }, 'interpolateNulls':true} ] %>
+  				
+						</div>
+
+				<div class="col-md-6">
+		 					<%= column_chart [
+  								{name: "Losun co2 á bílferðir", data: current_user.transports.map{|t| [t.transport_type, t.transport_km * (0.1404)] }, 'interpolateNulls':true}, {name: "Losun co2 á Flug", data: current_user.transports.map{|t| [t.transport_flight_type, t.transport_flight_km * (0.1722)] }, 'interpolateNulls':true} ] %>
+  				
+						</div>		
 			</div>
-				
+			
 
   				<div class="row col-md-6">
 						<div class="col-md-8">
@@ -111,7 +157,7 @@
 						</div>
 				</div>	
 
-		</div>			
+				
 
 					
 						
