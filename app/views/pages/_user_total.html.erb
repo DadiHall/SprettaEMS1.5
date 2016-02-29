@@ -1,18 +1,18 @@
 <div class="row ">
   <div class="container">
     <div class="col-md-8 well left-side">
-        <h2><%= image_tag current_user.profile.avatar.url %> <%= current_user.profile.name %></h2>
+        
         <p><small>Síðast Innskráð: <%=current_user.last_sign_in_at %></small></p>
-        <p>Fjöldi stöðugilda: <%=current_user.profile.staff %></p>
-        <h5>
-          <% if current_user.profile %>
-            <%= link_to "Uppfæra skráningu", edit_user_profile_path(current_user) %>
+        <% if current_user.profile %>
+          <p>Fyrirtæki: <%=current_user.profile.name %></p>
+          <p>Fjöldi stöðugilda: <%=current_user.profile.staff %></p>
+          <%= link_to "Uppfæra skráningu", edit_user_profile_path(current_user) %>
             <%= link_to "Skoða skráningu", users_path(current_user)%>
-          <% else %>
-            <p>Create your profile so that you can share your info and follow other users. </p>
+        <% else %>
+          <p>Create your profile so that you can share your info and follow other users. </p>
             <%= link_to " Create your profile", new_user_profile_path(current_user), class: 'btn-primary btn-lg btn-block' %>
           <% end %>
-        </h5>
+        
     </div>
 
       <div class="col-md-4 well right-side">

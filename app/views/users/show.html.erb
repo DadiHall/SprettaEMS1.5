@@ -2,8 +2,13 @@
 	<div class="col-md-3 text-center">
 		<%= image_tag @user.profile.avatar.url %>
 	</div>
-	<div class="col-md-9">	
+
+	
+	<div class="col-md-9 col-md-offset-3">	
 		<h1><%= @user.profile.name %></h1></br>
+	</div>	
+</div>			
+<div class="row">		
 		<div class="well profile-description">
 			<%= @user.profile.address %></br>
 			<%= @user.profile.postalcode %></br>
@@ -14,7 +19,7 @@
 			<%= @user.profile.buisness_type %></br>
 			<h3>Description:</h3>
 			<%= @user.profile.description %></br> 
-			<%= @user.profile.staff %> <!-- þarf að breyta staff úr login, í profile--> 
+			<%= @user.profile.staff %> 
 		</div>
 	</div>	
 </div>

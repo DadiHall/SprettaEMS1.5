@@ -3,7 +3,7 @@
 					<div class="row well push-uppl-well">
 						<div class="col-md-8 col-md-ofset-2 push-uppl">
 							Flokkur síðast uppfærður:
-							<%= current_user.papers(:updated_at).to_s  %>
+							<%= current_user.papers.map(&:updated_at).last %>
 						</div>
 					</div>
 				<div class="row col-md-6"> <!-- efsta röð -->
