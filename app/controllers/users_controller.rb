@@ -24,6 +24,27 @@ class UsersController < ApplicationController
           @hwater_total_m3_user = @user.hwaters.sum(:hot_water_cubic_meter) 
            @hwater_total_m3_per_capita_user = @user.hwaters.sum(:hot_water_cubic_meter) /@user.profile.staff
            @hwater_m3_m2_ratio_user = @user.hwaters.sum(:hot_water_cubic_meter) / @user.profile.building_size   
+
+        #Ræsting
+           @cleaning_total_user = @user.cleanings.sum(:cleaning_liter).to_i 
+           @cleaning_staff_ratio_user = @user.cleanings.sum(:cleaning_liter).to_i / @user.profile.staff
+           @cleaning_building_ratio_user = @user.cleanings.sum(:cleaning_liter) / @user.profile.building_size   
+
+        #Ferðalog-bilar
+           @transport_co2_km_user = @user.transports.sum(:transport_km) * (0.1404)
+           @transport_co2_km_staff_ratio_user = @user.transports.sum(:transport_km) * (0.1404) / @user.profile.staff
+           @transport_km_staff_ratio_user = @user.transports.sum(:transport_km) / @user.profile.staff
+           @transport_km_user = @user.transports.sum(:transport_km)
+        #Ferðalog-flug
+          @transport_flight_co2_user = @user.transports.sum(:transport_flight_km).to_i * (0.1722)   
+          @transport_flight_co2_staff_ratio_user = @user.transports.sum(:transport_flight_km).to_i * (0.1722) / @user.profile.staff
+          @transport_flight_km_user = @user.transports.sum(:transport_flight_km).to_i 
+          @transport_flight_km_staff_ratio_user = @user.transports.sum(:transport_flight_km).to_i / @user.profile.staff
+
+        #Co2 vegna ferðalaga
+          @co2_due_to_transport_user = (@transport_flight_co2 + @transport_co2_km) / 1000
+
+          @tree_count_rescue_user = @co2_due_to_transport * 492    
 	end
 
 	def my_friends

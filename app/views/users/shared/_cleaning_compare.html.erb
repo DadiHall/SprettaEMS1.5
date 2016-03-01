@@ -1,0 +1,45 @@
+
+
+<div class="col-md-8 col-md-offset-1 well">
+<h3>Samburður Hreinsiefni</h3>
+		<div class="col-md-6">
+
+			<table class="table table-hover table-box-compare ">
+				<thead>
+					<th>Samburður - Hreinsiefni</th>
+					<th><%= @user.profile.name %></th>
+					<th><%= current_user.profile.name %></th><br>
+				</thead>
+				<tbody>
+					<tr>
+						<td>Heildar Hreinsiefni Lítrar</td>
+						<td><strong><%= @cleaning_total_user %> l </strong></td>
+						<td><strong><%= @cleaning_total %> l </strong></td>
+					</tr>
+				   <tr>
+						<td>Lítrar hreinsiefni á hvert stöðugildi</td>
+						<td> <strong><%=  @cleaning_staff_ratio_user %> -l/stg </strong></td>
+						<td><strong><%=  @cleaning_staff_ratio %> -l/stg </strong></td>
+				   </tr>	
+						<br>
+					<tr>
+						<td> lítrar á hvern m&sup2;</td>
+						<td> <strong><%= @cleaning_building_ratio_user %> l/m&sup2; </strong></td>
+						<td> <strong><%= @cleaning_building_ratio %> l/m&sup2; </strong></td>
+					</tr>
+					
+					
+				</tbody>
+			</table>	
+		</div>
+
+		<div class="col-md-6">
+		Hreinsiefni Samanburður við <%= @user.profile.name %>
+		 					<%= line_chart [
+  								{name: "Hreinsiefni -L.", data: current_user.cleanings.map{|t| [t.date, t.cleaning_liter] }, 'interpolateNulls':true},
+  								{name: "Umhverfiv. Hreinsiefni -L.", data: current_user.cleanings.map{|t| [t.date, t.env_clean_ratio] }, 'interpolateNulls':true},
+  								{name: "Hreinsiefni -L.", data: @user.cleanings.map{|t| [t.date, t.cleaning_liter] }, 'interpolateNulls':true},
+  								{name: "Umhverfisv. Hreinsiefni -L.", data: @user.cleanings.map{|t| [t.date, t.env_clean_ratio] }, 'interpolateNulls':true} ] %>
+  				
+		</div>
+</div>		

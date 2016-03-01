@@ -31,7 +31,8 @@ class ApplicationController < ActionController::Base
           @hwater_total_m3 = current_user.hwaters.sum(:hot_water_cubic_meter) 
            @hwater_total_m3_per_capita = current_user.hwaters.sum(:hot_water_cubic_meter) /current_user.profile.staff
            @hwater_m3_m2_ratio = current_user.hwaters.sum(:hot_water_cubic_meter) / current_user.profile.building_size
-        #Ræsting   
+        #Ræsting
+           @cleaning_total = current_user.cleanings.sum(:cleaning_liter).to_i 
            @cleaning_staff_ratio = current_user.cleanings.sum(:cleaning_liter).to_i / current_user.profile.staff
            @cleaning_building_ratio = current_user.cleanings.sum(:cleaning_liter) / current_user.profile.building_size
         #Ferðalog-bilar
