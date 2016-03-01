@@ -17,11 +17,21 @@
 }
 
 .well.profile-description{
-	color: #000;
-	background-color: #dadada;
-	border-color: #4cae4c;
+	
 	h3 {
 		margin-top: 0;
 	}
 	
+
+	margin-top: -350px;
+}
+
+.compare-field-xl{
+	font-weight: bold;
+	color: blue;
+
+}
+
+.table-box-compare{
+	border-bottom: solid 3px #dadada;
 }

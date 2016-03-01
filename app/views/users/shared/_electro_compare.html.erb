@@ -1,0 +1,44 @@
+
+
+<div class="col-md-8 col-md-offset-1 well">
+<h3>Samburður Rafmagn</h3>
+		<div class="col-md-6">
+
+			<table class="table table-hover table-box-compare ">
+				<thead>
+					<th>Samburður - Rafmagn</th>
+					<th><%= @user.profile.name %></th>
+					<th><%= current_user.profile.name %></th><br>
+				</thead>
+				<tbody>
+					<tr>
+						<td>heildar rafmagnsnotkun</td>
+						<td><strong><%= @electro_total_user %> kwst </strong></td>
+						<td><strong><%= @electro_total %> kwst </strong></td>
+					</tr>
+				   <tr>
+						<td>kwst á hvert stöðugildi</td>
+						<td> <strong><%= @electro_total_per_capita_user %> kwst </strong></td>
+						<td><strong><%= @electro_total_per_capita %> kwst </strong></td>
+				   </tr>	
+						<br>
+					<tr>
+						<td> kwst. f hvert stöðugildi</td>
+						<td> <strong><%= @electro_total_per_m2_user %> kwst/fm. </strong></td>
+						<td> <strong><%= @electro_total_per_m2 %> kwst/fm. </strong></td>
+					</tr>
+					
+					
+				</tbody>
+			</table>	
+		</div>
+
+		<div class="col-md-6">
+		Rafmagnsnotkun Samanburður við <%= @user.profile.name %>
+		 					<%= bar_chart [
+  								{name: "Rafmagnsnotkun #{@user.profile.name}", data: @electro_total_user, 'interpolateNulls':true},
+  								{name: "Rafmagn á hvert stöðugildi #{@user.profile.name}", data: @electro_total_per_capita_user, 'interpolateNulls':true},
+  								{name: "Rafmagnsnotkun #{current_user.profile.name}", data: @electro_total, 'interpolateNulls':true},
+  								{name: "Rafmagn á hvert stöðugildi #{current_user.profile.name}", data: @electro_total_per_capita, 'interpolateNulls':true} ] %>
+		</div>
+</div>		

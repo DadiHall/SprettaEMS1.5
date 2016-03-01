@@ -24,9 +24,11 @@ class ApplicationController < ActionController::Base
 
            @env_paper_ratio = (@env_paper_weight / @paper_weight_total) * 100
         #Rafmagn   
+            @electro_total = current_user.electros.sum(:electricity_kwst) 
            @electro_total_per_capita = current_user.electros.sum(:electricity_kwst) / current_user.profile.staff 
            @electro_total_per_m2 = current_user.electros.sum(:electricity_kwst) / current_user.profile.building_size
         #HotWater    
+          @hwater_total_m3 = current_user.hwaters.sum(:hot_water_cubic_meter) 
            @hwater_total_m3_per_capita = current_user.hwaters.sum(:hot_water_cubic_meter) /current_user.profile.staff
            @hwater_m3_m2_ratio = current_user.hwaters.sum(:hot_water_cubic_meter) / current_user.profile.building_size
         #Ræsting   
@@ -53,8 +55,8 @@ class ApplicationController < ActionController::Base
    end
  
 
-    #@paper_tree_ratio = (current_user.papers.sum(:paper_weight) / 1000) *15 
-    #@paper_tree_co2_rescue = @paper_tree_ratio * (0.492)
+    @paper_tree_ratio = (current_user.papers.sum(:paper_weight) / 1000) *15 
+    @paper_tree_co2_rescue = @paper_tree_ratio * (0.492)
     # Rafmagnsreikningar
     #unless current_user.profile.blank?  
       #@electro_total_per_capita = Electro.sum(:electricity_kwst) / current_user.profile.staff 

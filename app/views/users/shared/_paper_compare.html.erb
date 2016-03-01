@@ -1,0 +1,97 @@
+<div class="col-md-8 col-md-offset-1 well">
+	<h3>Samanburður á Pappír</h3>
+
+		<div class="col-md-6">
+
+			<table class="table table-hover table-box-compare ">
+				<thead>
+					<th>Samburður</th>
+					<th><%= @user.profile.name %></th>
+					<th><%= current_user.profile.name %></th><br>
+				</thead>
+				<tbody>
+				   <tr>
+						<td>Heildarmagn pappírs</td>
+						<td> <strong><%= @paper_weight_total_user %> -kg. </strong></td>
+						<td><strong><%= @paper_weight_total %>-kg. </strong></td>
+				   </tr>	
+						<br>
+					<tr>
+						<td>Pappírs magn fyrir hvert stöðugildi</td>
+						<td> <strong><%= @paper_weight_per_capita_user %>-kg. </strong></td>
+						<td> <strong><%= @paper_weight_per_capita %>-kg. </strong></td>
+					</tr>
+						<br>
+					<tr>
+						<td>Umhverfisvænn Pappír</td>
+						<td> <strong><%= @env_paper_weight_user %>-kg. </strong></td>
+						<td> <strong><%= @env_paper_weight %>-kg. </strong></td>	
+					</tr>
+						<br>
+					<tr>
+						<td>Hlutfall umhverfisvæns Pappírs</td>
+						<td> <strong><%= @env_paper_ratio_user.to_i %> %</strong></td>
+						<td> <strong><%= @env_paper_ratio.to_i %> %</strong></td>
+					</tr>	
+
+					
+				</tbody>
+			</table>	
+		</div>
+
+		<div class="col-md-6">
+			<table class="table table-hover table-box-compare">
+				<thead>
+					<th>Samburður</th>
+					<th><%= @user.profile.name %></th>
+					<th><%= current_user.profile.name %></th><br>
+				</thead>
+				<tbody>
+				  
+					<tr>
+						<td>Fjöldi tjráa mv. Pappírsnotkun.</td>
+						<td><h3 class="compare-field-xl"><%= @paper_tree_ratio_user.to_f %></h3> -Tré </td>
+						<td><h3 class="compare-field-xl"><%= @paper_tree_ratio.to_f %></h3> - Tré</td>
+					</tr>
+
+					<tr>
+						<td>Magn co2 sem notuð tré hefðu bundið</td>
+						<td><h3 class="compare-field-xl"><%= @paper_tree_co2_rescue_user.to_f %> </h3>-kg</td>
+						<td><h3 class="compare-field-xl"><%= number_with_precision(@paper_tree_co2_rescue, precision: 1).to_f  %></h3> - Kg</td>
+					</tr>
+
+					
+				</tbody>
+			</table>	
+		</div>
+
+	</div>	
+
+	<div class="col-md-8 col-md-offset-1 well">
+		<div class="col-md-6 ">
+		Pappír Samanburður við <%= @user.profile.name %>
+		 					<%= line_chart [
+  								{name: "Pappír #{@user.profile.name}",  data: @user.papers.map{|t| [t.date, t.paper_weight] }, 'interpolateNulls':true},
+  								{name: "Umhverfisvænn Pappír #{@user.profile.name}", data: @user.papers.map{|t| [t.date, t.env_paper_weight] }, 'interpolateNulls':true},
+  								{name:  "Pappír #{current_user.profile.name}", data: current_user.papers.map{|t| [t.date, t.paper_weight] }, 'interpolateNulls':true},
+  								{name:  "Umhverfisvænn Pappír #{current_user.profile.name}", data: current_user.papers.map{|t| [t.date, t.env_paper_weight] }, 'interpolateNulls':true} ] %>
+  				
+		</div>
+
+		<div class="col-md-6">
+		Pappírstegundir Samanburður við <%= @user.profile.name %>
+		 					<%= column_chart [
+  								{name: "Pappír #{@user.profile.name}", data: @user.papers.map{|t| [t.paper_type, t.paper_weight] }, 'interpolateNulls':true},
+  								{name: "Umhverfisvænn Pappír #{@user.profile.name}", data: @user.papers.map{|t| [t.paper_type, t.env_paper_weight ] }, 'interpolateNulls':true},
+  								{name: "Pappír #{current_user.profile.name}", data: current_user.papers.map{|t| [t.paper_type, t.paper_weight] }, 'interpolateNulls':true},
+  								{name: "Umhverfisvænn Pappír #{current_user.profile.name}", data: current_user.papers.map{|t| [t.paper_type, t.env_paper_weight ] }, 'interpolateNulls':true} ] %>
+  				
+						</div>
+
+	
+
+		
+					
+	</div>
+
+	

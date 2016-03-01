@@ -1,0 +1,44 @@
+
+
+<div class="col-md-8 col-md-offset-1 well">
+<h3>Samburður Heitt vatn</h3>
+		<div class="col-md-6">
+
+			<table class="table table-hover table-box-compare ">
+				<thead>
+					<th>Samburður - Heitt Vatn</th>
+					<th><%= @user.profile.name %></th>
+					<th><%= current_user.profile.name %></th><br>
+				</thead>
+				<tbody>
+					<tr>
+						<td>heildar heita vatns notkun m&#179;</td>
+						<td><strong><%= @hwater_total_m3_user %> m&#179; </strong></td>
+						<td><strong><%= @hwater_total_m3 %> m&#179; </strong></td>
+					</tr>
+				   <tr>
+						<td>m&#179; á hvert stöðugildi</td>
+						<td> <strong><%= @hwater_total_m3_per_capita_user %> m&#179;/stg </strong></td>
+						<td><strong><%= @hwater_total_m3_per_capita %> m&#179;/stg </strong></td>
+				   </tr>	
+						<br>
+					<tr>
+						<td> m&#179; á hvern m&sup2;</td>
+						<td> <strong><%= @hwater_m3_m2_ratio_user %> m&#179;/m&sup2; </strong></td>
+						<td> <strong><%= @hwater_m3_m2_ratio %> m&#179;/m&sup2; </strong></td>
+					</tr>
+					
+					
+				</tbody>
+			</table>	
+		</div>
+
+		<div class="col-md-6">
+		Rafmagnsnotkun Samanburður við <%= @user.profile.name %>
+		 					<%= column_chart [
+  								{name: "Heitavatns notkun #{@user.profile.name}", data: @hwater_total_m3_user.to_i, 'interpolateNulls':true},
+  								{name: "heitt vatn á stöðugildi #{@user.profile.name}", data: @hwater_total_m3_per_capita_user.to_i , 'interpolateNulls':true},
+  								{name: "Heitavatns notkun#{current_user.profile.name}", data: @hwater_total_m3.to_i, 'interpolateNulls':true},
+  								{name: "Heitt vatn á hvert stöðugildi #{current_user.profile.name}", data: @hwater_total_m3_per_capita.to_i, 'interpolateNulls':true} ] %>
+		</div>
+</div>		
