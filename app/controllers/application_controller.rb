@@ -32,8 +32,8 @@ class ApplicationController < ActionController::Base
            @hwater_total_m3_per_capita = current_user.hwaters.sum(:hot_water_cubic_meter) /current_user.profile.staff
            @hwater_m3_m2_ratio = current_user.hwaters.sum(:hot_water_cubic_meter) / current_user.profile.building_size
         #Ræsting
-           @cleaning_total = current_user.cleanings.sum(:cleaning_liter).to_i 
-           @cleaning_staff_ratio = current_user.cleanings.sum(:cleaning_liter).to_i / current_user.profile.staff
+           @cleaning_total = current_user.cleanings.sum(:cleaning_liter)
+           @cleaning_staff_ratio = current_user.cleanings.sum(:cleaning_liter) / current_user.profile.staff
            @cleaning_building_ratio = current_user.cleanings.sum(:cleaning_liter) / current_user.profile.building_size
         #Ferðalog-bilar
            @transport_co2_km = current_user.transports.sum(:transport_km) * (0.1404)
@@ -41,10 +41,10 @@ class ApplicationController < ActionController::Base
            @transport_km_staff_ratio = current_user.transports.sum(:transport_km) / current_user.profile.staff
            @transport_km = current_user.transports.sum(:transport_km)
         #Ferðalog-flug
-          @transport_flight_co2 = current_user.transports.sum(:transport_flight_km).to_i * (0.1722)   
-          @transport_flight_co2_staff_ratio = current_user.transports.sum(:transport_flight_km).to_i * (0.1722) / current_user.profile.staff
-          @transport_flight_km = current_user.transports.sum(:transport_flight_km).to_i 
-          @transport_flight_km_staff_ratio = current_user.transports.sum(:transport_flight_km).to_i / current_user.profile.staff
+          @transport_flight_co2 = current_user.transports.sum(:transport_flight_km) * (0.1722)   
+          @transport_flight_co2_staff_ratio = current_user.transports.sum(:transport_flight_km) * (0.1722) / current_user.profile.staff
+          @transport_flight_km = current_user.transports.sum(:transport_flight_km) 
+          @transport_flight_km_staff_ratio = current_user.transports.sum(:transport_flight_km)/ current_user.profile.staff
 
         #Co2 vegna ferðalaga
           @co2_due_to_transport = (@transport_flight_co2 + @transport_co2_km) / 1000

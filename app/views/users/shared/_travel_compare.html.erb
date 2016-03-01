@@ -90,7 +90,7 @@
 		 					<%= line_chart [
   								{name: "losun co2 vegna flugferða #{current_user.profile.name}", data: current_user.transports.map{|t| [t.date, t.transport_km * (0.1722)  ] }, 'interpolateNulls':true},
   								
-  								{name: "losun co2 vegna flugferða #{@user.profile.name}", data: @user.transports.map{|t| [t.date, t.transport_flight_km.to_i * (0.1722)  ] }, 'interpolateNulls':true} ] %>
+  								{name: "losun co2 vegna flugferða #{@user.profile.name}", data: @user.transports.map{|t| [t.date, t.transport_flight_km * (0.1722)  ] }, 'interpolateNulls':true} ] %>
   				
 		</div>
 </div>		
