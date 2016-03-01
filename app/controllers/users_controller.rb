@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+	
 	def index
 		@users = User.all
 	end
@@ -7,6 +7,11 @@ class UsersController < ApplicationController
 
 	def show
 		@user = User.find(params[:id])
+		
+		@paper_weight_total_user = @user.papers.sum(:paper_weight) 
+		@paper_weight_per_capita_user = @user.papers.sum(:paper_weight) / (@user.profile.staff) 
+		@env_paper_weight_user = @user.papers.sum(:env_paper_weight)
+		@env_paper_ratio_user = (@env_paper_weight_user / @paper_weight_total_user) * 100	
 	end
 
 	def my_friends
@@ -40,7 +45,6 @@ class UsersController < ApplicationController
 		end
 	end	
 
-	
 
 
 

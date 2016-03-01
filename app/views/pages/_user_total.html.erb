@@ -1,45 +1,34 @@
 <div class="row ">
   <div class="container">
-    <div class="col-md-8 well left-side">
-        
+    <div class="col-md-8 well ">
+        <div class="col-md-8">
         <p><small>Síðast Innskráð: <%=current_user.last_sign_in_at %></small></p>
         <% if current_user.profile %>
           <p>Fyrirtæki: <%=current_user.profile.name %></p>
           <p>Fjöldi stöðugilda: <%=current_user.profile.staff %></p>
           <%= link_to "Uppfæra skráningu", edit_user_profile_path(current_user) %>
-            <%= link_to "Skoða skráningu", users_path(current_user)%>
+             <%= link_to "Skoða skráningu", users_path(current_user)%>
+            <%= link_to "Skoða vini", users_path(current_user)%>
         <% else %>
           <p>Create your profile so that you can share your info and follow other users. </p>
             <%= link_to " Create your profile", new_user_profile_path(current_user), class: 'btn-primary btn-lg btn-block' %>
           <% end %>
-        
+         </div>
+         <div class="col-md-4"> 
+        <%= image_tag current_user.profile.avatar.url, class: 'pull-right' %>
+        </div>
     </div>
 
-      <div class="col-md-4 well right-side">
-        <h3 class=" pull-right"> Notenda svæði </h3>
-
-
-
-      </div>
-
+      
   </div>
 </div>   
 
 
-<div class="row well">
-	
 
-	<div class="col-md-3">
-		 <%= line_chart [
-  				{name: "KWST", data: current_user.electros.map{|t| [t.date, t.electricity_kwst] }, 'interpolateNulls':true},
-  				{name: "Cost", data: current_user.electros.map{|t| [t.date, t.electricity_cost] }, 'interpolateNulls':true} ] %>
-  			 	
-	</div>
-  </div>
 </div>
 <div class="row">	
 
-			
+		<div class="col-md-8 col-md-offset-2">	
 			<div class="panel panel-default">
   				<div class="panel-heading">
     				<h3 class="panel-title"> 
@@ -53,7 +42,10 @@
 				
 			</div>	
 			</div>	
-		</div>		
+		</div>	
+   </div> 
+  </div> 	
+  <div class="col-md-8 col-md-offset-2">  
 		<div class="panel panel-default">
   			<div class="panel-heading">
     			<h3 class="panel-title"> 
@@ -70,7 +62,9 @@
          		</div>
     		</div>  		 
 		</div>
+   </div> 
 <!-- Heitt vatn Panel byrjar -->
+  <div class="col-md-8 col-md-offset-2">  
 		<div class="panel panel-default">
   			<div class="panel-heading">
     			<h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
@@ -85,9 +79,11 @@
          	</div>		
     		</div>  		 
 		</div>
+  </div>  
 		<!-- Heitt vatn Panel Endar -->
 
 		<!-- HreingerningarEfni Panel byrjar -->
+  <div class="col-md-8 col-md-offset-2">    
 		<div class="panel panel-default">
   			<div class="panel-heading">
     			<h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
@@ -102,9 +98,11 @@
          	</div>		
     		</div>  		 
 		</div>
+  </div>  
 		<!-- Hreingerningarefni Panel Endar -->
 
 		<!-- Ferðalög Panel byrjar -->
+  <div class="col-md-8 col-md-offset-2">    
 		<div class="panel panel-default">
   			<div class="panel-heading">
     			<h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
@@ -120,7 +118,8 @@
     		</div>  		 
 		</div>
 		<!-- Ferðir Panel Endar -->
-	</div>	
+	</div>
+ </div> 	
 	</div> <!-- Panel body end -->
 <!--Col Ends -->
 

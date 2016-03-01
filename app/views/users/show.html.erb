@@ -1,28 +1,69 @@
 <div class="row">
-	<div class="col-md-3 text-center">
-		<%= image_tag @user.profile.avatar.url %>
+	<div class="col-md-8">
+		<div class="col-md-6 pull-right">
+		Pappír Samanburður við <%= @user.profile.name %>
+		 					<%= line_chart [
+  								{name: "Pappír #{@user.profile.name}",  data: @user.papers.map{|t| [t.date, t.paper_weight] }, 'interpolateNulls':true},
+  								{name: "Umhverfisvænn Pappír #{@user.profile.name}", data: @user.papers.map{|t| [t.date, t.env_paper_weight] }, 'interpolateNulls':true},
+  								{name:  "Pappír #{current_user.profile.name}", data: current_user.papers.map{|t| [t.date, t.paper_weight] }, 'interpolateNulls':true},
+  								{name:  "Umhverfisvænn Pappír #{current_user.profile.name}", data: current_user.papers.map{|t| [t.date, t.env_paper_weight] }, 'interpolateNulls':true} ] %>
+  				
+		</div>
+
+		<div class="col-md-6">
+		Pappírstegundir Samanburður við <%= @user.profile.name %>
+		 					<%= column_chart [
+  								{name: "Pappír #{@user.profile.name}", data: @user.papers.map{|t| [t.paper_type, t.paper_weight] }, 'interpolateNulls':true},
+  								{name: "Umhverfisvænn Pappír #{@user.profile.name}", data: @user.papers.map{|t| [t.paper_type, t.env_paper_weight ] }, 'interpolateNulls':true},
+  								{name: "Pappír #{current_user.profile.name}", data: current_user.papers.map{|t| [t.paper_type, t.paper_weight] }, 'interpolateNulls':true},
+  								{name: "Umhverfisvænn Pappír #{current_user.profile.name}", data: current_user.papers.map{|t| [t.paper_type, t.env_paper_weight ] }, 'interpolateNulls':true} ] %>
+  				
+						</div>
+
+		<div class="col-md-6">
+			<p>Heildarmagn pappírs fyrir <%= @user.profile.name %> <%= @paper_weight_total_user %></p>
+
+			<p>Pappírs magn fyrir hvert stöðugildi <%= @paper_weight_per_capita_user %> <%= @user.profile.name %></p>
+
+			<p> Umhverfisvænn Pappír <%= @user.profile.name %> <%= @env_paper_weight_user %></p>
+
+			<p> Hlutfall umhverfisvæns Pappírs <%= @user.profile.name %> <%= @env_paper_ratio_user %> </p>
+		</div>
+
+		<div class="col-md-6">
+			<p>Heildarmagn pappírs fyrir <%= current_user.profile.name %> <%= @paper_weight_total %></p>
+
+			<p>Pappírs magn fyrir hvert stöðugildi <%= @paper_weight_per_capita %> <%= current_user.profile.name %></p>
+
+			<p> Umhverfisvænn Pappír <%= current_user.profile.name %> <%= @env_paper_weight %></p>
+
+			<p> Hlutfall umhverfisvæns Pappírs <%= current_user.profile.name %> <%= @env_paper_ratio %> </p>
+		</div>
+					
 	</div>
 
 	
-	<div class="col-md-9 col-md-offset-3">	
-		<h1><%= @user.profile.name %></h1></br>
-	</div>	
-</div>			
-<div class="row">		
-		<div class="well profile-description">
-			<%= @user.profile.address %></br>
-			<%= @user.profile.postalcode %></br>
-			<span class="webpage-title-icon"><%= webpage_title_helper%></span><%= @user.profile.website %></br>
-			<%= @user.profile.contact_person %></br>
-			<%= @user.profile.contact_email %></br>
-			<%= @user.profile.phone_number %></br>
-			<%= @user.profile.buisness_type %></br>
-			<h3>Description:</h3>
-			<%= @user.profile.description %></br> 
-			<%= @user.profile.staff %> 
+		
+	<div class="row">		
+		<div class="col-md-4  well profile-description">
+			<h4><%= @user.profile.name %></h4><%= image_tag @user.profile.avatar.url %></br>
+			<p>Heimilisfang: <%= @user.profile.address %></p></br>
+			<p>Póstnúmer: <%= @user.profile.postalcode %></p></br>
+			<p><span class="webpage-title-icon"><%= webpage_title_helper%></span><%= @user.profile.website %></p></br>
+			<p>Tengiliður: <%= @user.profile.contact_person %></p></br>
+			<p>Tengiliða póstur: <%= @user.profile.contact_email %></p></br>
+			<p>Símanúmer: <%= @user.profile.phone_number %></p></br>
+			<p>Tegund starfsemi: <%= @user.profile.buisness_type %></p></br>
+			<h3>Lýsing:</h3>
+			<p><%= @user.profile.description %></br> </p>
+			<p>Fjöldi starfsmanna:<%= @user.profile.staff %> </p>
 		</div>
-	</div>	
+	
+	</div>
 </div>
+
+				
+						
 <!-- Á þessa síðu vantar IF statements, sem ákvarða hvað aðrir sjá m.v. hvaða áskriftarleið þeir eru með -->
 
 <!-- hér væri hægt að sýna heildar tölur f. hvern user -->
