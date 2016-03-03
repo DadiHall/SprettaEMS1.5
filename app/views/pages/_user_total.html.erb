@@ -8,16 +8,18 @@
           <p>Fjöldi stöðugilda: <%=current_user.profile.staff %></p>
           <%= link_to "Uppfæra skráningu", edit_user_profile_path(current_user) %>
              <%= link_to "Skoða skráningu", users_path(current_user)%>
-            <%= link_to "Skoða vini", users_path(current_user)%>
+            <%= link_to "Skoða vini", users_path(current_user)%>        
+    <div>
         <% else %>
           <p>Create your profile so that you can share your info and follow other users. </p>
             <%= link_to " Create your profile", new_user_profile_path(current_user), class: 'btn-primary btn-lg btn-block' %>
           <% end %>
          </div>
-         <div class="col-md-4"> 
-        <%#= image_tag current_user.profile.avatar.url, class: 'pull-right' %>
-        </div>
-    </div>
+         
+       
+   
+
+    
 
       
   </div>

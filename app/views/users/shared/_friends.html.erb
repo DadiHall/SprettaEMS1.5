@@ -1,0 +1,18 @@
+<h3> Vinir mínir </h3>
+             <ul>
+               <% for friendship in @user.friendships %>
+               <li>
+               <%= friendship.friend.profile.name %>
+               (<%= link_to "Eyða vinskap", friendship, :method => :delete %>)
+               </li>
+              <% end %>
+             </ul> 
+
+             <p> <%= link_to "Finna vini", users_path %> </p>
+
+             <h3> þeir sem elta mig </h3>
+             <ul>
+             	<% for user in @user.inverse_friends %>
+             	<li><%= user.profile.name %></li>
+             	<% end%>
+             	</ul>

@@ -17,7 +17,7 @@
 					<div>
 						<%= link_to user do %>
 						<h2><%= user.profile.name %></h2>
-						<%= link_to "Gerast vinur", '/path1'%>
+						<%= link_to "Gerast vinur", friendships_path(:friend_id => user), :method => :post %>
 						<% end %>
 						<p><%= user.profile.description %></p>
 					</div>

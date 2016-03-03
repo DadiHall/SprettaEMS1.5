@@ -47,36 +47,36 @@ class UsersController < ApplicationController
           @tree_count_rescue_user = @co2_due_to_transport * 492    
 	end
 
-	def my_friends
-		@friendships = current_user.friends
+	#def my_friends
+	#	@friendships = current_user.friends
 
-	end
+	#end
 
-	def search
-		@users = User.search(params[:search_param])
+	#def search
+	#	@users = User.search(params[:search_param])
 
-		if @users
-			@users = current_user.except_current_user(@users)
-		render partial: 'friends/lookup'
+	#	if @users
+	#		@users = current_user.except_current_user(@users)
+	#	render partial: 'friends/lookup'
 		
-		else
-		render status: :not_found, nothing: true
+	#	else
+	#	render status: :not_found, nothing: true
 		
-	  end			
-	end
+	 # end			
+	#end
 
 
-	def add_friend
-		@friend = User.find(params[:friend])
-		current_user.friendships.build(friend_id: @friend.id)
+	#def add_friend
+	#	@friend = User.find(params[:friend])
+	#	current_user.friendships.build(friend_id: @friend.id)
 
-		if current_user.save
-			redirect_to my_friends_path, notice: 'Friend was added'
+	#	if current_user.save
+	#		redirect_to my_friends_path, notice: 'Friend was added'
 
-		else
-			redirect_to my_friends_path, flash[:error] = 'There was an Error adding your friend'
-		end
-	end	
+	#	else
+			#redirect_to my_friends_path, flash[:error] = 'There was an Error adding your friend'
+	#	end
+	#end	
 
 
 
