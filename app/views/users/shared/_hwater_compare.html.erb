@@ -1,4 +1,4 @@
-
+<% if current_user.profile %>
 
 <div class="col-md-8 col-md-offset-1 well">
 <h3>Samburður Heitt vatn</h3>
@@ -41,4 +41,8 @@
   								{name: "Heitavatns notkun#{current_user.profile.name}", data: @hwater_total_m3.to_i, 'interpolateNulls':true},
   								{name: "Heitt vatn á hvert stöðugildi #{current_user.profile.name}", data: @hwater_total_m3_per_capita.to_i, 'interpolateNulls':true} ] %>
 		</div>
-</div>		
+</div>	
+
+<p>Create your profile so that you can share your info and follow other users. </p>
+            <%= link_to " Create your profile", new_user_profile_path(current_user), class: 'btn-primary btn-lg btn-block' %>
+          <% end %>	

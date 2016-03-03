@@ -2,9 +2,9 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :users do
-    resource :profile
-    
-  end  
+  resource :profile
+    end
+   
 
   resources :posts do
     resources :comments 
@@ -20,10 +20,11 @@ Rails.application.routes.draw do
   resources :friendships
   root 'pages#index'
 
+ 
   get 'about' => 'pages#about'
   get 'gb' => 'pages#gb_index'
-  get 'my_friends' => 'users#my_friends'
-  get 'search_friends', to: 'users#search' 
+ 
+  get 'compare_friends', to: 'users#compare' 
   get 'add_friend', to: 'users#add_friend'
 
 

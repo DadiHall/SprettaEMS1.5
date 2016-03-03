@@ -1,7 +1,7 @@
 class ProfilesController < ApplicationController
 	before_action :authenticate_user!
 
-	before_action :only_current_user
+	#before_action :only_current_user
 
 	def new
 		#form where a user can fill put their pwn profile.
@@ -11,6 +11,12 @@ class ProfilesController < ApplicationController
 	
 	end
 
+	def show
+		@user = User.find(params[:user_id])
+		#@profile = @user.profile
+
+	end
+
 	def create
 		@user = User.find(params[:user_id])
 		@profile = @user.build_profile(profile_params)
@@ -18,7 +24,7 @@ class ProfilesController < ApplicationController
 		#Lecture 159 User show action next :))))
 		if @profile.save
 			flash[:success] = "Profile updated"
-			redirect_to root_path(params[:user_id]) #fer á user/show.html.erb
+			redirect_to user_path(params[:user_id]) #fer á user/show.html.erb
 		else
 			render action: :new
 
@@ -39,7 +45,7 @@ class ProfilesController < ApplicationController
 
 		if @profile.update_attributes(profile_params)
 			flash[:success] = "Profile Updated!"
-			redirect_to root_path(params[:user_id])
+			redirect_to user_path(params[:user_id])
 		else
 			render action :edit
 		end		

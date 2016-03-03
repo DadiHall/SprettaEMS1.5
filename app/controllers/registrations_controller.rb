@@ -12,6 +12,8 @@ class RegistrationsController < Devise::RegistrationsController
 
    protected
 
+  
+
   def after_inactive_sign_up_path_for(resource)
     new_user_profile_path(current_user) # Or :prefix_to_your_route
   end

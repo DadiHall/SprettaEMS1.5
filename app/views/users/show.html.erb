@@ -1,6 +1,55 @@
-<div class="row">
 
-	<%= render 'users/shared/friends' %>
+<div class="row ">
+  <div class="container">
+    <div class="col-md-12 well ">
+        <div class="col-md-6">
+        <p><small>Síðast Innskráð: <%=current_user.last_sign_in_at %></small></p>
+        <% if current_user.profile %>
+          <p>Fyrirtæki: <%=current_user.profile.name %></p>
+          <p>Fjöldi stöðugilda: <%=current_user.profile.staff %></p>
+          <%= link_to "Uppfæra skráningu", edit_user_profile_path(current_user) %>
+             <%= link_to "Skoða skráningu", users_path(current_user)%>
+            <%#= link_to "Skoða vini", users_path(current_user)%>        
+    
+       </div>  
+       <div class="col-md-6">
+<h4> <%= current_user.profile.name%> Vinir </h3>
+             <ul>
+               <% for friendship in @user.friendships %>
+               <li>
+               <%= friendship.friend.profile.name %> <%= link_to "Bera saman",  compare_friends_path %>
+               (<%= link_to "Eyða vinskap", friendship, :method => :delete %>)
+               </li>
+              <% end %>
+             </ul> 
+
+             <p> <%= link_to "Finna vini", users_path %> </p>
+
+             
+              <h3> þeir sem elta <%= current_user.profile.name%> </h3>
+             <ul>
+              <%  @user.inverse_friends.each do |user| %>
+              <%= link_to user_profile_path(user), :method => :get do %>
+                <li><%= user.profile.name %></li>
+              <% end%>
+              <% end %>
+              </ul>
+              
+
+    </div>
+<div>
+        <% else %>
+          <p>Create your profile so that you can share your info and follow other users. </p>
+            <%= link_to " Create your profile", new_user_profile_path(current_user), class: 'btn-primary btn-lg btn-block' %>
+          <% end %>
+         </div>
+      
+
+</div>   
+
+
+
+	<%= render 'users/shared/user_total' %>
 
 	<%= render 'users/shared/paper_compare' %>
 	
@@ -12,21 +61,7 @@
 	<%= render 'users/shared/cleaning_compare'	%>
 
 	<%= render 'users/shared/travel_compare'	%>
-		<!--<div class="col-md-2 well  profile-description">
-			<%= image_tag @user.profile.avatar.url %>
-			<p><span class="webpage-title-icon"><%= webpage_title_helper%></span><%= @user.profile.website %></p></br>
-
-			<h4><%= @user.profile.name %></h4></br>
-			<p>Heimilisfang: <%= @user.profile.address %></p></br>
-			<p>Póstnúmer: <%= @user.profile.postalcode %></p></br>
-			<p>Tengiliður: <%= @user.profile.contact_person %></p></br>
-			<p>Tengiliða póstur: <%= @user.profile.contact_email %></p></br>
-			<p>Símanúmer: <%= @user.profile.phone_number %></p></br>
-			<p>Tegund starfsemi: <%= @user.profile.buisness_type %></p></br>
-			<h3>Lýsing:</h3>
-			<p><%= @user.profile.description %></br> </p>
-			<p>Fjöldi starfsmanna:<%= @user.profile.staff %> </p>
-		</div>-->
+		
 	
 	
  

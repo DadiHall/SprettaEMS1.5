@@ -1,6 +1,6 @@
 <div class=" navbar navbar-fixed-top ">
 		<div class="container">
-			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="navbar-responsive-collapse">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
@@ -15,7 +15,8 @@
 
             <% if current_user %>  
 
-              <li><%= link_to "My Friends", my_friends_path %></li>
+             
+              <li><%= link_to "Mín síða", user_path(current_user) %></li>
               <li><%= link_to "Útskrá", destroy_user_session_path, method: :delete  %></li>
               <li><%= link_to "Edit Profile", edit_user_registration_path %></li>
             <% else %>

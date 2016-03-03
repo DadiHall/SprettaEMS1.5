@@ -1,3 +1,4 @@
+<% if current_user.profile %>
 <div class="col-md-8 col-md-offset-1 well">
 	<h3>Samanburður á Pappír</h3>
 
@@ -30,8 +31,8 @@
 						<br>
 					<tr>
 						<td>Hlutfall umhverfisvæns Pappírs</td>
-						<td> <strong><%= @env_paper_ratio_user.to_i %> %</strong></td>
-						<td> <strong><%= @env_paper_ratio.to_i %> %</strong></td>
+						<td> <strong><%= @env_paper_ratio_user %> %</strong></td>
+						<td> <strong><%= @env_paper_ratio %> %</strong></td>
 					</tr>	
 
 					
@@ -93,5 +94,10 @@
 		
 					
 	</div>
+	<% else %>
+
+	<p>Create your profile so that you can share your info and follow other users. </p>
+            <%= link_to " Create your profile", new_user_profile_path(current_user), class: 'btn-primary btn-lg btn-block' %>
+          <% end %>
 
 	

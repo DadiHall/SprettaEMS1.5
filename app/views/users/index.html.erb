@@ -1,4 +1,5 @@
 <div class="row">
+dfgdfgfd
 	<div class="col-md-8 col-md-offset-2">
 		<ul class="list-unstyled">
 		<% @users.each do |user| %>
@@ -6,14 +7,7 @@
 			<% if user.profile %>
 			<li>
 				<div class="well row <%= cycle("white-bg", '') %>">
-					<div class="col-sm-4 text-center">
-						<% #if user.profile.avatar %>
-						<%#= image_tag user.profile.avatar.url(:thumb) %></br>
-						<%# end %>
-						<%= link_to user do %>
-						<% end %>
-					</div>
-				
+					
 					<div>
 						<%= link_to user do %>
 						<h2><%= user.profile.name %></h2>

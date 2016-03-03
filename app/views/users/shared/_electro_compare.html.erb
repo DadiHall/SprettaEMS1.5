@@ -1,4 +1,4 @@
-
+<% if current_user.profile %>
 
 <div class="col-md-8 col-md-offset-1 well">
 <h3>Samburður Rafmagn</h3>
@@ -41,4 +41,9 @@
   								{name: "Rafmagnsnotkun #{current_user.profile.name}", data: @electro_total, 'interpolateNulls':true},
   								{name: "Rafmagn á hvert stöðugildi #{current_user.profile.name}", data: @electro_total_per_capita, 'interpolateNulls':true} ] %>
 		</div>
-</div>		
+</div>	
+
+<% else %>
+<p>Create your profile so that you can share your info and follow other users. </p>
+            <%= link_to " Create your profile", new_user_profile_path(current_user), class: 'btn-primary btn-lg btn-block' %>
+          <% end %>	

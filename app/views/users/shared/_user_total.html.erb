@@ -1,0 +1,116 @@
+
+
+</div>
+ <% if current_user.profile %>
+<div class="row">	
+
+		<div class="col-md-8 col-md-offset-2">	
+			<div class="panel panel-default">
+  				<div class="panel-heading">
+    				<h3 class="panel-title"> 
+    				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-minus"></span><%= current_user.name %>: Pappírs notkun</a> <%= link_to "Skrá Pappír", papers_path, class: 'pull-right ' %></h3>
+  				</div>
+  				    <div id="collapseOne" class="panel-collapse collapse in">
+
+ 			 <div class="panel-body">
+				<div class="row">
+         <% if current_user.profile %>
+					<%= render 'pages/partials/paper_part' %>
+				<% end %>
+			</div>	
+			</div>	
+		</div>	
+   </div> 
+  </div> 	
+  <div class="col-md-8 col-md-offset-2">  
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title"> 
+    				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-plus"></span><%= current_user.name %>: Rafmagns notkun</a><%= link_to "Skrá Rafmagn", electros_path, class: 'pull-right ' %></h3>
+  			</div>
+  			    <div id="collapseTwo" class="panel-collapse collapse">
+
+ 			 <div class="panel-body">
+			
+				<div class="row">		
+				<%= render 'pages/partials/electro_part' %>
+						
+         		</div>	
+         		</div>
+    		</div>  		 
+		</div>
+   </div> 
+<!-- Heitt vatn Panel byrjar -->
+  <div class="col-md-8 col-md-offset-2">  
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
+          <span class="glyphicon glyphicon-plus"></span><%= current_user.name %>: Heit Vatn Notkun</a><%= link_to "Skrá Heitt vatn", hwaters_path, class: 'pull-right ' %></h3>
+  			</div>
+  			 <div id="collapseThree" class="panel-collapse collapse">
+ 			 	<div class="panel-body">
+			
+				<div class="row">		
+					<%= render 'pages/partials/hwater_part' %>
+         		</div>
+         	</div>		
+    		</div>  		 
+		</div>
+  </div>  
+		<!-- Heitt vatn Panel Endar -->
+
+		<!-- HreingerningarEfni Panel byrjar -->
+  <div class="col-md-8 col-md-offset-2">    
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
+          <span class="glyphicon glyphicon-plus"></span><%= current_user.name %>: Notkun Ræstiefna</a><%= link_to "Skrá Ræstiefni", cleanings_path, class: 'pull-right ' %></h3>
+  			</div>
+  			 <div id="collapseFour" class="panel-collapse collapse">
+ 			 	<div class="panel-body">
+			
+				<div class="row">		
+					<%= render 'pages/partials/cleaning_part' %>
+         		</div>
+         	</div>		
+    		</div>  		 
+		</div>
+  </div>  
+		<!-- Hreingerningarefni Panel Endar -->
+
+		<!-- Ferðalög Panel byrjar -->
+  <div class="col-md-8 col-md-offset-2">    
+		<div class="panel panel-default">
+  			<div class="panel-heading">
+    			<h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
+          <span class="glyphicon glyphicon-plus"></span><%= current_user.name %>: Flug og Ferðir</a><%= link_to "Skrá Ferðir", transports_path, class: 'pull-right ' %></h3>
+  			</div>
+  			 <div id="collapseFive" class="panel-collapse collapse">
+ 			 	<div class="panel-body">
+			
+				<div class="row">		
+					<%= render 'pages/partials/travel_part' %>
+         		</div>
+         	</div>		
+    		</div>  		 
+		</div>
+		<!-- Ferðir Panel Endar -->
+	</div>
+ </div> 	
+	</div> <!-- Panel body end -->
+<!--Col Ends -->
+
+</div> <!-- row ends -->
+<% else %>
+
+          <p>Create your profile so that you can share your info and follow other users. </p>
+            <%= link_to " Create your profile", new_user_profile_path(current_user), class: 'btn-primary btn-lg btn-block' %>
+          <% end %>
+
+<script type="text/javascript">
+	$('.collapse').on('shown.bs.collapse', function(){
+$(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass("glyphicon-minus");
+}).on('hidden.bs.collapse', function(){
+$(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
+});
+</script>

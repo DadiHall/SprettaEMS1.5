@@ -2,10 +2,17 @@ class UsersController < ApplicationController
 	
 	def index
 		@users = User.all
+    
 	end
 
 
 	def show
+		@user = User.find(params[:id])
+	 #@profile = @user.profile	
+	end
+
+	def compare
+		if current_user.profile
 		@user = User.find(params[:id])
 		
 		@paper_weight_total_user = @user.papers.sum(:paper_weight) 
@@ -45,39 +52,10 @@ class UsersController < ApplicationController
           @co2_due_to_transport_user = (@transport_flight_co2 + @transport_co2_km) / 1000
 
           @tree_count_rescue_user = @co2_due_to_transport * 492    
+	else
+		redirect_to user_path
 	end
-
-	#def my_friends
-	#	@friendships = current_user.friends
-
-	#end
-
-	#def search
-	#	@users = User.search(params[:search_param])
-
-	#	if @users
-	#		@users = current_user.except_current_user(@users)
-	#	render partial: 'friends/lookup'
-		
-	#	else
-	#	render status: :not_found, nothing: true
-		
-	 # end			
-	#end
-
-
-	#def add_friend
-	#	@friend = User.find(params[:friend])
-	#	current_user.friendships.build(friend_id: @friend.id)
-
-	#	if current_user.save
-	#		redirect_to my_friends_path, notice: 'Friend was added'
-
-	#	else
-			#redirect_to my_friends_path, flash[:error] = 'There was an Error adding your friend'
-	#	end
-	#end	
-
+	end
 
 
 
