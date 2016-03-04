@@ -13,14 +13,14 @@
     
        </div>  
        <div class="col-md-6">
-<h4> <%#= current_user.profile.name%> Friends</h4>
+<h4> <%= current_user.profile.name%> Friends</h4>
              <ul>
-               <%# for friendship in @user.friendships %>
+               <% for friendship in @user.friendships %>
                <li>
-                  <%#= friendship.friend.profile.name %>
-                  (<%#= link_to "remove", friendship, :method => :delete %>)
+                  <%= friendship.friend.profile.name %>
+                  (<%= link_to "remove", friendship, :method => :delete %>)
                </li>
-              <%# end %>
+              <% end %>
              </ul> 
 
              <p> <%= link_to "Finna vini", users_path %> </p>
