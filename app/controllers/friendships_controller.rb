@@ -3,10 +3,10 @@ class FriendshipsController < ApplicationController
 	def create
 		@friendship = current_user.friendships.build(:friend_id => params[:friend_id])
 		if @friendship.save
-			flash[:notice] = "Vinskap bætt við"
+			flash[:notice] = "friend added"
 		redirect_to user_path(current_user)
 	  else
-	  		flash[:error] = "Gat ekki stofnað til vinskapar"
+	  		flash[:error] = "Can´t add friend"
 			redirect_to user_path(current_user)
 	  end
 	end
