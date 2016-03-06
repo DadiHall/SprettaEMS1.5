@@ -2,7 +2,7 @@ class Post < ActiveRecord::Base
   belongs_to :user
   has_many :comments
 
-  has_many :taggings, as: :taggable
+  has_many :taggings 
   has_many :tags, through: :taggings
 
   def self.tagged_with(name)

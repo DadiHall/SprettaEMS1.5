@@ -9,8 +9,8 @@ Rails.application.routes.draw do
   resources :posts do
     resources :comments 
   end
-  #resources :tags, only: [:index, :show] 
-  get 'tags/:tag', to: 'posts#index', as: "tag" ## It should go to index action not show
+  resources :tags, only: [:index, :show] 
+  #get 'tags/:tag', to: 'posts#index', as: "tag" ## It should go to index action not show
   resources :papers
   resources :cleanings
   resources :electros
