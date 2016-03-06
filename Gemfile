@@ -14,6 +14,12 @@ gem 'groupdate'
 gem 'active_median'
 ######
 
+gem 'gravatar_image_tag'
+
+gem "mailboxer"
+gem 'chosen-rails'
+gem 'jquery-turbolinks'
+
 gem 'acts-as-taggable-on'
 
 #PaperClip for image upload
@@ -21,6 +27,8 @@ gem 'acts-as-taggable-on'
 gem 'paperclip', '~> 4.3', '>= 4.3.5'
 
 gem 'bootstrap-sass', '~> 3.3', '>= 3.3.6'
+gem 'bootstrap-will_paginate'
+gem 'will_paginate'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets

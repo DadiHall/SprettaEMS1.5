@@ -2,7 +2,7 @@
 <div class="row ">
   <div class="container">
     <div class="col-md-12 well ">
-        <div class="col-md-6">
+        <div class="col-md-4">
         <p><small>Síðast Innskráð: <%=current_user.last_sign_in_at %></small></p>
         <% if current_user.profile %>
           <p>Fyrirtæki: <%=current_user.profile.name %></p>
@@ -12,7 +12,7 @@
             <%#= link_to "Skoða vini", users_path(current_user)%>        
     
        </div>  
-       <div class="col-md-6">
+       <div class="col-md-4">
 <h4> <%= current_user.profile.name%> Friends</h4>
              <ul>
                <% @user.friendships.each do |friendship| %>
@@ -39,6 +39,10 @@
               
 
     </div>
+    <div class="col-md-4">
+    <h3> Spjalla við vini</h3>
+      <%= link_to "Fara á spjall", conversations_path %>
+
 <div>
         <% else %>
           <p>Create your profile so that you can share your info and follow other users. </p>

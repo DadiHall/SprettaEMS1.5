@@ -4,7 +4,10 @@ Rails.application.routes.draw do
   resources :users do
   resource :profile
     end
-   
+
+  resources :conversations, only: [:index, :show, :destroy]  
+  
+  resources :messages, only: [:new, :create] 
 
   resources :posts do
     resources :comments 

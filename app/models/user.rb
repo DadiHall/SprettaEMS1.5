@@ -23,6 +23,8 @@ has_many :comments
 
 has_one :profile
 
+acts_as_messageable
+
 	def average_paper_types
   		self.papers.group(:paper_type).sum(:paper_weight)
 	end
@@ -31,6 +33,10 @@ has_one :profile
   		self.transports.group(:transport_type).sum(:transport_km) 
 	end
 
+
+	def mailboxer_email(object)
+		object.email
+	end
 	#def not_friends_with?(friend_id)
 		#friendships.where(friend_id: friend_id).count < 1
 

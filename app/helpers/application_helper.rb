@@ -1,4 +1,5 @@
 module ApplicationHelper
+  ##### For Tags#####
   def tag_cloud(tags, classes)
     max = 0
     tags.each do |t|
@@ -11,4 +12,10 @@ module ApplicationHelper
       yield(tag, classes[index.round])
     end
   end
+  ##########################
+  ####### Gravatars for Mailboxer########
+  def gravatar_for(user, size = 30, title = user.profile.name)
+    image_tag gravatar_image_url(user.email, size: size), title: title, class: 'img-rounded'
+  end
+  ###############
 end
