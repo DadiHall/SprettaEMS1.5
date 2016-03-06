@@ -5,7 +5,25 @@ Rails.application.routes.draw do
   resource :profile
     end
 
-  resources :conversations, only: [:index, :show, :destroy]  
+  resources :users, only: [:index]
+    
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+      post :restore
+    end
+  end   
+
+  resources :conversations, only: [:index, :show, :destroy] do
+    collection do
+      delete :empty_trash
+    end
+  end
+
+  resources :conversations, only: [:index, :show, :destroy] do
+    member do
+     post :mark_as_read
+    end
+  end  
   
   resources :messages, only: [:new, :create] 
 

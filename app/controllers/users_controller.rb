@@ -2,6 +2,8 @@ class UsersController < ApplicationController
 	
 	def index
 		@users = User.all
+    @users = User.order('created_at DESC').paginate(page: params[:page], per_page: 30)
+
     
 	end
 
@@ -9,7 +11,8 @@ class UsersController < ApplicationController
 	def show
    # @user = current_user
 		@user = User.find(params[:id])
-	 
+	  @users = User.order('created_at DESC').paginate(page: params[:page], per_page: 30)
+
 	end
 
 	def compare
