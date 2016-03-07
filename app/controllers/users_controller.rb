@@ -17,8 +17,10 @@ class UsersController < ApplicationController
 
 	def compare
 		if current_user.profile
-		@user = User.find(params[:id])
-		
+		#@user = User.find(params[:id])
+		#@#users = User.friendships.friend(params[:id])
+    @user = User.find_by(id: params[:to].to_i) if params[:to]
+
 		@paper_weight_total_user = @user.papers.sum(:paper_weight) 
 		@paper_weight_per_capita_user = @user.papers.sum(:paper_weight) / (@user.profile.staff) 
 		@env_paper_weight_user = @user.papers.sum(:env_paper_weight)

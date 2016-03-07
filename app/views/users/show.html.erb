@@ -23,11 +23,15 @@
                   <%= link_to friendship do %>
             
                   <%= link_to 'Senda Skilaboð', new_message_path(to: friendship.friend.id), class: 'btn btn-default btn-xs' %> 
+
+                  <%= link_to friendship do %>
+
+                  <%= link_to 'Bera saman', compare_friends_path(to: friendship.friend.id), class: 'btn btn-default btn-xs' %>
+                  <% end %>
+              <% end %>
+              <% end %>
+              <% end %>
               
-              <% end %>
-              <% end %>
-              <% end %>
-           
             </li>
              </ul> 
 
@@ -63,16 +67,16 @@
 
 	<%= render 'users/shared/user_total' %>
 
-	<%= render 'users/shared/paper_compare' %>
+	<%#= render 'users/shared/paper_compare' %>
 	
 
-	<%= render 'users/shared/electro_compare' %>	 
+	<%#= render 'users/shared/electro_compare' %>	 
 
-	<%= render 'users/shared/hwater_compare' %>	 
+	<%#= render 'users/shared/hwater_compare' %>	 
 
-	<%= render 'users/shared/cleaning_compare'	%>
+	<%#= render 'users/shared/cleaning_compare'	%>
 
-	<%= render 'users/shared/travel_compare'	%>
+	<%#= render 'users/shared/travel_compare'	%>
 		
 	
 	
