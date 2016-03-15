@@ -12,7 +12,7 @@ Paper.create! paper_type: 'Dagblaðapappír', paper_weight: '200', paper_cost: '
 
 Cleaning.create! cleaning_type: 'Ræstir', cleaning_liter: '20', cleaning_cost: '2500', user_id: '1'
 
-User.Profile.create! user_id: '1', name: 'Spretta', address: 'SprettStreet', postalcode: '123', website: 'www.spretta.is', contact_person: 'Dadi', contact_email: 'dadi@spretta.is', phone_number: '34424242', buisness_type: 'Þjónusta', description: 'Best fucker', building_size: '105', staff: '10'
+User.Profile.create! user_id: '1', name: 'Spretta', address: 'SprettStreet', postalcode: '123', website: 'www.spretta.is', contact_person: 'Dadi', contact_email: 'dadi@spretta.is', phone_number: '34424242', buisness_type: 'Þjónusta', description: 'simply the best', building_size: '105', staff: '10'
 
 Electro.create! building_name: 'Sumarhöllin', electricity_kwst: '400', electricity_cost: '2020', user_id: '1'
 
