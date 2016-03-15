@@ -1,5 +1,8 @@
 class UsersController < ApplicationController
-	
+
+  
+  
+
 	def index
 		@users = User.all
     @users = User.order('created_at DESC').paginate(page: params[:page], per_page: 30)
@@ -7,12 +10,21 @@ class UsersController < ApplicationController
     
 	end
 
+    def create
+   
+    end
+
 
 	def show
    # @user = current_user
 		@user = User.find(params[:id])
 	  @users = User.order('created_at DESC').paginate(page: params[:page], per_page: 30)
-
+    #@electro_total = current_user.electros.sum(:electricity_kwst) 
+    @paper = current_user.papers.build
+    @electro = current_user.electros.build
+    @hwater = current_user.hwaters.build
+    @cleaning = current_user.cleanings.build
+    @transport = current_user.transports.build
 	end
 
 	def compare
@@ -63,6 +75,7 @@ class UsersController < ApplicationController
 	end
 	end
 
+ 
 
 
 end

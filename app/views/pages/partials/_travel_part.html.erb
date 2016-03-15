@@ -1,11 +1,83 @@
-			<div class="container">
-					<div class="row well push-uppl-well">
-						<div class="col-md-8 col-md-ofset-2 push-uppl">
-							Flokkur síðast uppfærður:
-							<%= current_user.transports.map(&:updated_at).last%>
-						</div>
+		<!-- Magn pappírs yfir allan rekstur-->
+					
+					
+			<div class="row">
+ 				 <div class="col-md-8 mod-md-9 ">
+
+ 				 	<div class="col-md-2 user-box">
+ 				 		<p>Heildar Co2 losun Vegna bílferða</p>
+ 				 		<h2><%= number_with_precision(@transport_co2_km.to_f,  precision: 2) %><small class="user-eining"> -kg/co2</small></h2>
+ 				 	</div>	
+
+ 				 	<div class="col-md-2 user-box">
+ 				 		<p>Heildar Co2 losun vegna bílferða m.v. hvert stöðugildi</p>
+ 				 		<h2><%=  number_with_precision(@transport_co2_km_staff_ratio.to_f,  precision: 2) %><small class="user-eining"> -kg/Co2</small></h2>
+ 				 	</div>	
+
+ 				 	<div class="col-md-2 user-box">
+ 				 		<p>Heildar Km fjöldi vegna bílferða fyrir hvert stöðugildi</p>
+ 				 		<h2><%=  number_with_precision( @transport_km_staff_ratio.to_f,  precision: 2) %><small class="user-eining"> -km</small></h2>
+ 				 	</div>	
+
+ 				 	<div class="col-md-2 user-box">
+ 				 		<p>Heildar Km fjöldi vegna bílferða r</p>
+ 				 		<h2><%= number_with_precision( @transport_km.to_f,  precision: 2) %><small class="user-eining"> -km</small></h2>
+ 				 	</div>	
+
+ 				 		<!-- heildarlosun Co2 vegna ferðalaga -->
+					<div class="col-md-2 user-box">
+						<p>Heildar losun Co2 vegna ferða</p>
+						<h2><%=  @co2_due_to_transport %> cO2/kg</h2>
 					</div>
-			<div class="row col-md-6"> <!-- efsta röð -->
+
+						<!-- heildarlosun Co2 vegna ferðalaga -->
+					<div class="col-md-2 user-box">
+						<p>Fjöldi trjáa sem þarf tilað kolefnisjafna ferðir</p>
+						<h2><%=  @tree_count_rescue.to_i %> Tré</h2>
+					</div>
+
+ 				 	
+ 				</div> 	
+ 				 	
+	
+	<!-- eftri r-ð endar -->
+
+<div class="col-md-4 clear-fix">
+
+	
+					<%= render 'pages/partials/new_travel_part' %>
+					
+</div>		
+
+<div class="col-md-12">
+						<div class="col-md-6 chart-box">
+		 					
+						 <%= column_chart [
+                  {name: "Bílferðir #{current_user.profile.name}", data: current_user.transports.group(:transport_type).sum(:transport_km)},
+                  {name: "Bílferðir Allir mt", data: Transport.group(:transport_type).average(:transport_km)}], { stacked: true, height: "300px", xtitle: "Bílferðir", ytitle: "Km/bílferðir"} %>
+					
+						</div>
+						
+					
+				
+			<div class="col-md-6 chart-box">
+		 				
+
+					<%= column_chart [ 
+                  {name: "Co2 vegna Akstur #{current_user.profile.name}", data: current_user.transports.group_by_month(:date, format:"%B").sum("transport_km * 0.1404")},
+
+                  {name: "Co2 Allir Akstur", data: Transport.group_by_year(:created_at, format:"%B").average("transport_km * 0.1404")}], {  height: "300px", xtitle: "Co2 vegna akstur", ytitle: "Co2/kg"} %>
+						</div>
+
+
+
+			
+
+
+</div>	
+	
+
+			<!--<div class="row col-md-6 "> <!-- efsta röð 
 			<div class="table-box">
 				<table class="table table-hover">
 				  <thead class="thead-default">
@@ -15,61 +87,22 @@
 					</tr>
 				  </thead>	
 				  <tbody>
-					<!-- Co2 losun v. bílferða -->
-					<tr>
-						<td>Heildar Co2 losun Vegna bílferða</td>
-						<td><%= number_with_precision(@transport_co2_km.to_f,  precision: 2) %> kg/co2</td>
-					</tr>
-					<!-- Co2 losun f. hvert stöðugildi  v. bílferða-->
-					<tr>
-						<td>Heildar Co2 losun vegna bílferða m.v. hvert stöðugildi</td>
-						<td><%=  number_with_precision(@transport_co2_km_staff_ratio.to_f,  precision: 2) %>kg/co2</td>
-					</tr>
-						<!-- Km fjöldi v. bílferða Staff_ratio  -->
-					<tr>
-						<td>Heildar Km fjöldi vegna bílferða fyrir hvert stöðugildi</td>
-						<td><%=  number_with_precision( @transport_km_staff_ratio.to_f,  precision: 2) %>km</td>
-					</tr>
-
-						<!-- Km fjöldi bílferða   -->
-					<tr>
-						<td>Heildar Km fjöldi vegna bílferða </td>
-						<td><%= number_with_precision( @transport_km.to_f,  precision: 2) %>km</td>
-					</tr>
-
-					
-				  </tbody>	
-					
-				</table>
-			</div>	
-			</div>	
-
-			<div class="row col-md-6 "> <!-- efsta röð -->
-			<div class="table-box">
-				<table class="table table-hover">
-				  <thead class="thead-default">
-					<tr>
-						<th>Texti</th>
-						<th>Eining</th>
-					</tr>
-				  </thead>	
-				  <tbody>
-					<!-- Co2 losun v. Flugferða  -->
+					<!-- Co2 losun v. Flugferða  
 					<tr>
 						<td>Heildar Co2 losun vegna flugferða</td>
 						<td><%=  @transport_flight_co2 %> kg/co2</td>
 					</tr>
-						<!-- Co2 losun v. Flugferða staff ratio  -->
+						<!-- Co2 losun v. Flugferða staff ratio  
 					<tr>
 						<td>Heildar Co2 losun vegna flugferða f. hvern starfsmann </td>
 						<td><%=  @transport_flight_co2_staff_ratio %>kg/co2</td>
 					</tr>
-						<!-- km vegna flugferða  -->
+						<!-- km vegna flugferða  
 					<tr>
 						<td>Heildar km vegna flugferða  </td>
 						<td><%=  @transport_flight_km %>km</td>
 					</tr>
-						<!-- Fjöldi Km f. flugferðis f. hvern starfsmann -->
+						<!-- Fjöldi Km f. flugferðis f. hvern starfsmann 
 					<tr>
 						<td>Heildar km vegna flugferða á vert stöðugildi </td>
 						<td><%=  @transport_flight_km_staff_ratio %>km</td>
@@ -78,28 +111,28 @@
 					
 				</table>
 			</div>	
-			</div>
+			</div>-->
 
-			<div class="row col-md-6">		
+			<!--<div class="row col-md-6">		
 			  <div class="table-box">			
 				<table class="table table-hover">
 				  <thead>
 				    <tr>
-				      <% current_user.average_transport_types.each do |pair| %>
-				        <th><%= (pair[0]) %></th>
-				      <% end %>
+				      <% #current_user.average_transport_types.each do |pair| %>
+				        <th><%#= (pair[0]) %></th>
+				      <%# end %>
 				    </tr>
 				  </thead>
 				  <tbody>
 				    <tr>
-				      <% current_user.average_transport_types.each do |pair| %>
-				        <td><%= pair[1] %></td>
-				      <% end %>
+				      <%# current_user.average_transport_types.each do |pair| %>
+				        <td><%#= pair[1] %></td>
+				      <% #end %>
 				    </tr>
 				    <tr>
-				      <% current_user.average_transport_types.each do |pair| %>
-				        <td><%= pair[1] * (0.1404) %></td>
-				      <% end %>
+				      <%# current_user.average_transport_types.each do |pair| %>
+				        <td><%#= pair[1] * (0.1404) %></td>
+				      <% #end %>
 				    </tr>
 				  </tbody>
 				</table>
@@ -117,13 +150,13 @@
 					</tr>
 				  </thead>	
 				  <tbody>
-						<!-- heildarlosun Co2 vegna ferðalaga -->
+						<!-- heildarlosun Co2 vegna ferðalaga 
 					<tr>
 						<td>Heildar losun Co2 vegna ferða</td>
 						<td><%=  @co2_due_to_transport %> cO2/kg</td>
 					</tr>
 
-						<!-- heildarlosun Co2 vegna ferðalaga -->
+						<!-- heildarlosun Co2 vegna ferðalaga 
 					<tr>
 						<td>Fjöldi trjáa sem þarf tilað kolefnisjafna ferðir</td>
 						<td><%=  @tree_count_rescue.to_i %> Tré</td>
@@ -136,13 +169,13 @@
 				</div>
 
 				<div class="col-md-6">
-		 					<%= column_chart [
+		 					<%#= column_chart [
   								{name: "Fjöldi KM", data: current_user.transports.map{|t| [t.transport_type, t.transport_km] }, 'interpolateNulls':true} ] %>
   				
 						</div>
 
 				<div class="col-md-6">
-		 					<%= column_chart [
+		 					<%#= column_chart [
   								{name: "Losun co2 á bílferðir", data: current_user.transports.map{|t| [t.transport_type, t.transport_km * (0.1404)] }, 'interpolateNulls':true}, {name: "Losun co2 á Flug", data: current_user.transports.map{|t| [t.transport_flight_type, t.transport_flight_km * (0.1722)] }, 'interpolateNulls':true} ] %>
   				
 						</div>		
@@ -151,11 +184,11 @@
 
   				<div class="row col-md-6">
 						<div class="col-md-8">
-							<%= line_chart [
+							<%#= line_chart [
   								{name: "Bílferðir Co2 Losun", data: current_user.transports.map{|t| [t.created_at, (t.transport_km * (0.1404)).to_i] }, 'interpolateNulls':true}, {name: "Flugferðir Co2 Losun", data: current_user.transports.map{|t| [t.created_at, (t.transport_flight_km * (0.1722)).to_i] }, 'interpolateNulls':true} ] %>
   				
 						</div>
-				</div>	
+				</div>	-->
 
 				
 

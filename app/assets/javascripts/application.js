@@ -15,6 +15,7 @@
 //= require jquery.turbolinks
 //= require chosen-jquery
 //= require messages
+//= require bootstrap
 //= require bootstrap-sprockets
 //= require turbolinks
 //= require_tree .
@@ -24,3 +25,4 @@ $(this).parent().find(".glyphicon-plus").removeClass("glyphicon-plus").addClass(
 }).on('hidden.bs.collapse', function(){
 $(this).parent().find(".glyphicon-minus").removeClass("glyphicon-minus").addClass("glyphicon-plus");
 });
+

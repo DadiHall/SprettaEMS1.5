@@ -3,7 +3,16 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { registrations: 'registrations' }
   resources :users do
   resource :profile
+  end
+
+  resources :users, only: [:tab] do
+   member do
+    get 'tab'
     end
+    end
+   
+   
+ 
 
   resources :users, only: [:index]
     
@@ -40,6 +49,8 @@ Rails.application.routes.draw do
   resources :garbages
   resources :friendships
   root 'pages#index'
+
+  
 
  
   get 'about' => 'pages#about'

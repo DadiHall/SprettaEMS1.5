@@ -1,35 +1,64 @@
-			<div class="container">
-					<div class="row well push-uppl-well">
-						<div class="col-md-8 col-md-ofset-2 push-uppl">
-							Flokkur síðast uppfærður:
-							<%= current_user.hwaters.map(&:updated_at).last %>
-						</div>
-					</div>
-				<div class="row col-md-6"> <!-- efsta röð -->
+				<!-- Heitt vatn box running total -->
 
-					<table class="table table-hover">
-				  	  <thead class="thead-default">
-						<tr>
-							<th>Texti</th>
-							<th>Eining</th>
-						</tr>
-				  	  </thead>	
-				  	   <tbody>
-					<!-- Heitt vatn mv. stöðugildi  -->
-						<tr>
-							<td>m&#179; á hvert stöðugildi</td>
-							<td><%= @hwater_total_m3_per_capita %> m&#179;</td>
-						</tr>
-					<!-- m3 heitt vatn / m2 byggingu.  -->
-						<tr>
-							<td>m&#179; heitt vatn fyrir hvern m&sup2; húsnæðis.</td>
-							<td><%= number_with_precision(@hwater_m3_m2_ratio.to_f, precision: 2)%> m&#179;/m&sup2;</td>
-						</tr>
-					   </tbody>	
+		<div class="row">
+ 				 <div class="col-md-8 mod-md-9 ">
+
+ 				 	<div class="col-md-2 user-box">
+ 				 		<p>Heildar m&#179; notkun</p>
+ 				 		<h2><%= @hwater_total_m3.to_f %><small class="user-eining"> -m&#179;</small></h2>
+ 				 	</div>	
+
+ 				 	<div class="col-md-2 user-box">
+ 				 		<p>m&#179; á hvert stöðugildi</p>
+ 				 		<h2><%= @hwater_total_m3_per_capita%><small class="user-eining"> -m&#179;</small></h2>
+ 				 	</div>	
+
+ 				 	<div class="col-md-2 user-box">
+ 				 		<p>m&#179; mv. hvern m&sup2;</p>
+ 				 		<h2><%= number_with_precision(@hwater_m3_m2_ratio.to_f, precision: 2)%><small class="user-eining"> -m&#179;/m&sup2;</small></h2>
+ 				 	</div>	
+
+ 		 	
+ 		</div> 	
+
+ 				<div class="col-md-4 clear-fix">
+
+	
+					<%= render 'pages/partials/new_hwater_part' %>
 					
-				    </table>
+				</div>	
+<div class="row">
+<div class="col-md-12">
+						<div class="col-md-4 chart-box">
+		 					
+						 <%= line_chart [
+                  {name: "Heitt vatn #{current_user.profile.name}", data: current_user.hwaters.group_by_month(:date).sum(:hot_water_cubic_meter)},
+                  {name: "Heitt vatn Aðrir mt", data: Hwater.group_by_month(:date).average(:hot_water_cubic_meter)}], { stacked: true, height: "300px", xtitle: "Heitavatnsnotkun / m3", ytitle: "m3/Heitt vatn"} %>
+					
+						</div>
+						
+					
+				
+			<div class="col-md-4 chart-box">
+		 				
 
-				</div>
-			</div>		
-							
+							 <%= column_chart [
+                  {name: "Heitt vatn #{current_user.profile.name}", data: current_user.hwaters.group(:building_name).sum(:hot_water_cubic_meter)}], {  height: "300px", xtitle: "Heitavatnsnotkun/bygging", ytitle: "m3/Heitt vatn"} %>
+						</div>
+
+
+
+			<div class="col-md-4 chart-box">
+		 					
+						 <%= column_chart [
+                  {name: "Kostnaður #{current_user.profile.name}", data: current_user.hwaters.group_by_month(:date, format:"%B").sum(:hot_water_cost)},
+                  {name: "Kostnaður Allir", data: Hwater.group_by_month(:date, format:"%B").average(:hot_water_cost)}], { stacked: true, height: "300px", xtitle: "Tímabil", ytitle: "Kostnaður/Heitt vatn"} %>
+					
+			</div>
+		</div>
+	  </div>
+	</div>	
+				
+				
+				
 

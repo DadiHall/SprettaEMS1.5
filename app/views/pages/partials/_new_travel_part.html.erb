@@ -1,0 +1,59 @@
+
+		<div class="well">
+			<%= form_for @transport, html: {class: 'form-horizontal'} do |f| %>
+
+			<div class="control-group">	
+				<%= f.label :Dagsetning, class: 'control-label' %><br>
+				<div class="controls">
+					<%= f.date_select :date %>
+				</div>
+			</div>	
+
+		<div class="control-group">	
+			<%= f.label :Tegund, class: 'control-label' %><br>
+			<div class="controls">
+				<%= f.select(:transport_type, options_for_select(Transport::TRANSPORT_TYPES)) %>
+          	</div>
+		</div>	
+
+		<div class="control-group">	
+			<%= f.label :Lengd_ferðar_í_km, class: 'control-label' %><br>
+				<div class="controls">
+					<%= f.number_field :transport_km %>
+				</div>
+		</div>	
+
+		<div class="control-group">	
+			<%= f.label :Fjöldi_ferða, class: 'control-label' %><br>
+				<div class="controls">
+					<%= f.number_field :transport_num_of_trips %>
+				</div>
+		</div>	
+
+		<div class="control-group">	
+			<%= f.label :_Þar_af_endurunnið_eldsneyti, class: 'control-label' %><br>
+				<div class="controls">
+					<%= f.number_field :transport_km_recycled_fuel %>
+				</div>
+		</div>	
+
+
+
+
+
+
+
+
+
+		<div class="control-group">
+	    	<div class="controls">
+	      <%= f.submit class: 'btn btn-xs btn-warning' %>
+	    	</div>  
+	  	</div>
+
+	
+<% end %>	
+	
+		<%= link_to 'Back', transports_path %>
+
+</div>

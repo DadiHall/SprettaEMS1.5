@@ -1,0 +1,41 @@
+<div class="well">
+	<%= form_for @hwater, html: {class: 'form-horizontal'} do |f| %>
+
+	<div class="control-group">	
+		<%= f.label :date, class: 'control-label' %><br>
+			<div class="controls">
+				<%= f.date_select :date %>
+			</div>
+	</div>	
+
+	<div class="control-group">	
+		<%= f.label :building_name, class: 'control-label' %><br>
+			<div class="controls">
+				<%= f.text_field :building_name %>
+          </div>
+	</div>	
+
+	<div class="control-group">	
+		<%= f.label :hot_water_cubic_meter, class: 'control-label' %><br>
+			<div class="controls">
+				<%= f.number_field :hot_water_cubic_meter %>
+			</div>
+	</div>	
+
+	<div class="control-group">	
+		<%= f.label :hot_water_cost, class: 'control-label' %><br>
+			<div class="controls">
+				<%= f.number_field :hot_water_cost %>
+			</div>
+	</div>	
+
+
+	<div class="control-group">
+	    <div class="controls">
+	      <%= f.submit class: 'btn btn-xs btn-warning' %>
+	    </div>  
+	  </div>
+
+	<% end %>	
+		<%= link_to 'Skoða allar færslur', hwaters_path %>
+	</div>

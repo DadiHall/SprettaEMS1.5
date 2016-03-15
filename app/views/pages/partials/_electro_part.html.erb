@@ -1,36 +1,64 @@
 	<!-- KWst rafmagn/ mv.stöðug.  -->
 
-			<div class="container">
-					<div class="row well push-uppl-well">
-						<div class="col-md-8 col-md-ofset-2 push-uppl">
-							Flokkur síðast uppfærður:
-							<%= current_user.electros.map(&:updated_at).last  %>
-						</div>
-					</div>
-				<div class="row col-md-6"> <!-- efsta röð -->
+		<div class="row">
+ 				 <div class="col-md-8 mod-md-9 ">
 
-					<table class="table table-hover">
-				  	  <thead class="thead-default">
-						<tr>
-							<th>Texti</th>
-							<th>Eining</th>
-						</tr>
-				  	  </thead>	
-				  	   <tbody>
-						<!-- kwst á hvert stöðugildi -->
-						<tr>
-							<td>KWst á hvert stöðugildi</td>
-							<td><%= @electro_total_per_capita %> - Kwst</td>
-						</tr>
-						<!-- KWst rafmagn/ mv.fm2.  -->
-						<tr>
-							<td>KWst mv. hvern m&sup2;</td>
-							<td><%= number_with_precision(@electro_total_per_m2.to_f, precision: 2)%> ,-kwst/m&sup2;</td>
-						</tr>
-					   </tbody>	
+ 				 	<div class="col-md-2 user-box">
+ 				 		<p>Heildar kwst notkun</p>
+ 				 		<h2><%= @electro_total.to_f %><small class="user-eining"> - Kwst</small></h2>
+ 				 	</div>	
+
+ 				 	<div class="col-md-2 user-box">
+ 				 		<p>Kwst á hvert stöðugildi</p>
+ 				 		<h2><%= @electro_total_per_capita %><small class="user-eining"> - Kwst</small></h2>
+ 				 	</div>	
+
+ 				 	<div class="col-md-2 user-box">
+ 				 		<p>Kwst mv. hvern m&sup2;</p>
+ 				 		<h2><%= number_with_precision(@electro_total_per_m2.to_f, precision: 2)%><small class="user-eining"> -kwst/m&sup2;</small></h2>
+ 				 	</div>	
+
+ 				 	
+ 		</div> 	
+
+ 				<div class="col-md-4 clear-fix">
+
+	
+					<%= render 'pages/partials/new_electro_part' %>
 					
-				    </table>
+				</div>	
+<div class="row">
+<div class="col-md-12">
+						<div class="col-md-4 chart-box">
+		 					
+						 <%= line_chart [
+                 		 {name: "Rafmagn #{current_user.profile.name}", data: current_user.electros.group_by_month(:updated_at).sum(:electricity_kwst)},
+                 		 {name: "Rafmagnsnotkun Aðrir mt", data: Electro.group_by_month(:updated_at).average(:electricity_kwst)}], { stacked: true, height: "300px", xtitle: "Rafmagnsnotkun", ytitle: "Kwst/rafmagn"} %>
+					
+						</div>
+						
+					
+				
+			<div class="col-md-4 chart-box">
+		 				
 
-				</div>
-			</div>		
+							 <%= column_chart [
+                  {name: "Rafmagn #{current_user.profile.name}", data: current_user.electros.group(:building_name).sum(:electricity_kwst)}], {  height: "300px", xtitle: "Rafmagnsnotkun/bygging", ytitle: "kwst/Rafmagn"} %>
+						</div>
+
+
+
+			<div class="col-md-4 chart-box">
+		 					
+						 <%= column_chart [
+                  {name: "Rafmagns kostnaður #{current_user.profile.name}", data: current_user.electros.group_by_month(:date, format:"%B").sum(:electricity_kwst)},
+                  {name: "Kostnaður Allir", data: Electro.group_by_month(:updated_at, format:"%B").average(:electricity_kwst)}], { stacked: true, height: "300px", xtitle: "Tímabil", ytitle: "Kostnaður/Rafmagn"} %>
+					
+						</div>
+
+
+</div>	
+</div>
+</div>				
+				
 							

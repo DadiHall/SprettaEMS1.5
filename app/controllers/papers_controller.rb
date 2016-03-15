@@ -1,9 +1,12 @@
 class PapersController < ApplicationController
+
 	before_action :set_paper, only: [:edit, :update, :show, :destroy]
 	before_action :paper_owner, only: [ :edit, :update, :destroy]
 
 
 	def index
+		
+
 		@papers = current_user.papers
 		
 	end
@@ -63,7 +66,9 @@ class PapersController < ApplicationController
       				flash[:notice] = 'Access denied as you are not owner of this Job'
       				redirect_to papers_path
      			end
-    		end
+    end
 
+
+	
 
 end

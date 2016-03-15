@@ -1,37 +1,62 @@
-			<div class="container">
-					<div class="row well push-uppl-well">
-						<div class="col-md-8 col-md-ofset-2 push-uppl">
-							Flokkur síðast uppfærður:
-							<%= current_user.hwaters.map(&:updated_at).last %>
+
+<div class="row">
+ 				 <div class="col-md-8 mod-md-9 ">
+
+ 				 	<div class="col-md-2 user-box">
+ 				 		<p>Heildar notkun / lítrar</p>
+ 				 		<h2><%= @cleaning_total.to_f %><small class="user-eining"> -lítrar</small></h2>
+ 				 	</div>	
+
+ 				 	<div class="col-md-2 user-box">
+ 				 		<p>Lítrar á hvert stöðugildi</p>
+ 				 		<h2><%= @cleaning_staff_ratio%><small class="user-eining"> -lítrar</small></h2>
+ 				 	</div>	
+
+ 				 	<div class="col-md-2 user-box">
+ 				 		<p>Lítrar af ræstiefni fyrir hvern m&sup2; húsnæðis</p>
+ 				 		<h2><%= number_with_precision(@cleaning_building_ratio, precision: 2)%><small class="user-eining"> -l/m&sup2;</small></h2>
+ 				 	</div>	
+
+ 		 	
+ 		</div> 	
+
+ 				<div class="col-md-4 clear-fix">
+
+	
+					<%= render 'pages/partials/new_cleaning_part' %>
+					
+				</div>	
+<div class="row">
+<div class="col-md-12">
+						<div class="col-md-4 chart-box">
+		 					
+						 <%= line_chart [
+                  {name: "Ræstiefni #{current_user.profile.name}", data: current_user.cleanings.group_by_month(:date).sum(:cleaning_liter, :env_clean_ratio)},
+                  {name: "Ræstiefni Aðrir mt", data: Cleaning.group_by_month(:date).average(:cleaning_liter, :env_clean_ratio)}], { stacked: true, height: "300px", xtitle: "Ræstiefni/ Lítrar", ytitle: "Lítrar/Ræstiefni"} %>
+					
 						</div>
-					</div>
-				<div class="row col-md-6"> <!-- efsta röð -->
-
-					<table class="table table-hover">
-				  	  <thead class="thead-default">
-						<tr>
-							<th>Texti</th>
-							<th>Eining</th>
-						</tr>
-				  	  </thead>	
-				  	   <tbody>
-					<!-- Lítrar mv. stöðugildi  -->
-						<tr>
-							<td>Lítrar á hvert stöðugildi</td>
-							<td><%= @cleaning_staff_ratio %> Lítrar</td>
-						</tr>
+						
 					
-					<!-- lítrar / m2 byggingu.  -->
-						<tr>
-							<td>Lítrar af ræstiefni fyrir hvern m&sup2; húsnæðis.</td>
-							<td><%= number_with_precision(@cleaning_building_ratio, precision: 2)%> l/m&sup2;</td>
-						</tr>
-					   </tbody>	
-					
-				    </table>
+				
+			<div class="col-md-4 chart-box">
+		 				
 
-				</div>
-			</div>		
-							
+							 <%= column_chart [
+                  {name: "Ræstiefni #{current_user.profile.name}", data: current_user.cleanings.group(:cleaning_type).sum(:cleaning_liter, :env_clean_ratio )}], {  height: "300px", xtitle: "Lítrar/Tegund", ytitle: "Lítrar/Tegund"} %>
+						</div>
+
+
+
+			<div class="col-md-4 chart-box">
+		 					
+						 <%= column_chart [
+                  {name: "Kostnaður #{current_user.profile.name}", data: current_user.cleanings.group_by_month(:date, format:"%B").sum(:cleaning_cost)},
+                  {name: "Kostnaður Allir mt", data: Cleaning.group_by_month(:date, format:"%B").average(:cleaning_cost)}], { stacked: true, height: "300px", xtitle: "Tímabil", ytitle: "Kostnaður/Ræstiefni"} %>
+					
+			</div>
+		</div>
+	  </div>
+	</div>	
+			
 
 

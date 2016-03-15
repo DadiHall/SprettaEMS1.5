@@ -1,0 +1,93 @@
+<div class="row">
+ 
+<!-- Pappirs graf -->
+    <div class="col-md-2 chart-box">
+       <h4> Pappír </h4>
+           <%= column_chart [
+                  {name: "Paper #{current_user.profile.name}", data: current_user.papers.group_by_year(:created_at, format:"%Y").sum(:paper_weight)},
+                  {name: "Paper all Avr", data: Paper.group_by_year(:created_at, format:"%Y").average(:paper_weight)}], { stacked: true, height: "250px", xtitle: "Pappírsmagn", ytitle: "Kg/Pappír"} %>
+                  <ul class="chart-box-nav">
+                 <li><p> <%= link_to "Setja Markmið", '#'  %> |</p></li> 
+                  <li><p> <%= link_to "Skrá Pappír", '#pappir'%> |</p></li>  
+                  <li><p> <%= link_to "Skoða nánar", '#pappir'%> </p></li> 
+                  </ul>
+    </div>
+<!-- Rafmagns graf -->
+      <div class="col-md-2 chart-box">
+      <h4> Rafmagn </h4>
+
+        
+        <%= column_chart [ 
+                  {name: "KWst notkun #{current_user.profile.name}", data: current_user.electros.group_by_year(:created_at, format:"%Y").sum(:electricity_kwst)},
+
+                  {name: "Meðaltal allra notenda", data: Electro.group_by_year(:created_at, format:"%Y").average(:electricity_kwst)}], { stacked: true, height: "250px", xtitle: "Rafmagnsnotkun", ytitle: "kwst/Rafmagn"} %>
+                   <ul class="chart-box-nav">
+                 <li><p> <%= link_to "Setja Markmið", '#'  %> |</p></li> 
+                  <li><p> <%= link_to "Skrá Rafmagn", '#rafmagn'%> |</p></li>  
+                  <li><p> <%= link_to "Skoða nánar", '#rafmagn'%> </p></li> 
+                  </ul>
+    </div>
+<!-- Heitt vatn graf-->
+          <div class="col-md-2 chart-box">
+          <h4> Heitt vatn </h4>
+        <%= column_chart [ 
+                  {name: "KWst notkun #{current_user.profile.name}", data: current_user.hwaters.group_by_year(:created_at, format:"%Y").sum(:hot_water_cubic_meter)},
+
+                  {name: "Meðaltal allra notenda", data: Hwater.group_by_year(:created_at, format:"%Y").average(:hot_water_cubic_meter)}], { stacked: true, height: "250px", xtitle: "Heitt vatn", ytitle: "m3/Heitt vatn"} %>
+
+                   <ul class="chart-box-nav">
+                      <li><p> <%= link_to "Setja Markmið", '#'  %> |</p></li> 
+                      <li><p> <%= link_to "Skrá Vatn", '#hwater'%> |</p></li>  
+                      <li><p> <%= link_to "Skoða nánar", '#hwater'%> </p></li> 
+                  </ul>
+          </div>
+<!-- Ræstiefni graf -->
+            <div class="col-md-2 chart-box">
+              <h4> Ræstiefni </h4>
+
+       
+        <%= column_chart [ 
+                  {name: "Notkun Ræstiefna #{current_user.profile.name}", data: current_user.cleanings.group_by_year(:created_at, format:"%Y").sum(:cleaning_liter)},
+
+                  {name: "þar af umhv.væn", data: current_user.cleanings.group_by_year(:created_at, format:"%Y").sum(:env_clean_ratio)}, { stacked: true, height: "250px", xtitle: "Ræstiefni", ytitle: "l/ræstiefni"},
+
+                   {name: "Notkun Ræstiefna allir", data: Cleaning.group_by_year(:created_at, format:"%Y").average(:cleaning_liter)},
+
+                  {name: "þar af umhv.væn", data: Cleaning.group_by_year(:created_at, format:"%Y").average(:env_clean_ratio)}], { stacked: true, height: "250px", xtitle: "Ræstiefni", ytitle: "l/ræstiefni"} %>
+
+                   <ul class="chart-box-nav">
+                 <li><p> <%= link_to "Setja Markmið", '#'  %> |</p></li> 
+                  <li><p> <%= link_to "Skrá Ræstiefni", '#cleaning'%> |</p></li>  
+                  <li><p> <%= link_to "Skoða nánar", '#cleaning'%> </p></li> 
+                  </ul>
+          </div>
+
+<!-- Flug co2 -->
+              <div class="col-md-2 chart-box">
+          <h4> Flug </h4>
+        <%= column_chart [ 
+                  {name: "Co2 vegna flugferða ", data: current_user.transports.group_by_year(:created_at, format:"%Y").sum("transport_flight_km * 0.1722")},
+
+                  {name: "Co2 Allir flug", data: Transport.group_by_year(:created_at, format:"%Y").average("transport_flight_km * 0.1722")}], { stacked: true, height: "250px", 'interpolateNulls':true, xtitle: "Co2 vegna Flugferða", ytitle: "Kg/Co2"} %>
+
+                   <ul class="chart-box-nav">
+                 <li><p> <%= link_to "Setja Markmið", '#'  %> |</p></li> 
+                  <li><p> <%= link_to "Skrá Flug", '#flight'%> |</p></li>  
+                  <li><p> <%= link_to "Skoða nánar", '#flight'%> </p></li> 
+                  </ul>
+          </div>
+
+<!-- Akstur co2 -->
+              <div class="col-md-2 chart-box">
+          <h4> Akstur </h4> 
+        <%= column_chart [ 
+                  {name: "Co2 vegna Akstur ", data: current_user.transports.group_by_year(:created_at, format:"%Y").sum("transport_km * 0.1404")},
+
+                  {name: "Co2 Allir Akstur", data: Transport.group_by_year(:created_at, format:"%Y").average("transport_km * 0.1404")}], { stacked: true, height: "250px", 'interpolateNulls':true, xtitle: "Co2 vegna Aksturs", ytitle: "Kg/Co2"} %>
+                   <ul class="chart-box-nav">
+                 <li><p> <%= link_to "Setja Markmið", '#'  %> |</p></li> 
+                  <li><p> <%= link_to "Skrá ferðir", '#travel'%> |</p></li>  
+                  <li><p> <%= link_to "Skoða nánar", '#travel'%> </p></li> 
+                  </ul>
+          </div>        
+  </div>

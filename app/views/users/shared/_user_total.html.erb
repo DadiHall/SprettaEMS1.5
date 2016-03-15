@@ -1,19 +1,19 @@
 
 
-</div>
- <% if current_user.profile %>
-<div class="row">	
 
-		<div class="col-md-8 col-md-offset-2">	
+ <% if current_user.profile %>
+
+
+		<div class="col-md-6" id="pappir">	
 			<div class="panel panel-default">
   				<div class="panel-heading">
     				<h3 class="panel-title"> 
-    				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-minus"></span><%= current_user.name %>: Pappírs notkun</a> <%= link_to "Skrá Pappír", papers_path, class: 'pull-right ' %></h3>
+    				<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-minus"></span><%= current_user.name %>: Pappírs notkun</a> <%= link_to "Skrá Pappír", user_path(current_user), class: 'pull-right ' %></h3>
   				</div>
   				    <div id="collapseOne" class="panel-collapse collapse in">
 
  			 <div class="panel-body">
-				<div class="row">
+				
          <% if current_user.profile %>
 					<%= render 'pages/partials/paper_part' %>
 				<% end %>
@@ -21,8 +21,9 @@
 			</div>	
 		</div>	
    </div> 
-  </div> 	
-  <div class="col-md-8 col-md-offset-2">  
+</div>
+ 
+  <div class="col-md-6 pull-right" id="electro">  
 		<div class="panel panel-default">
   			<div class="panel-heading">
     			<h3 class="panel-title"> 
@@ -32,16 +33,20 @@
 
  			 <div class="panel-body">
 			
-				<div class="row">		
+				
 				<%= render 'pages/partials/electro_part' %>
 						
-         		</div>	
+         			
          		</div>
     		</div>  		 
 		</div>
    </div> 
+
+
 <!-- Heitt vatn Panel byrjar -->
-  <div class="col-md-8 col-md-offset-2">  
+
+
+  <div class="col-md-6" id="Hwater">  
 		<div class="panel panel-default">
   			<div class="panel-heading">
     			<h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseThree">
@@ -50,17 +55,19 @@
   			 <div id="collapseThree" class="panel-collapse collapse">
  			 	<div class="panel-body">
 			
-				<div class="row">		
+					
 					<%= render 'pages/partials/hwater_part' %>
-         		</div>
+         
          	</div>		
     		</div>  		 
 		</div>
-  </div>  
+  </div>
+
 		<!-- Heitt vatn Panel Endar -->
 
 		<!-- HreingerningarEfni Panel byrjar -->
-  <div class="col-md-8 col-md-offset-2">    
+   
+  <div class="col-md-6 pull-right">    
 		<div class="panel panel-default">
   			<div class="panel-heading">
     			<h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFour">
@@ -69,17 +76,20 @@
   			 <div id="collapseFour" class="panel-collapse collapse">
  			 	<div class="panel-body">
 			
-				<div class="row">		
+					
 					<%= render 'pages/partials/cleaning_part' %>
-         		</div>
+         		
          	</div>		
     		</div>  		 
 		</div>
-  </div>  
+  </div> 
+ 
+
 		<!-- Hreingerningarefni Panel Endar -->
 
 		<!-- Ferðalög Panel byrjar -->
-  <div class="col-md-8 col-md-offset-2">    
+
+  <div class="col-md-6">    
 		<div class="panel panel-default">
   			<div class="panel-heading">
     			<h3 class="panel-title"><a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion" href="#collapseFive">
@@ -88,19 +98,17 @@
   			 <div id="collapseFive" class="panel-collapse collapse">
  			 	<div class="panel-body">
 			
-				<div class="row">		
+				
 					<%= render 'pages/partials/travel_part' %>
          		</div>
          	</div>		
     		</div>  		 
 		</div>
 		<!-- Ferðir Panel Endar -->
-	</div>
- </div> 	
-	</div> <!-- Panel body end -->
+	 <!-- Panel body end -->
 <!--Col Ends -->
 
-</div> <!-- row ends -->
+ <!-- row ends -->
 <% else %>
 
           <p>Create your profile so that you can share your info and follow other users. </p>

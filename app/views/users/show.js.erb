@@ -1,0 +1,40 @@
+if($("#category_tabs li:first-child").hasClass("active")) {
+    $(".pappir").html("<%= j render(partial: 'pages/partials/paper_part') %>")
+    $(".electro").html('')
+    $(".hwater").html('')
+    $(".cleaning").html('')
+    $(".travel").html('')
+} else 
+
+if($("#category_tabs li:nth-child(2)").hasClass("active")) {
+    $(".electro").html("<%= escape_javascript(render 'pages/partials/electro_part').html_safe %>")
+    $(".hwater").html('')
+    $(".cleaning").html('')
+    $(".travel").html('')
+    $(".pappir").html('')
+} else
+
+if($("#category_tabs li:nth-child(3)").hasClass("active")) {
+    $(".hwater").html("<%= escape_javascript(render 'pages/partials/hwater_part').html_safe %>")
+    $(".cleaning").html('')
+    $(".travel").html('')
+    $(".pappir").html('')
+    $(".electro").html('')
+} else
+
+if($("#category_tabs li:nth-child(4)").hasClass("active")) {
+    $(".cleaning").html("<%= escape_javascript(render 'pages/partials/cleaning_part').html_safe %>")
+    $(".travel").html('')
+    $(".pappir").html('')
+    $(".electro").html('')
+    $(".hwater").html('')
+} else
+
+if($("#category_tabs li:nth-child(5)").hasClass("active")) {
+    $(".travel").html("<%= escape_javascript(render 'pages/partials/travel_part').html_safe %>")
+    $(".pappir").html('')
+    $(".electro").html('')
+    $(".hwater").html('')
+    $(".cleaning").html('')
+} 
+

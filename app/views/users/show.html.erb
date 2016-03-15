@@ -1,19 +1,19 @@
 
 <div class="row ">
-  <div class="container">
-    <div class="col-md-12 well ">
-        <div class="col-md-4">
+ <!-- <div class="container"> -->
+    <div class="col-md-12 col-md-offset-1">
+        <div class="col-md-3 user-box-top">
         <p><small>Síðast Innskráð: <%=current_user.last_sign_in_at %></small></p>
         <% if current_user.profile %>
           <p>Fyrirtæki: <%=current_user.profile.name %></p>
           <p>Fjöldi stöðugilda: <%=current_user.profile.staff %></p>
           <%= link_to "Uppfæra skráningu", edit_user_profile_path(current_user) %>
              <%= link_to "Skoða skráningu", users_path(current_user)%>
-            <%#= link_to "Skoða vini", users_path(current_user)%>        
+                  
     
        </div>  
-       <div class="col-md-6">
-<h4> <%= current_user.profile.name%> Friends</h4>
+       <div class="col-md-3 user-box-top">
+<h5> <%= current_user.profile.name%> eltir:</h5>
              <ul>
                <% @user.friendships.each do |friendship| %>
                <li>
@@ -22,11 +22,11 @@
                   (<%= link_to "Eyða vináttu", friendship, :method => :delete %>)
                   <%= link_to friendship do %>
             
-                  <%= link_to 'Senda Skilaboð', new_message_path(to: friendship.friend.id), class: 'btn btn-default btn-xs' %> 
+                  <%= link_to 'Senda Skilaboð', new_message_path(to: friendship.friend.id) %> 
 
                   <%= link_to friendship do %>
 
-                  <%= link_to 'Bera saman', compare_friends_path(to: friendship.friend.id), class: 'btn btn-default btn-xs' %>
+                  <%= link_to 'Bera saman', compare_friends_path(to: friendship.friend.id)%>
                   <% end %>
               <% end %>
               <% end %>
@@ -38,7 +38,7 @@
              <p> <%= link_to "Finna vini", users_path %> </p>
 
              
-              <h3> þeir sem elta <%= current_user.profile.name%> </h3>
+              <h5> þeir sem elta <%= current_user.profile.name%> </h5>
              <ul>
               <%  @user.inverse_friends.each do |user| %>
               <%= link_to user_profile_path(user), :method => :get do %>
@@ -49,7 +49,7 @@
               
 
     </div>
-    <div class="col-md-2">
+    <div class="col-md-3 user-box-top">
     <h3> Spjalla við vini</h3>
       <%= link_to "Fara á spjall", conversations_path %>
 
@@ -60,28 +60,84 @@
           <% end %>
          </div>
       
-
+</div>
 </div>   
+</div> <!--Container Ends -->
+<!-- Mælaborð -->
+<hr>
+
+<%= render 'users/shared/dashboard_part' %>
+<!-- Mælaborð ends -->
 
 
+<hr>
+<div class="container">
+  <ul role="tablist" id="category_tabs" class="nav nav-tabs">
 
-	<%= render 'users/shared/user_total' %>
+    <li role="presentation" class="active"> 
+      <%= link_to "Pappír", "#pappir_tab", :remote => true, 'data-toggle' => 'tab', 'data-target' => '#pappir', id: "pappir_tab"  %>
+    </li>
 
-	<%#= render 'users/shared/paper_compare' %>
-	
+    <li  role="presentation" >
+     <%= link_to "Rafmagn", "#electro_tab", :remote => true, 'data-toggle' => 'tab', 'data-target' => '#electro', id: "electro_tab"  %>
+     </li>
 
-	<%#= render 'users/shared/electro_compare' %>	 
+    <li role="presentation" >
+      <%= link_to "Vatn", "#hwater_tab", :remote => true, 'data-toggle' => 'tab', 'data-target' => '#hwater', id: "hwater_tab"  %>
+    </li>
 
-	<%#= render 'users/shared/hwater_compare' %>	 
+     <li role="presentation" >
+      <%= link_to "Ræsting", "#cleaning_tab", :remote => true, 'data-toggle' => 'tab', 'data-target' => '#cleaning', id: "cleaning_tab"  %>
+    </li>
 
-	<%#= render 'users/shared/cleaning_compare'	%>
+    <li role="presentation" >
+      <%= link_to "Bílferðir", "#travel_tab", :remote => true, 'data-toggle' => 'tab', 'data-target' => '#travel', id: "travel_tab"  %>
+    </li>
 
-	<%#= render 'users/shared/travel_compare'	%>
-		
-	
+  </ul>
+ 
+
+<div class="tab-content categories">
+    <div  role="tabpanel" class="tab-pane fade in active" id="pappir">
+        <div class="pappir">
+      <%= render 'pages/partials/paper_part' %>
+        </div>
+    </div>
+ 
+
+  
+    <div  role="tabpanel" class="tab-pane fade" id="electro">
+      <div class="electro">
+      <%= render 'pages/partials/electro_part' %>
+      </div>
+    </div>
+
+     <div  role="tabpanel" class="tab-pane fade" id="hwater">
+      <div class="hwater">
+      <%= render 'pages/partials/hwater_part' %>
+      </div>
+    </div>
+
+     <div  role="tabpanel" class="tab-pane fade" id="cleaning">
+      <div class="cleaning">
+      <%= render 'pages/partials/cleaning_part' %>
+      </div>
+    </div>
+
+    <div  role="tabpanel" class="tab-pane fade" id="travel">
+      <div class="travel">
+      <%= render 'pages/partials/travel_part' %>
+      </div>
+    </div>
+ 
+
+
+</div>
+
+
 	
  
-</div> 
+
 
 				
 						

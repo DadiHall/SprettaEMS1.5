@@ -36,6 +36,8 @@ class ApplicationController < ActionController::Base
            @env_paper_weight = current_user.papers.sum(:env_paper_weight)
 
            @env_paper_ratio = (@env_paper_weight / @paper_weight_total) * 100
+
+           @paper_cost_total = current_user.papers.sum(:paper_cost)
         #Rafmagn   
             @electro_total = current_user.electros.sum(:electricity_kwst) 
            @electro_total_per_capita = current_user.electros.sum(:electricity_kwst) / current_user.profile.staff 
