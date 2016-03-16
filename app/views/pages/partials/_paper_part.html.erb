@@ -49,8 +49,8 @@
 						<div class="col-md-4 chart-box">
 		 					
 						 <%= line_chart [
-                  {name: "Paper #{current_user.profile.name}", data: current_user.papers.group_by_month(:updated_at).sum(:paper_weight)},
-                  {name: "UmhverfisvænnPaper a", data: current_user.papers.group_by_month(:updated_at).sum(:env_paper_weight)}], { stacked: true, height: "300px", xtitle: "Pappírsmagn", ytitle: "Kg/Pappír"} %>
+                  {name: "Paper #{current_user.profile.name}", data: current_user.papers.group_by_month(:date).sum(:paper_weight)},
+                  {name: "UmhverfisvænnPaper a", data: current_user.papers.group_by_month(:date).sum(:env_paper_weight)}], { stacked: true, height: "300px", xtitle: "Pappírsmagn", ytitle: "Kg/Pappír"} %>
 					
 						</div>
 						
@@ -69,8 +69,8 @@
 			<div class="col-md-4 chart-box">
 		 					
 						 <%= column_chart [
-                  {name: "Kostnaður #{current_user.profile.name}", data: current_user.papers.group_by_month(:updated_at, format:"%B").sum(:paper_cost)},
-                  {name: "Kostnaður Allir", data: Paper.group_by_month(:updated_at, format:"%B").average(:paper_cost)}], { stacked: true, height: "300px", xtitle: "Tímabil", ytitle: "Kostnaður/Pappír"} %>
+                  {name: "Kostnaður #{current_user.profile.name}", data: current_user.papers.group_by_month(:date, format:"%B").sum(:paper_cost)},
+                  {name: "Kostnaður Allir", data: Paper.group_by_month(:date, format:"%B").average(:paper_cost)}], { stacked: true, height: "300px", xtitle: "Tímabil", ytitle: "Kostnaður/Pappír"} %>
 					
 						</div>
 
@@ -78,78 +78,3 @@
 </div>	
 
 			
-
-			<!--<table class="table table-hover ">
-				  <thead class="thead-default">
-					<tr>
-						<th>Texti</th>
-						<th>Eining</th>
-					</tr>
-				  </thead>	
-				  <tbody>
-					<!-- heildar pappírs þyngd -->
-					<!--<tr>
-						<td>Heildar pappírs þyngd</td>
-						<td><%= @paper_weight_total.to_i %> - Kg</td>
-					</tr>
-					<!-- Pappírs þyngd f. hvert stöðugildi -->
-					<!--<tr>
-						<td>Pappírs magn fyrir hvert stöðugildi</td>
-						<td><%= @paper_weight_per_capita %> - Kg</td>
-					</tr>
-
-					<tr>
-						<td>Hlutfall umhverfisvæns pappírs</td>
-						<td><%= number_with_precision(@env_paper_ratio, precision: 2).to_f%> - %</td>
-					</tr>
-
-					<!-- Fjöldi trjáa sem er fórnað f. pappírinn -->
-					<!--<tr>
-						<td></td>
-						<!-- tómur þessi, hahaha -->
-						<td></td>
-					<!--</tr>
-					<tr>
-						<td>Fjöldi tjráa mv. Pappírsnotkun.</td>
-						<td><%= @paper_tree_ratio.to_f %> - Tré</td>
-					</tr>
-
-					<tr>
-						<td>Magn co2 sem notuð tré hefðu bundið</td>
-						<td><%= number_with_precision(@paper_tree_co2_rescue, precision: 1).to_f  %> - Kg</td>
-					</tr>
-				  </tbody>	
-					
-				</table> -->
-
-
-			
-					
- 				
-				<!--<div class="col-md-6 col-md-offset-1 well">	
- 				<table class="table table-hover">
-				  <thead>
-				    <tr>
-				      <% current_user.average_paper_types.each do |pair| %>
-				        <th><%= pair[0] %></th>
-				      <% end %>
-				    </tr>
-				  </thead>
-				  <tbody>
-				    <tr>
-				      <% current_user.average_paper_types.each do |pair| %>
-				        <td><%= pair[1] %></td>
-				      <% end %>
-				    </tr>
-				    <tr>
-				      <% current_user.average_paper_types.each do |pair| %>
-				        <td><%= pair[2] %></td>
-				      <% end %>
-				    </tr>
-				  </tbody>
-				</table>-->
-
-		
-					
-					
-
