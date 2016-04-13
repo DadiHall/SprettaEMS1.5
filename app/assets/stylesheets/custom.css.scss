@@ -12,6 +12,11 @@ body {
   font-family:Arial,sans-serif;
 }
 
+.glyphicon { margin-right:10px; }
+.panel-body { padding:0px; }
+.panel-body table tr td { padding-left: 15px }
+.panel-body .table {margin-bottom: 0px; }
+
 /* fix bs3 horizontal scrollbar bug */
 .row { margin: 0; padding: 0 }
 
@@ -339,4 +344,15 @@ tbody tr td{
   border-radius: 15px;
   margin: 20px 30px 10px 20px;
   background-color: lightblue;
+}
+
+
+.charts{
+  font-size: 0.5em;
+  background-color: #fff;
+  margin: 20px 0px;
+  padding: 10px;
+ border: 1px solid #eaeaea;
+ border-radius: 5px;
+
 }

@@ -41,7 +41,7 @@
 
 		<div class="col-md-6">
 		Bílferðir Samanburður við <%= @user.profile.name %>
-		 					<%= line_chart [
+		 					<%#= line_chart [
   								{name: "losun co2 vegna bílferða #{current_user.profile.name}", data: current_user.transports.map{|t| [t.date, t.transport_km * (0.1404)] }, 'interpolateNulls':true},
   								
   								{name: "losun co2 vegna bílferða #{@user.profile.name}", data: @user.transports.map{|t| [t.date, t.transport_km * (0.1404)] }, 'interpolateNulls':true} ] %>
@@ -87,7 +87,7 @@
 
 		<div class="col-md-6">
 		Flugferðir Samanburður við <%= @user.profile.name %>
-		 					<%= line_chart [
+		 					<%#= line_chart [
   								{name: "losun co2 vegna flugferða #{current_user.profile.name}", data: current_user.transports.map{|t| [t.date, t.transport_km * (0.1722)  ] }, 'interpolateNulls':true},
   								
   								{name: "losun co2 vegna flugferða #{@user.profile.name}", data: @user.transports.map{|t| [t.date, t.transport_flight_km * (0.1722)  ] }, 'interpolateNulls':true} ] %>

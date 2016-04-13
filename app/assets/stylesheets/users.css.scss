@@ -35,7 +35,7 @@
 .table-box-compare{
 	border-bottom: solid 3px #dadada;
 }
-
+/*
 .chart-box{
 	border-bottom: solid 1px #dedede; 
 	h4{text-align: center;}
@@ -50,20 +50,23 @@
 .chart-box p{
 	font-size: 0.7em;
 }
+
+*/
+
 .user-box{
-	color: #fff;
+	background-color: #fff;	
+	color: #2e6da4;
 	text-align: center;
-	background-color: #2e6da4;
+	font-size: 0.8em;
 	padding: 20px 10px;
 	margin-left: 20px;
 	margin-bottom: 20px;
-	height: 120px;
+	height: 240px;
 
-	width: 180px;
 }
 
 .user-eining{
-	color: #fff;
+	color: #2e6da4;
 	text-transform: none;
 }
 
@@ -73,7 +76,7 @@
 	
 }
 .user-box h2{
-font-size: 2.0em;
+font-size: 3.0em;
 margin-top: 20px;
 }
 .user-box p{
@@ -93,7 +96,7 @@ font-size:1.0em;
 .well.paper-new{
 
     border: solid 1px black;
-	width: 100%;
+
 	
 
 }
@@ -107,5 +110,20 @@ font-size:1.0em;
 	background-color: #fefefe;
 }
 
+
+
+/* PRODUCT PANEL */
+
+.left-side{
+	background-color: #453;
+}
+
+.middle-side{
+	background-color: #123;
+}
+
+.right-side{
+	background-color: #fff;
+}
 
 

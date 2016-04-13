@@ -99,15 +99,30 @@ class ApplicationController < ActionController::Base
     
   		# hér eru meðaltöl ýmisa breyta sótt í gagnagrunninn og birt á forsíðu
 
-  		@all_users_paper_average = Paper.sum(:paper_weight) / User.count
+  		@all_users_average_staff = Profile.sum(:staff)
+
+      @all_users_paper_average = Paper.sum(:paper_weight) / User.count
+
+      @all_users_env_paper_avarge = Paper.sum(:env_paper_weight) / User.count
+
+      @all_users_env_paper_average_ratio = Paper.sum(:env_paper_weight) / @all_users_average_staff
+
+      @all_users_paper_per_capita = Paper.sum(:paper_weight) / @all_users_average_staff
+
+      @all_users_paper_cost = Paper.average(:paper_cost)
+
+      @all_users_tree_average_ratio = (Paper.average(:paper_weight) / 1000) * 15
 
   		@all_users_tree_average = Paper.average(:paper_weight) / 1000
+
+      @paper_tree_co2_rescue_all_users = @all_users_tree_average_ratio * (0.492)
+
 
       @all_users_power_average = Electro.sum(:electricity_kwst) / User.count
 
       @all_users_hwater_average = Hwater.sum(:hot_water_cubic_meter) / User.count
 
-      @all_users_env_paper_avarge = Paper.sum(:env_paper_weight) / User.count
+      
 
       @all_users_transp_co2_average = Transport.sum(:transport_km) * (0.1404)
 

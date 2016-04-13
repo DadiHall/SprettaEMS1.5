@@ -1,0 +1,54 @@
+
+	<div class="col-md-10  ">
+
+		<h4>Pappírsnotkun</h4>
+		<table class=" well table table-hover" >
+			
+			<thead>
+				<tr>
+					<th>Dags</th>
+					<th>Tegund</th>
+					<th>Þyngd</th>
+					<th>Kostnaður</th>
+					<th>Þar af umhvm. pappír</th>
+					<th>Pappírs magn m.v. Stöðugildi</th>
+					<th>Hl.f. Umhvm. Pappírs</th>
+					<th>Fjöldi trjáa m.v. magn pappírs</th>
+				</tr>
+			</thead>
+
+				<tbody>		
+						<% paper_total_cost = 0 %>
+         			 	<% paper_total_trees = 0 %>
+          				<% paper_total_staff_ratio = 0 %>	
+					<% @papers.each do |paper| %>
+						<tr>
+							<td><%= paper.date %></td>
+		              		<td><%= paper.paper_type %></td>
+		              		<td><%= paper.paper_weight %> -kg.</td>
+		              		<td><%= paper.paper_cost %> -kr.</td>
+		              		<td><%= paper.env_paper_weight %> -kg.</td>
+		              		<td><%= paper.paper_weight_per_capita(current_user) %> kg/stöðugildi </td>
+              				<td><%= paper.paper_weight_env_ratio %>%</td>	
+              				<td><%= paper.paper_weight_trees_ratio%></td>
+
+		              		<td><%#= link_to 'Sýna', paper, class: 'btn btn-xs btn-info' %></td>
+		              		<td><%#= link_to 'Uppfæra', edit_paper_path(paper), class: 'btn btn-xs btn-warning' %></td>
+		              		<td><%#= link_to 'Eyða', paper, method: :delete, class: 'btn btn-xs btn-danger', data: { confirm: 'Are you sure?' } %></td>
+		              		 
+		              	</tr>	
+
+					<% end %>
+				</tbody>
+			
+		</table>
+	
+	</div>			
+
+					
+
+				    <%= link_to 'New Paper', new_paper_path %>
+<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+	
+
+

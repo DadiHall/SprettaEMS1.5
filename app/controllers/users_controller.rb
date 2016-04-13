@@ -25,6 +25,10 @@ class UsersController < ApplicationController
     @hwater = current_user.hwaters.build
     @cleaning = current_user.cleanings.build
     @transport = current_user.transports.build
+
+    @papers = current_user.papers
+    
+
 	end
 
 	def compare

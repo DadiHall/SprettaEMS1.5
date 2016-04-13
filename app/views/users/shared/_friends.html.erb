@@ -1,18 +1,56 @@
-<h3> Vinir mínir </h3>
+<!--<h3> Vinir mínir </h3>
              <ul>
-               <% for friendship in @user.friendships %>
+               <#% for friendship in @user.friendships %>
                <li>
-               <%= friendship.friend.profile.name %>
-               (<%= link_to "Eyða vinskap", friendship, :method => :delete %>)
+               <%#= friendship.friend.profile.name %>
+               (<%#= link_to "Eyða vinskap", friendship, :method => :delete %>)
                </li>
+              <%# end %>
+             </ul> 
+
+             <p> <%#= link_to "Finna vini", users_path %> </p>
+
+             <h3> þeir sem elta mig </h3>
+             <ul>
+             	<%# for user in @user.inverse_friends %>
+             	<li><%#= user.profile.name %></li>
+             	<%# end%>
+             	</ul>-->
+
+
+
+<h5> <%= current_user.profile.name%> eltir:</h5>
+             <ul>
+               <% @user.friendships.each do |friendship| %>
+               <li>
+                <%= link_to user_profile_path(friendship.friend), :method => :get do %>
+                  <%= friendship.friend.profile.name %>
+                  (<%= link_to "Eyða vináttu", friendship, :method => :delete %>)
+                  <%= link_to friendship do %>
+            
+                  <%= link_to 'Senda Skilaboð', new_message_path(to: friendship.friend.id) %> 
+
+                  <%= link_to friendship do %>
+
+                  <%= link_to 'Bera saman', compare_friends_path(to: friendship.friend.id)%>
+                  <% end %>
               <% end %>
+              <% end %>
+              <% end %>
+              
+            </li>
              </ul> 
 
              <p> <%= link_to "Finna vini", users_path %> </p>
 
-             <h3> þeir sem elta mig </h3>
+             
+              <h5> þeir sem elta <%= current_user.profile.name%> </h5>
              <ul>
-             	<% for user in @user.inverse_friends %>
-             	<li><%= user.profile.name %></li>
-             	<% end%>
-             	</ul>
+              <%  @user.inverse_friends.each do |user| %>
+              <%= link_to user_profile_path(user), :method => :get do %>
+                <li><%= user.profile.name %></li>
+              <% end%>
+              <% end %>
+              </ul>
+              
+

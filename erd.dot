@@ -1,0 +1,206 @@
+digraph SprettaEMS15 {
+rankdir = "LR";
+ranksep = "0.5";
+nodesep = "0.4";
+pad = "0.4,0.4";
+margin = "0,0";
+concentrate = "true";
+labelloc = "t";
+fontsize = "13";
+fontname = "Arial BoldMT";
+node[ shape  =  "Mrecord" , fontsize  =  "10" , fontname  =  "ArialMT" , margin  =  "0.07,0.05" , penwidth  =  "1.0"];
+edge[ fontname  =  "ArialMT" , fontsize  =  "7" , dir  =  "both" , arrowsize  =  "0.9" , penwidth  =  "1.0" , labelangle  =  "32" , labeldistance  =  "1.8"];
+rankdir = "TB";
+label = "My model diagram\n\n";
+m_Cleaning [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Cleaning</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="cleaning_cost">cleaning_cost <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="cleaning_liter">cleaning_liter <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="cleaning_liter_staff_ratio">cleaning_liter_staff_ratio <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="cleaning_type">cleaning_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="date">date <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="env_clean_ratio">env_clean_ratio <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+</table>
+}>];
+m_Comment [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Comment</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="comment">comment <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+</table>
+}>];
+m_Electro [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Electro</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="building_name">building_name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="date">date <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="electricity_cost">electricity_cost <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="electricity_kwst">electricity_kwst <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="kwst_square_meter_ratio">kwst_square_meter_ratio <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="kwst_staff_ratio">kwst_staff_ratio <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+</table>
+}>];
+m_Friendship [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Friendship</font></td></tr>
+</table>
+}>];
+m_Garbage [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Garbage</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="date">date <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="trash_cost">trash_cost <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="trash_type">trash_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="trash_weight">trash_weight <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+</table>
+}>];
+m_Hwater [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Hwater</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="building_name">building_name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="date">date <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="hot_water_cost">hot_water_cost <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="hot_water_cubic_meter">hot_water_cubic_meter <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="hot_water_m2_m3_ratio">hot_water_m2_m3_ratio <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="hot_water_m3_staff_ratio">hot_water_m3_staff_ratio <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+</table>
+}>];
+m_Page [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Page</font></td></tr>
+</table>
+}>];
+m_Paper [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Paper</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="date">date <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="env_paper_weight">env_paper_weight <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="paper_cost">paper_cost <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="paper_type">paper_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="paper_weight">paper_weight <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="paper_weight_staff_ratio">paper_weight_staff_ratio <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+</table>
+}>];
+m_Post [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Post</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="content">content <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="title">title <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+}>];
+m_Profile [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Profile</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="address">address <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="avatar_content_type">avatar_content_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="avatar_file_name">avatar_file_name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="avatar_file_size">avatar_file_size <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="avatar_updated_at">avatar_updated_at <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="building_size">building_size <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="buisness_type">buisness_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="contact_email">contact_email <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="contact_person">contact_person <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="description">description <font face="Arial ItalicMT" color="grey60">text</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="phone_number">phone_number <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="postalcode">postalcode <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="staff">staff <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="website">website <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+}>];
+m_Tag [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Tag</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="taggings_count">taggings_count <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+</table>
+}>];
+m_Tagging [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Tagging</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="context">context <font face="Arial ItalicMT" color="grey60">string (128)</font></td></tr>
+  <tr><td align="left" width="130" port="taggable_id">taggable_id <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="taggable_type">taggable_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="tagger_id">tagger_id <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+  <tr><td align="left" width="130" port="tagger_type">tagger_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+}>];
+m_Transport [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">Transport</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="date">date <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="transport_co2">transport_co2 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="transport_co2_staff_ratio">transport_co2_staff_ratio <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="transport_flight_co2">transport_flight_co2 <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="transport_flight_co2_staff_ratio">transport_flight_co2_staff_ratio <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="transport_flight_km">transport_flight_km <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="transport_flight_km_staff_ratio">transport_flight_km_staff_ratio <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="transport_flight_type">transport_flight_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="transport_km">transport_km <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="transport_km_recycled_fuel">transport_km_recycled_fuel <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="transport_km_staff_ratio">transport_km_staff_ratio <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="transport_num_of_trips">transport_num_of_trips <font face="Arial ItalicMT" color="grey60">decimal</font></td></tr>
+  <tr><td align="left" width="130" port="transport_type">transport_type <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+</table>
+}>];
+m_User [label = <{<table border="0" align="center" cellspacing="0.5" cellpadding="0" width="134">
+  <tr><td align="center" valign="bottom" width="130"><font face="Arial BoldMT" point-size="11">User</font></td></tr>
+</table>
+|
+<table border="0" align="left" cellspacing="2" cellpadding="0" width="134">
+  <tr><td align="left" width="130" port="current_sign_in_at">current_sign_in_at <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="current_sign_in_ip">current_sign_in_ip <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="email">email <font face="Arial ItalicMT" color="grey60">string ∗ U</font></td></tr>
+  <tr><td align="left" width="130" port="encrypted_password">encrypted_password <font face="Arial ItalicMT" color="grey60">string ∗</font></td></tr>
+  <tr><td align="left" width="130" port="last_sign_in_at">last_sign_in_at <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="last_sign_in_ip">last_sign_in_ip <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="name">name <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="remember_created_at">remember_created_at <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="reset_password_sent_at">reset_password_sent_at <font face="Arial ItalicMT" color="grey60">datetime</font></td></tr>
+  <tr><td align="left" width="130" port="reset_password_token">reset_password_token <font face="Arial ItalicMT" color="grey60">string</font></td></tr>
+  <tr><td align="left" width="130" port="sign_in_count">sign_in_count <font face="Arial ItalicMT" color="grey60">integer ∗</font></td></tr>
+  <tr><td align="left" width="130" port="staff">staff <font face="Arial ItalicMT" color="grey60">integer</font></td></tr>
+</table>
+}>];
+  m_User -> m_Paper [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Cleaning [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Electro [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Hwater [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Transport [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Garbage [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Page [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Friendship [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_User [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
+  m_User -> m_Friendship [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_User [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
+  m_User -> m_Post [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Comment [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Profile [arrowhead = "none", arrowtail = "none", weight = "2"];
+  m_Post -> m_Comment [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_Profile -> m_Friendship [arrowhead = "normal", arrowtail = "none", weight = "2"];
+  m_User -> m_Page [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Post -> m_Tagging [arrowhead = "normal", arrowtail = "none", weight = "1"];
+  m_Post -> m_Tag [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
+  m_Profile -> m_User [style = "dotted", arrowhead = "normal", arrowtail = "none", weight = "1", constraint = "false"];
+  m_Tag -> m_Tagging [arrowhead = "normal", arrowtail = "none", weight = "2"];
+}
