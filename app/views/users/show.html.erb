@@ -254,20 +254,8 @@
      <div class="col-sm-12 col-md-12">
             <div class="well">
                 <div class="tab-content">
-                    <div role="tabpanel" class="tab-pane active" id="tab1">
+                    <div role="tabpanel" class="tab-pane " id="tab1">
                         <%= render 'conversations/msg_part' %>
-
-
-                        <%= line_chart Paper.group(:paper_type).group_by_week(:created_at).count %>
-
-                        <%= line_chart @users.map { |paper|
-                            {name: paper.name, data: paper.papers.sum(:paper_weight)}
-                          } %>
-
-
-                           <%= line_chart @users.map { |paper|
-                  
-                  {name: paper.name, data: paper.papers.group_by_month(:date).sum(:env_paper_weight)}}, { stacked: true, height: "250px", width: "125px", xtitle: "Pappírsmagn", ytitle: "Kg/Pappír"} %>
 
                     </div>
                     <div role="tabpanel" class="tab-pane" id="tab2">
@@ -276,7 +264,7 @@
                     <div role="tabpanel" class="tab-pane" id="tab3">
                         <%= render 'users/shared/friends' %>
                     </div>
-                    <div role="tabpanel" class="tab-pane" id="tab4">
+                    <div role="tabpanel" class="tab-pane active" id="tab4">
                         <%= render 'pages/partials/paper_part' %>
                           <%= line_chart @users.map { |paper|
                   
