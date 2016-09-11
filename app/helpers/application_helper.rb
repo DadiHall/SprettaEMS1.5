@@ -18,4 +18,12 @@ module ApplicationHelper
     image_tag gravatar_image_url(user.email, size: size), title: title, class: 'img-rounded'
   end
   ###############
+
+
+
+  def random_charkick_id
+    return 'chart-#'+(Random.rand(10000)).to_s
+  end
+
+  
 end

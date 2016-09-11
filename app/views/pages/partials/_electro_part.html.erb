@@ -1,45 +1,49 @@
 	<!-- KWst rafmagn/ mv.stöðug.  -->
 
 		<div class="row">
- 				 <div class="col-md-8 mod-md-9 ">
 
- 				 	<div class="col-md-2 user-box">
+
+		<div class="col-md-3 clear-fix">
+
+	
+					<%= render 'pages/partials/new_electro_part' %>
+					
+				</div>	
+ 				 <div class="col-md-9 ">
+
+ 				 	<div class="col-md-3 user-box">
  				 		<p>Heildar kwst notkun</p>
  				 		<h2><%= @electro_total.to_f %><small class="user-eining"> - Kwst</small></h2>
  				 	</div>	
 
- 				 	<div class="col-md-2 user-box">
+ 				 	<div class="col-md-3 user-box">
  				 		<p>Kwst á hvert stöðugildi</p>
  				 		<h2><%= @electro_total_per_capita %><small class="user-eining"> - Kwst</small></h2>
  				 	</div>	
 
- 				 	<div class="col-md-2 user-box">
+ 				 	<div class="col-md-3 user-box">
  				 		<p>Kwst mv. hvern m&sup2;</p>
  				 		<h2><%= number_with_precision(@electro_total_per_m2.to_f, precision: 2)%><small class="user-eining"> -kwst/m&sup2;</small></h2>
  				 	</div>	
 
  				 	
  		</div> 	
+ 		</div>	
 
- 				<div class="col-md-4 clear-fix">
+ 				
 
-	
-					<%= render 'pages/partials/new_electro_part' %>
-					
-				</div>	
-<div class="row">
-<div class="col-md-12">
-						<div class="col-md-4 chart-box">
+<div class="col-md-9 col-md-offset-3">
+						<div class="col-md-3 chart-box">
 		 					
 						 <%= line_chart [
                  		 {name: "Rafmagn #{current_user.profile.name}", data: current_user.electros.group_by_month(:updated_at).sum(:electricity_kwst)},
-                 		 {name: "Rafmagnsnotkun Aðrir mt", data: Electro.group_by_month(:updated_at).average(:electricity_kwst)}], { stacked: true, height: "300px", xtitle: "Rafmagnsnotkun", ytitle: "Kwst/rafmagn"} %>
+                 		 {name: "Rafmagnsnotkun Aðrir mt", data: Electro.group_by_month(:updated_at).average(:electricity_kwst)}, id: random_charkick_id], { stacked: true, height: "300px", xtitle: "Rafmagnsnotkun", ytitle: "Kwst/rafmagn"} %>
 					
 						</div>
 						
 					
 				
-			<div class="col-md-4 chart-box">
+			<div class="col-md-3 chart-box">
 		 				
 
 							 <%= column_chart [
@@ -48,7 +52,7 @@
 
 
 
-			<div class="col-md-4 chart-box">
+			<div class="col-md-3 chart-box">
 		 					
 						 <%= column_chart [
                   {name: "Rafmagns kostnaður #{current_user.profile.name}", data: current_user.electros.group_by_month(:date, format:"%B").sum(:electricity_kwst)},
@@ -58,7 +62,7 @@
 
 
 </div>	
-</div>
-</div>				
+
+			
 				
 							

@@ -1,4 +1,8 @@
 <%= form_for @profile, url: user_profile_path, :html => { :multipart => true } do |f| %> 
+
+<div class="row">
+  <div class="container">
+	<div class="col-md-6">
 					<div class="form-group">
 						<%= f.label :name %>
 						<%= f.text_field :name, class: 'form-control' %>
@@ -52,5 +56,47 @@
 					<div class="form-group">
 						<%= f.submit "Update Profile", class: 'btn btn-primary' %>
 					</div>
+		</div>	
+		
+		<div class="col-md-6">
+		<%= f.label :need_permit? %>
+			<%= f.check_box :need_permit,{}, "Yes", "No"%>
+			<div id="card_details" style="display:none;">
+			<div class="form-group">
+    <%= f.label :Starfsemi %>				
+	 <%= f.select(:buisness_type, options_for_select(Profile::BUISNESS_TYPES),{ :class => 'form-control' })%>
+	 </div>
+	 <div class="form-group">
+    <%= f.label :permit_publisher %> 
+    <%= f.text_field :permit_publisher, class: 'form-control' %>
+    </div>
 
+    <div class="form-group">
+    <%= f.label :permit_monitor %> 
+    <%= f.text_field :permit_monitor, class: 'form-control' %>
+    </div>
+
+    <div class="form-group">
+    <%= f.label :permit_duration %> 
+    <%= f.date_field :permit_duration, class: 'form-control' %>
+    </div>
+  </div>
+
+
+		</div>		
+	</div>
+</div>
 				<% end %>
+
+
+				<script type="text/javascript">
+  var checkbox = document.getElementById('profile_need_permit');
+  var details_div = document.getElementById('card_details');
+  checkbox.onchange = function() {
+     if(this.checked) {
+       details_div.style['display'] = 'block';
+     } else {
+       details_div.style['display'] = 'none';
+     }
+  };
+</script>

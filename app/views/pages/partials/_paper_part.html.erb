@@ -3,7 +3,12 @@
 
 <div class="row ">			
 
-<div class="row well">
+<div class="col-md-3">
+<%= render 'pages/partials/new_paper_part' %>
+
+</div>
+
+<div class="col-md-9">
 <h2>Pappírs notkun - <%= current_user.profile.name %></h2>		
 
 
@@ -13,24 +18,8 @@
  				 		<p>Heildar pappírsþyngd</p>
  				 		<h2><%= @paper_weight_total.to_i %><small class="user-eining"> -kg</small></h2>
  			</div>	 	
- 			<div class="user-box-others">	
- 				 		<p>Heildar pappírsþyngd meðaltal Allir</p>
- 				 		<h2><%= @all_users_paper_average.to_i %><small class="user-eining-others"> -kg</small></h2>
+
  			</div>	
- 			<!---<div class="user-box">		 		
- 				 		<p>Setja markmið</p>
- 				 			<%#= form_for @paper, html: {class: 'form-horizontal'} do |f| %>
-
-							<div class="control-group">	
-								<%#= f.label :date, class: 'control-label' %><br>
-								<div class="controls">
-							<%#= f.number_field :date %>
-						</div>
-						</div>	
-						<%# end %>
-			</div>	-->		
-
- 				 	</div>	
 
  				 	<div class="col-md-3 col-sm-3">
  				 		<div class="user-box">
@@ -38,11 +27,6 @@
  				 			<h2><%= @paper_weight_per_capita %><small class="user-eining"> -kg</small></h2>
  				 		</div>	
  				 	
- 				 	<div class="user-box-others">	
- 				 		<p>Meðal pappírsmagn notenda á hvert stöðugildi</p>
-
- 				 		<h2><%=  @all_users_paper_per_capita.to_i %><small class="user-eining-others"> -kg</small></h2>
- 				 	</div>
  				 	
  				 	</div>	
 
@@ -51,10 +35,7 @@
  				 		<p>Hlutfall umhverfisvæns pappírs</p>
  				 		<h2><%= number_with_precision(@env_paper_ratio, precision: 2).to_f%><small class="user-eining"> -%</small></h2>
  				 	</div>	
- 				 	<div class="user-box-others">
- 				 		<p>Hlutfall umhverfisvæns pappírs, Meðaltal allra</p>
- 				 		<h2><%= number_with_precision( @all_users_env_paper_average_ratio, precision: 2).to_f%><small class="user-eining-others"> -%</small></h2>
- 				 	</div>	
+ 				 	
  				 		
  				 	</div>	
 
@@ -63,10 +44,7 @@
  				 		<p>Heildar kostnaður</p>
  				 		<h2><%= number_with_delimiter(@paper_cost_total, :delimiter => ',')%><small class="user-eining"> -kr</small></h2>
  				 	</div>	
- 				 	<div class="user-box-others">
- 				 		<p>Heildar kostnaður Meðatal Allir</p>
- 				 		<h2><%= number_with_delimiter(@all_users_paper_cost, :delimiter => ',')%><small class="user-eining-others"> -kr</small></h2>
- 				 	</div>	
+ 				 	
  				 		
  				 	</div>	
 
@@ -75,11 +53,7 @@
  				 		<p>Fjöldi tjráa mv. Pappírsnotkun</p>
  				 		<h2><%= number_with_precision(@paper_tree_ratio.to_f, precision: 1)%><small class="user-eining"> -stk</small></h2>
  				 		</div>
- 				 		<div class="user-box-others">	
-
- 				 		<p>Fjöldi tjráa mv. Pappírsnotkun Allra</p>
- 				 		<h2><%= number_with_precision(@all_users_tree_average_ratio.to_f, precision: 1)%><small class="user-eining-others"> -stk</small></h2>
- 				 		</div>
+ 				 		
  				 	</div>	
 
  				 	<div class="col-md-3 col-sm-3">
@@ -87,22 +61,11 @@
  				 		<p>Magn co2 sem notuð tré hefðu bundið</p>
  				 		<h2><%= number_with_precision(@paper_tree_co2_rescue, precision: 1).to_f  %><small class="user-eining"> kg/co2</small></h2>
  				 		</div>
- 				 		<div class="user-box-others">	
- 				 		<p>Magn co2 sem notuð tré hefðu bundið Allir</p>
- 				 		<h2><%= number_with_precision( @paper_tree_co2_rescue_all_users, precision: 1).to_f  %><small class="user-eining-others"> kg/co2</small></h2>
- 				 		</div>
+ 				 		
  				 	</div>	
  </div>	
 
- <div class="row">
- <div class="col-md-12 col-sm-12 ">
-
-<%= render 'pages/partials/new_paper_part' %>
- 				 	
- 				</div> 
- 	
-
- </div>			 	
+ 
 </div>
 <div class="row">	
 
@@ -111,6 +74,7 @@
 	<!-- eftri r-ð endar -->
 
 <div class="row">
+	<div class="col-md-4">
 					<h3>Pappírs magn</h3>
 						<div class="charts">
 		 					
@@ -119,8 +83,8 @@
                   {name: "UmhverfisvænnPaper a", data: current_user.papers.group_by_month(:date).sum(:env_paper_weight)}], { stacked: true, height: "250px", width: "125px", xtitle: "Pappírsmagn", ytitle: "Kg/Pappír"} %>
 					
 						</div>
-						
-
+	</div>					
+	<div class="col-md-4">
 					<h3>Pappírstegund magn</h3>
 				
 		 				<div class="charts">
@@ -130,9 +94,8 @@
                   {name: "UmhverfisvænnPappír", data: current_user.papers.group(:paper_type).sum(:env_paper_weight)}], {  height: "250px", width: "125px", xtitle: "Pappírsmagn", ytitle: "Kg/Pappír"} %>
 						
                   	</div>
-</div>
-
-<div class="row">
+    </div>              	
+    <div class="col-md-4">
 					<h3>Pappírskostnaður </h3>
 			
 		 				<div class="charts">	
@@ -141,23 +104,27 @@
                   {name: "Kostnaður Allir", data: Paper.group_by_month(:date, format:"%B").average(:paper_cost)}], { stacked: true, height: "250px", width: "125px",xtitle: "Tímabil", ytitle: "Kostnaður/Pappír"} %>
 					
 						</div>
-
+	</div>					
 					
  							
 </div>
 
 <div class="row">
+<div class="col-md-4">
 		<h3>Pappírs</h3>
 	  <%= line_chart Paper.group(:paper_type).group_by_week(:created_at).count %>
-
+</div>
+<div class="col-md-4">
                         <%= line_chart @users.map { |paper|
                             {name: paper.name, data: paper.papers.sum(:paper_weight)}
                           } %>
 
-
+</div>
+<div class="col-md-4">
                            <%= line_chart @users.map { |paper|
                   
                   {name: paper.name, data: paper.papers.group_by_month(:date).sum(:env_paper_weight)}}, { stacked: true, height: "250px", width: "125px", xtitle: "Pappírsmagn", ytitle: "Kg/Pappír"} %>
+                  </div>
 </div>
 
 
