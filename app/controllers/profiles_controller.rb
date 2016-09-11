@@ -8,12 +8,16 @@ class ProfilesController < ApplicationController
 
 		@user = User.find(params[:user_id]) # Finnur hver er userinn sem er loggaður inn, reaching in to the url and grabbs user.
 		@profile = Profile.new
+		@profile.name = current_user.name
+		@profile.contact_email = current_user.email
+
 	
 	end
 
 	def show
 		@user = User.find(params[:user_id])
 		#@profile = @user.profile
+		@profile.name = current_user.name
 
 	end
 
@@ -55,7 +59,7 @@ class ProfilesController < ApplicationController
 	private
 
 		def profile_params
-			params.require(:profile).permit(:name, :staff, :address, :postalcode, :website, :contact_person, :contact_email, :phone_number, :buisness_type, :description, :building_size, :avatar)
+			params.require(:profile).permit(:name, :staff, :address, :postalcode, :website, :contact_person, :contact_email, :phone_number, :buisness_type, :description, :building_size, :avatar, :need_permit, :permit_publisher, :permit_monitor, :permit_duration, :board_member)
 		end
 
 		def only_current_user

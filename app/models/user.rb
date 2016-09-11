@@ -22,6 +22,7 @@ has_many :posts
 has_many :comments
 
 has_one :profile
+accepts_nested_attributes_for :profile
 
 acts_as_messageable
 

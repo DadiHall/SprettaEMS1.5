@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160911021739) do
+ActiveRecord::Schema.define(version: 20160911195507) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -182,6 +182,7 @@ ActiveRecord::Schema.define(version: 20160911021739) do
     t.string   "permit_publisher"
     t.string   "permit_monitor"
     t.string   "need_permit"
+    t.string   "buisness_type_light"
   end
 
   create_table "taggings", force: :cascade do |t|

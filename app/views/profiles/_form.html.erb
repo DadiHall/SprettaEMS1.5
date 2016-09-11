@@ -4,86 +4,93 @@
   <div class="container">
 	<div class="col-md-6">
 					<div class="form-group">
-						<%= f.label :name %>
+						<%= f.label :Nafn %>
 						<%= f.text_field :name, class: 'form-control' %>
+						<%#= @profile.name %>
 					</div>
 
-					<div class="form-group">
-						<%= f.label :avatar %>
-						<%= f.file_field :avatar, class: 'form-control' %>
-					</div>
+					<!--<div class="form-group">
+						<%#= f.label :Merki %>
+						<%#= f.file_field :avatar, class: 'form-control' %>
+					</div>-->
 
 					<div class="form-group">
-						<%= f.label :staff %>
+						<%= f.label :stöðugildi %>
 						<%= f.number_field :staff, class: 'form-control' %>
 					</div>
 					<div class="form-group">
-						<%= f.label :building_size %>
+						<%= f.label :Stærð_Bygginga %>
 						<%= f.number_field :building_size, class: 'form-control' %>
 					</div>
 					<div class="form-group">
-						<%= f.label :address %>
+						<%= f.label :Heimilsfang %>
 						<%= f.text_field :address, class: 'form-control' %>
 					</div>
 					<div class="form-group">
-						<%= f.label :postalcode %>
+						<%= f.label :Póstnúmer %>
 						<%= f.text_field :postalcode, class: 'form-control' %>
 					</div>
 					<div class="form-group">
-						<%= f.label :website%>
+						<%= f.label :Vefsíða%>
 						<%= f.text_field :website, class: 'form-control' %>
 					</div>
 					<div class="form-group">
-						<%= f.label :contact_person %>
+						<%= f.label :Tengiliður %>
 						<%= f.text_field :contact_person, class: 'form-control' %>
 					</div>
 					<div class="form-group">
-						<%= f.label :contact_email %>
+						<%= f.label :Tengiliður_Tölvupóstur %>
 						<%= f.email_field :contact_email, class: 'form-control' %>
 					</div>
 					<div class="form-group">
-						<%= f.label :phone_number %>
+						<%= f.label :Símanúmer %>
 						<%= f.text_field :phone_number, class: 'form-control' %>
 					</div>
 					<div class="form-group">
-						<%= f.label :buisness_type %>
-						<%= f.select :buisness_type,['Þjónusta', 'Ráðgjöf', 'Verlsun', 'Stofnun', 'Annað'], class: 'form-control' %>
+						<%= f.label :Tegund_starfsemi %>
+						<%= f.select :buisness_type_light,['Þjónusta', 'Ráðgjöf', 'Verlsun', 'Stofnun', 'Annað'], class: 'form-control' %>
 					</div>
 					<div class="form-group">
-						<%= f.label :description %>
+						<%= f.label :Lýsing_á_starfssemi %>
 						<%= f.text_area :description, class: 'form-control' %>
-					</div>
-					<div class="form-group">
-						<%= f.submit "Update Profile", class: 'btn btn-primary' %>
-					</div>
+					
 		</div>	
 		
 		<div class="col-md-6">
-		<%= f.label :need_permit? %>
+		<%= f.label :Leyfisskylur_Iðnaður? %>
 			<%= f.check_box :need_permit,{}, "Yes", "No"%>
 			<div id="card_details" style="display:none;">
 			<div class="form-group">
-    <%= f.label :Starfsemi %>				
-	 <%= f.select(:buisness_type, options_for_select(Profile::BUISNESS_TYPES),{ :class => 'form-control' })%>
-	 </div>
-	 <div class="form-group">
-    <%= f.label :permit_publisher %> 
-    <%= f.text_field :permit_publisher, class: 'form-control' %>
-    </div>
+		    <%= f.label :Starfsemi %>				
+			 <%= f.select(:buisness_type, grouped_options_for_select(Profile::BUISNESS_TYPES),{ :class => 'form-control' })%>
+			 </div>
+			 <div class="form-group">
+		    <%= f.label :Utgefandi_starfsleyfis %> 
+		    <%= f.text_field :permit_publisher, class: 'form-control' %>
+		    </div>
 
-    <div class="form-group">
-    <%= f.label :permit_monitor %> 
-    <%= f.text_field :permit_monitor, class: 'form-control' %>
-    </div>
+		    <div class="form-group">
+		    <%= f.label :Eftirlitsaðili_starfsleyfis %> 
+		    <%= f.text_field :permit_monitor, class: 'form-control' %>
+		    </div>
 
-    <div class="form-group">
-    <%= f.label :permit_duration %> 
-    <%= f.date_field :permit_duration, class: 'form-control' %>
-    </div>
-  </div>
+		    <div class="form-group">
+		    <%= f.label :Gildistími_starfsleyfis %> til: 
+		    <%= f.date_field :permit_duration, class: 'form-control' %>
+		    </div>
+		  
+		  	 <div class="form-group">
+		    <%= f.label :Stjórn_fyrirtækis %> 
+		    <%= f.text_area :board_member, class: 'form-control' %>
+		    </div>
+		    </div>
 
-
-		</div>		
+		  	
+		</div>	
+		</div>
+					<div class="form-group">
+						<%= f.submit "Uppfæra Skráningu", class: 'btn btn-primary' %>
+					</div>	
 	</div>
 </div>
 				<% end %>
