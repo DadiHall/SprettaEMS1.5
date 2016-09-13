@@ -33,7 +33,7 @@
  				
 
 <div class="col-md-9 col-md-offset-3">
-						<div class="col-md-3 chart-box">
+						<div class="col-md-9 chart-box">
 		 					
 						 <%= line_chart [
                  		 {name: "Rafmagn #{current_user.profile.name}", data: current_user.electros.group_by_month(:updated_at).sum(:electricity_kwst)},
@@ -43,7 +43,7 @@
 						
 					
 				
-			<div class="col-md-3 chart-box">
+			<div class="col-md-9 chart-box">
 		 				
 
 							 <%= column_chart [
@@ -52,7 +52,7 @@
 
 
 
-			<div class="col-md-3 chart-box">
+			<div class="col-md-9 chart-box">
 		 					
 						 <%= column_chart [
                   {name: "Rafmagns kostnaður #{current_user.profile.name}", data: current_user.electros.group_by_month(:date, format:"%B").sum(:electricity_kwst)},

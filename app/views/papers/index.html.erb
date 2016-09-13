@@ -48,7 +48,8 @@
 
 					
 
-				    <%= link_to 'New Paper', new_paper_path %>
+<%= link_to 'Skrá inn færslu', new_paper_path %>
+<%= link_to 'Til Baka á Mína síðu', user_path(current_user) %>
 <%= link_to 'Logout', destroy_user_session_path, method: :delete %>
 	
 </div>

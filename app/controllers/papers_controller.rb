@@ -16,7 +16,7 @@ class PapersController < ApplicationController
 
 		if @paper.save
 			flash[:success] = "Messages sent."
-			redirect_to paper_path(@paper)
+			redirect_to user_path(@paper)
 		else
 			flash[:danger] = "Error occured, message has not been sent."
 			redirect_to new_paper_path

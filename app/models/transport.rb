@@ -24,6 +24,6 @@ class Transport < ActiveRecord::Base
 	end
 
 	def transport_flight_km_staff_ratio(current_user)
-		transport_flight_km / current_user.profile.staff
+		(transport_flight_km.to_f * (1)) / current_user.profile.staff
 	end
 end

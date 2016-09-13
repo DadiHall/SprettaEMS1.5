@@ -10,6 +10,8 @@ class UsersController < ApplicationController
     
 	end
 
+
+
     def create
    
     end
@@ -19,6 +21,7 @@ class UsersController < ApplicationController
    # @user = current_user
 		@user = User.find(params[:id])
 	  @users = User.order('created_at DESC').paginate(page: params[:page], per_page: 30)
+    @users_buisness_type = User.where(:buisness_type => current_user.profile.buisness_type).order('created_at DESC').paginate(page: params[:page], per_page: 30)
     #@electro_total = current_user.electros.sum(:electricity_kwst) 
     @paper = current_user.papers.build
     @electro = current_user.electros.build
@@ -27,6 +30,9 @@ class UsersController < ApplicationController
     @transport = current_user.transports.build
 
     @papers = current_user.papers
+
+    @addon = current_user.addons.build
+    #@addons = current_user.addons
     
 
 	end

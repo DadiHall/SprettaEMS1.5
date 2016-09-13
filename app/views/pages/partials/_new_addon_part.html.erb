@@ -1,0 +1,22 @@
+<%= form_for @addon, :html => {:class => "form-horizontal center"} do |f| %>
+      <div class="form-group">
+        <%= f.label :addon_1, "1.þáttur:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.text_field :addon_1, class: "form-control" %>
+        </div>
+      </div>
+      <div class="form-group">
+        <%= f.label :addon_2, "2.þáttur:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.text_field :addon_2, class: "form-control" %>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :addon_3, "3.Þáttur:", class: "col-md-4 control-label" %>
+        <div class="col-md-8">
+          <%= f.text_field :addon_3, class: "form-control" %>
+        </div>
+      </div>
+      <%= f.submit "Submit", class: "btn btn-default btn-primary" %>  
+ <% end %>

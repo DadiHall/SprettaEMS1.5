@@ -7,11 +7,20 @@
         <% if current_user.profile %>
           <p>Fyrirtæki: <%=current_user.profile.name %></p>
           <p>Fjöldi stöðugilda: <%=current_user.profile.staff %></p>
+          <p>Fyrirtæki: <%=current_user.profile.buisness_type %></p>
           <%= link_to "Uppfæra skráningu", edit_user_profile_path(current_user) %>
              <%= link_to "Skoða skráningu", users_path(current_user)%>
                   <% end %> 
     
        </div>  
+
+<div class="col-md-8">
+       <% if current_user.profile.need_permit == "Yes" %>
+
+        <%= render 'pages/partials/new_addon_part' %>
+
+ <% end %>
+ </div>
      
         
          </div>
@@ -21,13 +30,14 @@
 
 <!--Mælaborð -->
 <hr>
-
+<div class="container">
 <%= render 'users/shared/dashboard_part' %>
+</div>
 <!-- Mælaborð ends -->
 
 
 <hr>
-<div class="container-fluid">
+<div class="container">
 
 <div class="row">
 
@@ -94,22 +104,17 @@
       <%= render 'pages/partials/travel_part' %>
       </div>
     </div>
+ 
  </div> <!-- column ends -->
- </div> <!--Row ends -->
+        </div> <!--Row ends -->
 
 
-</div>
+
 
 
 	
- <% if current_user.profile.need_permit == "Yes" %>
+ 
 
- Setja hér inn optional reiti 
-
- <% end %>
-
-
-				
 						
 <!-- Á þessa síðu vantar IF statements, sem ákvarða hvað aðrir sjá m.v. hvaða áskriftarleið þeir eru með -->
 

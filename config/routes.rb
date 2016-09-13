@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   resources :transports
   resources :garbages
   resources :friendships
+  resources :addons
   root 'pages#index'
 
   

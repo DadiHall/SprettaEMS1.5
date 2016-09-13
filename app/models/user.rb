@@ -21,6 +21,8 @@ has_many :inverse_friends, through: :inverse_friendships, :source => :user
 has_many :posts
 has_many :comments
 
+has_many :addons
+
 has_one :profile
 accepts_nested_attributes_for :profile
 
@@ -38,6 +40,7 @@ acts_as_messageable
 	def mailboxer_email(object)
 		object.email
 	end
+
 	#def not_friends_with?(friend_id)
 		#friendships.where(friend_id: friend_id).count < 1
 

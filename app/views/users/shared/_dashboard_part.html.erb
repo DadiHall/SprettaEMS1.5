@@ -31,7 +31,7 @@
           <div class="col-md-2 chart-box">
           <h4> Heitt vatn </h4>
         <%= column_chart [ 
-                  {name: "KWst notkun #{current_user.profile.name}", data: current_user.hwaters.group_by_year(:created_at, format:"%Y").sum(:hot_water_cubic_meter)},
+                  {name: "m3 notkun #{current_user.profile.name}", data: current_user.hwaters.group_by_year(:created_at, format:"%Y").sum(:hot_water_cubic_meter)},
 
                   {name: "Meðaltal allra notenda", data: Hwater.group_by_year(:created_at, format:"%Y").average(:hot_water_cubic_meter)}], { stacked: true, height: "250px", xtitle: "Heitt vatn", ytitle: "m3/Heitt vatn"} %>
 

@@ -16,7 +16,7 @@ class TransportsController < ApplicationController
 
 			if @transport.save
 				flash[:success] = "Messages sent."
-				redirect_to transport_path(@transport)
+				redirect_to user_path(@transport)
 			else
 				flash[:danger] = "Error occured, message has not been sent."
 				redirect_to new_transport_path

@@ -102,6 +102,7 @@
 					
 
 				    <%= link_to 'Ný lína', new_transport_path %>
-<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+					<%= link_to 'Logout', destroy_user_session_path, method: :delete %>
+					<%= link_to 'Fara á mína síðu', user_path(current_user) %>
 	
 </div>
